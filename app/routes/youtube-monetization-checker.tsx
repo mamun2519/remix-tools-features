@@ -93,13 +93,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
 // Helper function to extract channel ID
 function extractChannelId(link: string): { id?: string; username?: string } {
-  for (const pattern of channelIdPatterns) {
-    const match = link.match(pattern.regex);
-    if (match) {
-      return pattern.type === "id" ? { id: match[1] } : { username: match[1] };
-    }
-  }
-
   // If no match, try to extract from the last part of the URL
   const urlParts = link.split("/");
   const lastPart = urlParts[urlParts.length - 1];
