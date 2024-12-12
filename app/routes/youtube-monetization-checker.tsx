@@ -35,6 +35,22 @@ export async function action({ request }: ActionFunctionArgs) {
   try {
     // Extract channel ID or username from the link
 
+    if (!channelId) {
+      return json({ error: "Could not find channel ID" });
+    }
+
+    // Fetch channel details
+    const channelResponse = await youtube.channels.list({
+      part: ["snippet", "statistics", "status"],
+      id: [channelId],
+    });
+
+    const channel = channelResponse.data.items?.[0];
+    console.log(channel?.snippet?.thumbnails?.default?.url);
+    if (!channel) {
+      return json({ error: "Channel not found" });
+    }
+
     // Check monetization (Note: This is a simplified check)
     const isMonetized = await checkMonetization(channelId);
 
