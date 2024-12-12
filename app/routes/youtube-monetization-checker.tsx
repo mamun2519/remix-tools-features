@@ -127,10 +127,6 @@ async function checkMonetization(channelId: string): Promise<boolean> {
   try {
     // This is a placeholder. Real monetization check would involve
     // more complex YouTube Partner Program verification
-    const youtube = google.youtube({
-      version: "v3",
-      auth: process.env.YOUTUBE_API_KEY,
-    });
 
     // Fetch channel's content details
     const response = await youtube.channels.list({
