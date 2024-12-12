@@ -30,10 +30,3 @@ async function findChannelIdByHandle(
     return null;
   }
 }
-
-export async function action({ request }: ActionFunctionArgs) {
-  try {
-    // Extract channel ID or username from the link
-
-  }
-}
