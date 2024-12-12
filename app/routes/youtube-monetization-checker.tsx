@@ -179,15 +179,7 @@ const YoutubeMonetizationChecker = () => {
         {actionData && !actionData.error && (
           <div className="rounded bg-white p-4 shadow-md">
             <h2 className="mb-2 text-xl font-semibold">Channel Details</h2>
-            <div className="grid grid-cols-2 gap-2">
-              <p>
-                <strong>Channel Name:</strong> {actionData.channelName}
-              </p>
-              <p>
-                <strong>Monetization Status:</strong>
-                {actionData.isMonetized ? "Monetized ✅" : "Not Monetized ❌"}
-              </p>
-            </div>
+            <div className="grid grid-cols-2 gap-2"></div>
           </div>
         )}
       </div>
