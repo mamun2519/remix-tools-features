@@ -30,3 +30,16 @@ async function findChannelIdByHandle(
     return null;
   }
 }
+
+export async function action({ request }: ActionFunctionArgs) {
+  try {
+    // Extract channel ID or username from the link
+    // Check monetization (Note: This is a simplified check)
+  } catch (error) {
+    console.error("Error fetching channel details:", error);
+    return json({
+      error: "Failed to fetch channel details",
+      errorDetails: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+}
