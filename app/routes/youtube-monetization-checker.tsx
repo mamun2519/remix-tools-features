@@ -122,13 +122,3 @@ function extractChannelId(link: string): { id?: string; username?: string } {
 }
 
 // Simplified monetization check (Note: Actual monetization check requires
-// more complex verification)
-async function checkMonetization(channelId: string): Promise<boolean> {
-  try {
-    // This is a placeholder. Real monetization check would involve
-    // more complex YouTube Partner Program verification
-  } catch (error) {
-    console.error("Monetization check error:", error);
-    return false;
-  }
-}
