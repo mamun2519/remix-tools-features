@@ -34,6 +34,20 @@ async function findChannelIdByHandle(
 export async function action({ request }: ActionFunctionArgs) {
   try {
     // Extract channel ID or username from the link
+    const { id, username } = extractChannelId(channelLink);
+
+    // Fetch channel details using YouTube Data API
+    const youtube = google.youtube({
+      version: "v3",
+      auth: process.env.YOUTUBE_API_KEY,
+    });
+
+    let channelId: string | null = id || null;
+
+    // If no direct ID, try to find channel ID
+    if (!channelId && username) {
+      channelId = await findChannelIdByHandle(youtube, username);
+    }
 
     if (!channelId) {
       return json({ error: "Could not find channel ID" });
