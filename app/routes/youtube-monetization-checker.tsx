@@ -93,14 +93,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
 // Helper function to extract channel ID
 function extractChannelId(link: string): { id?: string; username?: string } {
-  // Handle different YouTube channel link formats
-  const channelIdPatterns = [
-    { regex: /channel\/([^\/]+)/, type: "id" },
-    { regex: /c\/([^\/]+)/, type: "username" },
-    { regex: /user\/([^\/]+)/, type: "username" },
-    { regex: /@([^\/]+)/, type: "username" },
-  ];
-
   for (const pattern of channelIdPatterns) {
     const match = link.match(pattern.regex);
     if (match) {
