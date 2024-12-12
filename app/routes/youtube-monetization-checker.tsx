@@ -93,6 +93,14 @@ export async function action({ request }: ActionFunctionArgs) {
 
 // Helper function to extract channel ID
 function extractChannelId(link: string): { id?: string; username?: string } {
+  // Handle different YouTube channel link formats
+  const channelIdPatterns = [
+    { regex: /channel\/([^\/]+)/, type: "id" },
+    { regex: /c\/([^\/]+)/, type: "username" },
+    { regex: /user\/([^\/]+)/, type: "username" },
+    { regex: /@([^\/]+)/, type: "username" },
+  ];
+
   for (const pattern of channelIdPatterns) {
     const match = link.match(pattern.regex);
     if (match) {
@@ -114,3 +122,13 @@ function extractChannelId(link: string): { id?: string; username?: string } {
 }
 
 // Simplified monetization check (Note: Actual monetization check requires
+// more complex verification)
+async function checkMonetization(channelId: string): Promise<boolean> {
+  try {
+    // This is a placeholder. Real monetization check would involve
+    // more complex YouTube Partner Program verification
+  } catch (error) {
+    console.error("Monetization check error:", error);
+    return false;
+  }
+}
