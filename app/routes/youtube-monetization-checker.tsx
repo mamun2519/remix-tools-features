@@ -187,9 +187,6 @@ const YoutubeMonetizationChecker = () => {
                 <strong>Monetization Status:</strong>
                 {actionData.isMonetized ? "Monetized ✅" : "Not Monetized ❌"}
               </p>
-              <p>
-                <strong>Total Views:</strong> {actionData.totalViews}
-              </p>
             </div>
           </div>
         )}
