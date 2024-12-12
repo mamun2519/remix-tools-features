@@ -34,7 +34,21 @@ async function findChannelIdByHandle(
 export async function action({ request }: ActionFunctionArgs) {
   try {
     // Extract channel ID or username from the link
+
     // Check monetization (Note: This is a simplified check)
+    const isMonetized = await checkMonetization(channelId);
+
+    return json({
+      isMonetized,
+      channelName: channel.snippet?.title,
+      totalViews: channel.statistics?.viewCount,
+      subscribers: channel.statistics?.subscriberCount,
+      totalVideos: channel.statistics?.videoCount,
+      channelId: channel.id,
+      country: channel.snippet?.country,
+      creationDate: channel.snippet?.publishedAt,
+      thumbnails: channel?.snippet?.thumbnails?.default?.url,
+    });
   } catch (error) {
     console.error("Error fetching channel details:", error);
     return json({
