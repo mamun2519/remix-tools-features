@@ -127,6 +127,15 @@ async function checkMonetization(channelId: string): Promise<boolean> {
   try {
     // This is a placeholder. Real monetization check would involve
     // more complex YouTube Partner Program verification
+
+    // Basic monetization criteria check
+    const channel = response.data.items?.[0];
+
+    return !!(
+      channel &&
+      parseInt(channel.statistics?.viewCount || "0") > 4000 &&
+      parseInt(channel.statistics?.subscriberCount || "0") >= 1000
+    );
   } catch (error) {
     console.error("Monetization check error:", error);
     return false;
