@@ -151,13 +151,3 @@ async function checkMonetization(channelId: string): Promise<boolean> {
     return false;
   }
 }
-
-const YoutubeMonetizationChecker = () => {
-  const actionData = useActionData<typeof action>();
-  return (
-   
-    </div>
-  );
-};
-
-export default YoutubeMonetizationChecker;
