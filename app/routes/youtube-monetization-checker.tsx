@@ -94,13 +94,6 @@ export async function action({ request }: ActionFunctionArgs) {
 // Helper function to extract channel ID
 function extractChannelId(link: string): { id?: string; username?: string } {
   // If no match, try to extract from the last part of the URL
-  const urlParts = link.split("/");
-  const lastPart = urlParts[urlParts.length - 1];
-
-  // Check if it starts with @ (username)
-  if (lastPart.startsWith("@")) {
-    return { username: lastPart.slice(1) };
-  }
 
   // Otherwise, assume it might be a channel ID
   return { id: lastPart };
