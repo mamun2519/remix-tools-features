@@ -155,10 +155,7 @@ async function checkMonetization(channelId: string): Promise<boolean> {
 const YoutubeMonetizationChecker = () => {
   const actionData = useActionData<typeof action>();
   return (
-    <div className="p-10">
-      <div className="mt-10 h-96 rounded border p-6">
-        <h3>YouTube Monetization Checker</h3>
-      </div>
+   
     </div>
   );
 };
