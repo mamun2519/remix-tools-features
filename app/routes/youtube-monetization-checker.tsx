@@ -199,9 +199,6 @@ const YoutubeMonetizationChecker = () => {
               <p>
                 <strong>Channel ID:</strong> {actionData.channelId}
               </p>
-              <p>
-                <strong>Country:</strong> {actionData.country}
-              </p>
             </div>
           </div>
         )}
