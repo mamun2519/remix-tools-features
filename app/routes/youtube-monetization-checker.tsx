@@ -42,7 +42,7 @@ export async function action({ request }: ActionFunctionArgs) {
     // Fetch channel details using YouTube Data API
     const youtube = google.youtube({
       version: "v3",
-      auth: process.YOUTUBE_API_KEY,
+      auth: process.env.YOUTUBE_API_KEY,
     });
 
     let channelId: string | null = id || null;
@@ -129,7 +129,7 @@ async function checkMonetization(channelId: string): Promise<boolean> {
     // more complex YouTube Partner Program verification
     const youtube = google.youtube({
       version: "v3",
-      auth: YOUTUBE_API_KEY,
+      auth: process.env.YOUTUBE_API_KEY,
     });
 
     // Fetch channel's content details
