@@ -42,7 +42,7 @@ export async function action({ request }: ActionFunctionArgs) {
     // Fetch channel details using YouTube Data API
     const youtube = google.youtube({
       version: "v3",
-      auth: YOUTUBE_API_KEY,
+      auth: process.YOUTUBE_API_KEY,
     });
 
     let channelId: string | null = id || null;
