@@ -190,9 +190,6 @@ const YoutubeMonetizationChecker = () => {
               <p>
                 <strong>Total Views:</strong> {actionData.totalViews}
               </p>
-              <p>
-                <strong>Subscribers:</strong> {actionData.subscribers}
-              </p>
             </div>
           </div>
         )}
