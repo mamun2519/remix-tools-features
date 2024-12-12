@@ -35,13 +35,6 @@ export async function action({ request }: ActionFunctionArgs) {
   try {
     // Extract channel ID or username from the link
 
-    let channelId: string | null = id || null;
-
-    // If no direct ID, try to find channel ID
-    if (!channelId && username) {
-      channelId = await findChannelIdByHandle(youtube, username);
-    }
-
     if (!channelId) {
       return json({ error: "Could not find channel ID" });
     }
