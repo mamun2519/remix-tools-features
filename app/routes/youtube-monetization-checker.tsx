@@ -90,3 +90,13 @@ export async function action({ request }: ActionFunctionArgs) {
     });
   }
 }
+
+// Helper function to extract channel ID
+function extractChannelId(link: string): { id?: string; username?: string } {
+  // If no match, try to extract from the last part of the URL
+
+  // Otherwise, assume it might be a channel ID
+  return { id: lastPart };
+}
+
+// Simplified monetization check (Note: Actual monetization check requires
