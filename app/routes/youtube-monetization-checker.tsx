@@ -199,6 +199,13 @@ const YoutubeMonetizationChecker = () => {
               <p>
                 <strong>Channel ID:</strong> {actionData.channelId}
               </p>
+              <p>
+                <strong>Country:</strong> {actionData.country}
+              </p>
+              <p>
+                <strong>Creation Date:</strong>
+                {new Date(actionData.creationDate || "").toLocaleDateString()}
+              </p>
             </div>
           </div>
         )}
