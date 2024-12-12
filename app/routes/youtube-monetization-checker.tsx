@@ -32,9 +32,6 @@ async function findChannelIdByHandle(
 }
 
 export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
-  const channelLink = formData.get("youtube-url") as string;
-
   try {
     // Extract channel ID or username from the link
     const { id, username } = extractChannelId(channelLink);
