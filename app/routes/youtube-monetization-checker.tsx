@@ -18,13 +18,6 @@ async function findChannelIdByHandle(
       type: ["channel"],
       maxResults: 1,
     });
-
-    const searchResults = searchResponse.data.items;
-    if (searchResults && searchResults.length > 0) {
-      return searchResults[0].snippet.channelId;
-    }
-
-    return null;
   } catch (error) {
     console.error("Error finding channel ID:", error);
     return null;
