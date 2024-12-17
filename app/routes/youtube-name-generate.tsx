@@ -1,5 +1,17 @@
-import { Form, useActionData } from "@remix-run/react";
+import { Form, json, useActionData } from "@remix-run/react";
 
+export async function action({ request }: { request: Request }) {
+  const formData = await request.formData();
+  const accountType = formData.get("accountType");
+  const category = formData.get("category");
+  const description = formData.get("description");
+
+  if (!accountType || !category || !description) {
+    return json({ error: "All fields are required" }, { status: 400 });
+  }
+
+  return null;
+}
 const YoutubeNameGenerate = () => {
   const actionData = useActionData();
   return (
@@ -11,7 +23,7 @@ const YoutubeNameGenerate = () => {
           <Form method="post">
             <input
               type="text"
-              name="account-type"
+              name="accountType"
               placeholder="Enter Account Type"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
