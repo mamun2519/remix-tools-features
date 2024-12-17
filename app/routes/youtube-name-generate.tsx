@@ -9,6 +9,9 @@ export async function action({ request }: { request: Request }) {
   if (!accountType || !category || !description) {
     return json({ error: "All fields are required" }, { status: 400 });
   }
+  console.log("accountType", accountType);
+  console.log("category", category);
+  console.log("description", description);
 
   return null;
 }
