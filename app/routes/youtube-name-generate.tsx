@@ -11,8 +11,20 @@ const YoutubeNameGenerate = () => {
           <Form method="post">
             <input
               type="text"
-              name="youtube-url"
-              placeholder="Enter Youtube channel url"
+              name="account-type"
+              placeholder="Enter Account Type"
+              className="h-14 w-96 rounded border px-4 outline-slate-300"
+            />
+            <input
+              type="text"
+              name="category"
+              placeholder="Enter Account Category"
+              className="h-14 w-96 rounded border px-4 outline-slate-300"
+            />
+            <input
+              type="text"
+              name="description"
+              placeholder="Enter Description"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
             {/* <button
