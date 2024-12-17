@@ -27,12 +27,12 @@ const YoutubeNameGenerate = () => {
               placeholder="Enter Description"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
-            {/* <button
+            <button
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
             >
               Generate
-            </button> */}
+            </button>
           </Form>
         </div>
 
