@@ -1,9 +1,11 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useNavigate } from "@remix-run/react";
 import { useState } from "react";
 
 export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
+  const navigate = useNavigate();
   const [items, setItems] = useState([
     { id: 1, name: "Youtube Money Calculator", link: "" },
     {
