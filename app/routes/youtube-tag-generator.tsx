@@ -25,20 +25,12 @@ export async function action({ request }: { request: Request }) {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 100,
+      max_tokens: 50,
       temperature: 0.7,
     });
 
     console.log("response", response);
 
-    // //* receive only first index
-    // const rawContent = response.choices[0].message.content?.trim() || "";
-
-    // //* convert to array
-    // const generatedNames = rawContent
-    //   .split("\n") // Split into lines
-    //   .filter((line) => line.trim() !== "")
-    //   .map((line) => line.replace(/^\d+\.\s*/, "").trim());
     const titles =
       response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
     console.log("titles", titles);
@@ -60,7 +52,7 @@ export async function action({ request }: { request: Request }) {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Title Generator" },
+    { title: "YouTube Tags Generator" },
     {
       name: "description",
       content: "Generate unique YouTube channel names instantly",
