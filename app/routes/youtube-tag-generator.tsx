@@ -94,9 +94,7 @@ const YoutubeTitleGenerate = () => {
           <div>
             <h2>Generated Titles:</h2>
             <ul>
-              {actionData?.tags.map((title, index) => (
-                <li key={index}>{title}</li>
-              ))}
+              {actionData?.tags.map((tag, index) => <li key={index}>{tag}</li>)}
             </ul>
           </div>
         )}
