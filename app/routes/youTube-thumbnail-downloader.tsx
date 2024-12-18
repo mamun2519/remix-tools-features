@@ -90,17 +90,14 @@ export const meta: MetaFunction = () => {
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
 
-  const handleDownload = (url: string, filename: string) => {
-    // Create an invisible iframe to trigger download
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = url;
+  const handleDownload = (url, filename) => {
+    // Create a temporary <a> element to trigger the download
+    const link = document.createElement("a");
+    link.href = url; // Set the thumbnail URL
+    link.download = filename; // Set the desired file name for the download
 
-    // Append to body and remove after a short delay
-    document.body.appendChild(iframe);
-    setTimeout(() => {
-      document.body.removeChild(iframe);
-    }, 1000);
+    // Trigger the download by clicking the link programmatically
+    link.click();
   };
 
   return (
@@ -200,50 +197,46 @@ const YoutubeThumbnailDownloader = () => {
 
             <div className="download-links mt-4 flex gap-4">
               <button
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() =>
                   handleDownload(
                     actionData.video.thumbnails.default.url,
                     "default_thumbnail.jpg",
-                  );
-                }}
+                  )
+                }
                 className="rounded bg-red-500 px-4 py-2 text-white"
               >
                 Download Default
               </button>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() =>
                   handleDownload(
                     actionData.video.thumbnails.medium.url,
                     "medium_thumbnail.jpg",
-                  );
-                }}
+                  )
+                }
                 className="rounded bg-red-500 px-4 py-2 text-white"
               >
                 Download Medium
               </button>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() =>
                   handleDownload(
                     actionData.video.thumbnails.high.url,
                     "hd_thumbnail.jpg",
-                  );
-                }}
+                  )
+                }
                 className="rounded bg-red-500 px-4 py-2 text-white"
               >
                 Download HD
               </button>
               {actionData.video.thumbnails.maxres && (
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() =>
                     handleDownload(
                       actionData.video.thumbnails.maxres.url,
                       "4k_thumbnail.jpg",
-                    );
-                  }}
+                    )
+                  }
                   className="rounded bg-red-500 px-4 py-2 text-white"
                 >
                   Download 4K
