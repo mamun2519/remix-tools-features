@@ -112,20 +112,32 @@ const YoutubeThumbnailDownloader = () => {
             <p>Views: {actionData.video.views}</p>
 
             <div className="download-links flex gap-5">
-              <a
+              <button
+                onClick={() =>
+                  handleDownload(
+                    actionData.thumbnails.default.url,
+                    "default_thumbnail.jpg",
+                  )
+                }
                 className="runded bg-red-500 px-2 text-white"
-                href={actionData.video.thumbnails.default.url}
+                //     href={actionData.video.thumbnails.default.url}
                 download
               >
                 Download Default
-              </a>
-              <a
+              </button>
+              <button
+                onClick={() =>
+                  handleDownload(
+                    actionData.video.thumbnails.medium.url,
+                    "default_thumbnail.jpg",
+                  )
+                }
                 className="runded bg-red-500 px-2 text-white"
                 href={actionData.video.thumbnails.medium.url}
                 download
               >
                 Download Medium
-              </a>
+              </button>
               <a
                 className="runded bg-red-500 px-2 text-white"
                 href={actionData.video.thumbnails.high.url}
