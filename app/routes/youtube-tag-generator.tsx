@@ -91,8 +91,8 @@ const YoutubeTitleGenerate = () => {
           <Form method="post">
             <input
               type="text"
-              name="tags"
-              placeholder="Enter Video description"
+              name="keyword"
+              placeholder="Enter Keyword"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
 
