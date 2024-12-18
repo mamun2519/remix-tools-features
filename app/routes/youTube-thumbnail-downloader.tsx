@@ -129,11 +129,11 @@ const YoutubeThumbnailDownloader = () => {
                 onClick={() =>
                   handleDownload(
                     actionData.video.thumbnails.medium.url,
-                    "default_thumbnail.jpg",
+                    "medium_thumbnail.jpg",
                   )
                 }
                 className="runded bg-red-500 px-2 text-white"
-                href={actionData.video.thumbnails.medium.url}
+                //     href={actionData.video.thumbnails.medium.url}
                 download
               >
                 Download Medium
