@@ -48,29 +48,42 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 }
 
-export async function loader({ request }: ActionFunctionArgs) {
-  const url = new URL(request.url);
-  const imageUrl = url.searchParams.get("imageUrl");
+// export const loader = async ({ request }: { request: Request }) => {
+//   const url = new URL(request.url);
+//   const imageUrl = url.searchParams.get("url");
 
-  if (!imageUrl) {
-    return new Response("No image URL provided", { status: 400 });
-  }
+//   if (!imageUrl) {
+//     return json({ error: "No URL provided" }, { status: 400 });
+//   }
 
-  try {
-    const imageResponse = await fetch(imageUrl);
-    const imageBlob = await imageResponse.blob();
+//   try {
+//     // Fetch the image from the external URL (YouTube thumbnail)
+//     const response = await fetch(imageUrl);
 
-    return new Response(imageBlob, {
-      headers: {
-        "Content-Type":
-          imageResponse.headers.get("Content-Type") || "image/jpeg",
-        "Content-Disposition": "attachment; filename=thumbnail.jpg",
-      },
-    });
-  } catch (error) {
-    return new Response("Error fetching image", { status: 500 });
-  }
-}
+//     if (!response.ok) {
+//       return json(
+//         { error: "Failed to fetch image from the source" },
+//         { status: 500 },
+//       );
+//     }
+
+//     // Get the image as a buffer and send it as a response
+//     const imageBuffer = await response.arrayBuffer();
+//     const contentType = response.headers.get("Content-Type") || "image/jpeg"; // Set default to JPEG
+
+//     return new Response(imageBuffer, {
+//       headers: {
+//         "Content-Type": contentType,
+//         "Content-Disposition": `attachment; filename="thumbnail.jpg"`, // Use a fixed filename
+//       },
+//     });
+//   } catch (error) {
+//     return json(
+//       { error: "Error fetching image from the URL" },
+//       { status: 500 },
+//     );
+//   }
+// };
 
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
@@ -100,27 +113,32 @@ const YoutubeThumbnailDownloader = () => {
   //   link.click();
   // };
 
-  const handleDownload = async (url, filename) => {
-    try {
-      // Fetch the image as a blob
-      const response = await fetch(url);
-      const blob = await response.blob();
+  // const handleDownload = async (url, filename) => {
+  //   try {
+  //     // Call the Remix API route to fetch the image
+  //     const proxyUrl = `/api/thumbnailProxy?url=${encodeURIComponent(url)}`;
+  //     const response = await fetch(proxyUrl);
 
-      // Create a temporary URL for the blob
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = filename; // Set the filename for the download
+  //     if (!response.ok) {
+  //       throw new Error("Failed to download image.");
+  //     }
 
-      // Trigger the download by clicking the link programmatically
-      link.click();
+  //     const blob = await response.blob();
 
-      // Clean up the object URL
-      URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error("Error downloading the image:", error);
-    }
-  };
+  //     // Create a link to download the image
+  //     const link = document.createElement("a");
+  //     link.href = URL.createObjectURL(blob);
+  //     link.download = filename; // Specify the filename
 
+  //     // Trigger the download
+  //     link.click();
+
+  //     // Clean up the URL object
+  //     URL.revokeObjectURL(link.href);
+  //   } catch (error) {
+  //     console.error("Error downloading the image:", error);
+  //   }
+  // };
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
