@@ -89,36 +89,18 @@ export const meta: MetaFunction = () => {
 };
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
-  const handleDownload = async (url: string, filename: string) => {
-    try {
-      // Use server-side proxy route to download
-      const proxyUrl = `/loader?imageUrl=${encodeURIComponent(url)}`;
 
-      // Fetch via our proxy
-      const response = await fetch(proxyUrl);
+  const handleDownload = (url: string, filename: string) => {
+    // Create an invisible iframe to trigger download
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = url;
 
-      if (!response.ok) {
-        throw new Error("Download failed");
-      }
-
-      const blob = await response.blob();
-
-      // Create a link element and trigger download
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-
-      // Append to body, click, and remove
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Clean up the URL object
-      URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error("Download failed:", error);
-      // setDownloadError("Failed to download thumbnail");
-    }
+    // Append to body and remove after a short delay
+    document.body.appendChild(iframe);
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 1000);
   };
 
   return (
