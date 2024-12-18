@@ -30,7 +30,7 @@ const YoutubeThumbnailDownloader = () => {
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
             >
-              Generate
+              Download
             </button>
           </Form>
         </div>
