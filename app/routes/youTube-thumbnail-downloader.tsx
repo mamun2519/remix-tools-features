@@ -3,7 +3,7 @@ import { Form, json, useActionData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Tags Generator" },
+    { title: "YouTube Thumbnail Download" },
     {
       name: "description",
       content: "Generate unique YouTube channel names instantly",
