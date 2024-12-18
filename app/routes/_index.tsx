@@ -14,7 +14,11 @@ export default function Index() {
     { id: 3, name: "Youtube Name Generator", link: "youtube-name-generator" },
     { id: 4, name: "Youtube Title Generator", link: "youtube-title-generator" },
     { id: 5, name: "Youtube Tags Generator", link: "youtube-tags-generator" },
-    { id: 5, name: "YouTube Thumbnail Downloader" },
+    {
+      id: 5,
+      name: "YouTube Thumbnail Downloader",
+      link: "youTube-thumbnail-downloader",
+    },
   ]);
   return (
     <main className="p-10">
