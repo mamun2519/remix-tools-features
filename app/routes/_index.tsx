@@ -8,6 +8,8 @@ export default function Index() {
     { id: 1, name: "Youtube Money Calculator" },
     { id: 2, name: "Youtube Monetization Checker" },
     { id: 3, name: "Youtube Name Generator" },
+    { id: 3, name: "Youtube Title Generator" },
+    { id: 3, name: "Youtube Title Generator" },
   ]);
   return (
     <main className="p-10">
