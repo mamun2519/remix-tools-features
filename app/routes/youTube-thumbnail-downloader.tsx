@@ -66,6 +66,8 @@ export const meta: MetaFunction = () => {
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
   const handleDownload = (url, filename) => {
+    console.log("url", url);
+    console.log("fileName", filename);
     const link = document.createElement("a");
     link.href = url; // Set the thumbnail URL
     link.download = filename; // Set the desired file name
@@ -155,7 +157,12 @@ const YoutubeThumbnailDownloader = () => {
                 <a
                   className="runded bg-red-500 px-2 text-white"
                   href={actionData.video.thumbnails.maxres.url}
-                  download
+                  onClick={() =>
+                    handleDownload(
+                      actionData.video.thumbnails.maxres.url,
+                      "4k_thumbnail.jpg",
+                    )
+                  }
                 >
                   Download 4K
                 </a>
