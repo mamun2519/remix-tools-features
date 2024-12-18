@@ -90,14 +90,35 @@ export const meta: MetaFunction = () => {
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
 
-  const handleDownload = (url, filename) => {
-    // Create a temporary <a> element to trigger the download
-    const link = document.createElement("a");
-    link.href = url; // Set the thumbnail URL
-    link.download = filename; // Set the desired file name for the download
+  // const handleDownload = (url, filename) => {
+  //   // Create a temporary <a> element to trigger the download
+  //   const link = document.createElement("a");
+  //   link.href = url; // Set the thumbnail URL
+  //   link.download = filename; // Set the desired file name for the download
 
-    // Trigger the download by clicking the link programmatically
-    link.click();
+  //   // Trigger the download by clicking the link programmatically
+  //   link.click();
+  // };
+
+  const handleDownload = async (url, filename) => {
+    try {
+      // Fetch the image as a blob
+      const response = await fetch(url);
+      const blob = await response.blob();
+
+      // Create a temporary URL for the blob
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename; // Set the filename for the download
+
+      // Trigger the download by clicking the link programmatically
+      link.click();
+
+      // Clean up the object URL
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Error downloading the image:", error);
+    }
   };
 
   return (
