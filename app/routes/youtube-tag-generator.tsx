@@ -20,13 +20,7 @@ export async function action({ request }: { request: Request }) {
     });
 
     //* generate prompt
-    const prompt = `
-    Generate 15 engaging and click-worthy YouTube video titles optimized for SEO. 
-    - Video Type: ${videoType || "N/A"}
-    - Video Description: ${videoDescription || "N/A"}
-    - Keyword to include in titles: ${keyword || "N/A"}
-      Generate exactly 12 titles only.
-  `;
+    const prompt = `Generate a list of SEO-friendly YouTube tags for the keyword: "${keyword}".`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
