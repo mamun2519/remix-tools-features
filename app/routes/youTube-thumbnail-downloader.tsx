@@ -48,6 +48,30 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 }
 
+export async function loader({ request }: ActionFunctionArgs) {
+  const url = new URL(request.url);
+  const imageUrl = url.searchParams.get("imageUrl");
+
+  if (!imageUrl) {
+    return new Response("No image URL provided", { status: 400 });
+  }
+
+  try {
+    const imageResponse = await fetch(imageUrl);
+    const imageBlob = await imageResponse.blob();
+
+    return new Response(imageBlob, {
+      headers: {
+        "Content-Type":
+          imageResponse.headers.get("Content-Type") || "image/jpeg",
+        "Content-Disposition": "attachment; filename=thumbnail.jpg",
+      },
+    });
+  } catch (error) {
+    return new Response("Error fetching image", { status: 500 });
+  }
+}
+
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
   const match = url.match(regex);
@@ -65,14 +89,38 @@ export const meta: MetaFunction = () => {
 };
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
-  const handleDownload = (url, filename) => {
-    console.log("url", url);
-    console.log("fileName", filename);
-    const link = document.createElement("a");
-    link.href = url; // Set the thumbnail URL
-    link.download = filename; // Set the desired file name
-    link.click(); // Trigger the download
+  const handleDownload = async (url: string, filename: string) => {
+    try {
+      // Use server-side proxy route to download
+      const proxyUrl = `/loader?imageUrl=${encodeURIComponent(url)}`;
+
+      // Fetch via our proxy
+      const response = await fetch(proxyUrl);
+
+      if (!response.ok) {
+        throw new Error("Download failed");
+      }
+
+      const blob = await response.blob();
+
+      // Create a link element and trigger download
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+
+      // Append to body, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Clean up the URL object
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Download failed:", error);
+      // setDownloadError("Failed to download thumbnail");
+    }
   };
+
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
@@ -113,17 +161,16 @@ const YoutubeThumbnailDownloader = () => {
             <p>Duration: {actionData.video?.duration}</p>
             <p>Views: {actionData.video.views}</p>
 
-            <div className="download-links flex gap-5">
+            {/* <div className="download-links flex gap-5">
               <button
                 onClick={() =>
                   handleDownload(
-                    actionData.thumbnails.default.url,
+                    actionData.video.thumbnails.default.url,
                     "default_thumbnail.jpg",
                   )
                 }
                 className="runded bg-red-500 px-2 text-white"
                 //     href={actionData.video.thumbnails.default.url}
-                download
               >
                 Download Default
               </button>
@@ -143,7 +190,7 @@ const YoutubeThumbnailDownloader = () => {
               <button
                 onClick={() =>
                   handleDownload(
-                    actionData.video.thumbnails.high.ur,
+                    actionData.video.thumbnails.high.url,
                     "hd_thumbnail.jpg",
                   )
                 }
@@ -156,13 +203,66 @@ const YoutubeThumbnailDownloader = () => {
               {actionData.video.thumbnails.maxres && (
                 <button
                   className="runded bg-red-500 px-2 text-white"
-                  href={actionData.video.thumbnails.maxres.url}
+                  // href={actionData.video.thumbnails.maxres.url}
                   onClick={() =>
                     handleDownload(
                       actionData.video.thumbnails.maxres.url,
                       "4k_thumbnail.jpg",
                     )
                   }
+                >
+                  Download 4K
+                </button>
+              )}
+            </div> */}
+
+            <div className="download-links mt-4 flex gap-4">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDownload(
+                    actionData.video.thumbnails.default.url,
+                    "default_thumbnail.jpg",
+                  );
+                }}
+                className="rounded bg-red-500 px-4 py-2 text-white"
+              >
+                Download Default
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDownload(
+                    actionData.video.thumbnails.medium.url,
+                    "medium_thumbnail.jpg",
+                  );
+                }}
+                className="rounded bg-red-500 px-4 py-2 text-white"
+              >
+                Download Medium
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDownload(
+                    actionData.video.thumbnails.high.url,
+                    "hd_thumbnail.jpg",
+                  );
+                }}
+                className="rounded bg-red-500 px-4 py-2 text-white"
+              >
+                Download HD
+              </button>
+              {actionData.video.thumbnails.maxres && (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDownload(
+                      actionData.video.thumbnails.maxres.url,
+                      "4k_thumbnail.jpg",
+                    );
+                  }}
+                  className="rounded bg-red-500 px-4 py-2 text-white"
                 >
                   Download 4K
                 </button>
