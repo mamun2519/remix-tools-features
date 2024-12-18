@@ -42,7 +42,7 @@ export async function action({ request }: ActionFunctionArgs) {
       thumbnails: snippet.thumbnails,
       category: snippet.categoryId,
       uploadDate: snippet.publishedAt,
-      duration: contentDetails.duration,
+      duration: contentDetails?.duration ?? null,
       views: statistics.viewCount,
     },
   });
@@ -102,20 +102,32 @@ const YoutubeThumbnailDownloader = () => {
               {new Date(actionData.video.uploadDate).toLocaleDateString()}
             </p>
             <p>Category: {actionData.video.category}</p>
-            <p>Duration: {actionData.video.duration}</p>
+            <p>Duration: {actionData.video?.duration}</p>
             <p>Views: {actionData.video.views}</p>
 
-            <div className="download-links">
-              <a href={actionData.video.thumbnails.default.url} download>
+            <div className="download-links flex gap-5">
+              <a
+                className="runded bg-red-500 px-2 text-white"
+                href={actionData.video.thumbnails.default.url}
+                download
+              >
                 Download Default
               </a>
-              <a href={actionData.video.thumbnails.medium.url} download>
+              <a
+                className="runded bg-red-500 px-2 text-white"
+                href={actionData.video.thumbnails.medium.url}
+                download
+              >
                 Download Medium
               </a>
-              <a href={actionData.video.thumbnails.high.url} download>
+              <a
+                className="runded bg-red-500 px-2 text-white"
+                href={actionData.video.thumbnails.high.url}
+                download
+              >
                 Download HD
               </a>
-              {actionData.thumbnails.maxres && (
+              {actionData.video.thumbnails.maxres && (
                 <a href={actionData.video.thumbnails.maxres.url} download>
                   Download 4K
                 </a>
