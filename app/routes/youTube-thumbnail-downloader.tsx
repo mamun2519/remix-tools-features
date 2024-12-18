@@ -34,12 +34,14 @@ export async function action({ request }: ActionFunctionArgs) {
   const { snippet, contentDetails, statistics } = video;
 
   return json({
-    title: snippet.title,
-    thumbnails: snippet.thumbnails,
-    category: snippet.categoryId,
-    uploadDate: snippet.publishedAt,
-    duration: contentDetails.duration,
-    views: statistics.viewCount,
+    video: {
+      title: snippet.title,
+      thumbnails: snippet.thumbnails,
+      category: snippet.categoryId,
+      uploadDate: snippet.publishedAt,
+      duration: contentDetails.duration,
+      views: statistics.viewCount,
+    },
   });
 }
 
