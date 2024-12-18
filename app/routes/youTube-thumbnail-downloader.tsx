@@ -134,7 +134,7 @@ const YoutubeThumbnailDownloader = () => {
                 }
                 className="runded bg-red-500 px-2 text-white"
                 //     href={actionData.video.thumbnails.medium.url}
-                download
+                //     download
               >
                 Download Medium
               </button>
@@ -146,8 +146,8 @@ const YoutubeThumbnailDownloader = () => {
                   )
                 }
                 className="runded bg-red-500 px-2 text-white"
-                href={actionData.video.thumbnails.high.url}
-                download
+                //     href={actionData.video.thumbnails.high.url}
+                //     download
               >
                 Download HD
               </button>
