@@ -154,7 +154,7 @@ const YoutubeThumbnailDownloader = () => {
                 Download HD
               </button>
               {actionData.video.thumbnails.maxres && (
-                <a
+                <button
                   className="runded bg-red-500 px-2 text-white"
                   href={actionData.video.thumbnails.maxres.url}
                   onClick={() =>
@@ -165,7 +165,7 @@ const YoutubeThumbnailDownloader = () => {
                   }
                 >
                   Download 4K
-                </a>
+                </button>
               )}
             </div>
           </div>
