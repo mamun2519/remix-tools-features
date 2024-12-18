@@ -1,5 +1,7 @@
-import { MetaFunction } from "@remix-run/node";
+import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData } from "@remix-run/react";
+
+export async function action({ request }: ActionFunctionArgs) {}
 
 export const meta: MetaFunction = () => {
   return [
@@ -21,8 +23,8 @@ const YoutubeThumbnailDownloader = () => {
           <Form method="post">
             <input
               type="text"
-              name="keyword"
-              placeholder="Enter Keyword"
+              name="videoURL"
+              placeholder="Enter Youtube Video link"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
 
