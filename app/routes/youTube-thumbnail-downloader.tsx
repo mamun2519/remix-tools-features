@@ -90,12 +90,34 @@ const YoutubeThumbnailDownloader = () => {
             {actionData.error}
           </div>
         )}
-        {actionData?.tags?.length > 0 && (
+        {actionData?.video && (
           <div>
-            <h2>Generated Titles:</h2>
-            <ul>
-              {actionData?.tags.map((tag, index) => <li key={index}>{tag}</li>)}
-            </ul>
+            <h2>{actionData.video.title}</h2>
+            <img src={actionData.video.thumbnails.high.url} alt="Thumbnail" />
+            <p>
+              Upload Date:{" "}
+              {new Date(actionData.video.uploadDate).toLocaleDateString()}
+            </p>
+            <p>Category: {actionData.video.category}</p>
+            <p>Duration: {actionData.video.duration}</p>
+            <p>Views: {actionData.video.views}</p>
+
+            <div className="download-links">
+              <a href={actionData.video.thumbnails.default.url} download>
+                Download Default
+              </a>
+              <a href={actionData.video.thumbnails.medium.url} download>
+                Download Medium
+              </a>
+              <a href={actionData.video.thumbnails.high.url} download>
+                Download HD
+              </a>
+              {actionData.thumbnails.maxres && (
+                <a href={actionData.video.thumbnails.maxres.url} download>
+                  Download 4K
+                </a>
+              )}
+            </div>
           </div>
         )}
       </div>
