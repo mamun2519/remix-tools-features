@@ -11,9 +11,9 @@ export default function Index() {
       name: "Youtube Monetization Checker",
       link: "youtube-monetization-checker",
     },
-    { id: 3, name: "Youtube Name Generator" },
-    { id: 4, name: "Youtube Title Generator" },
-    { id: 5, name: "Youtube Tags Generator" },
+    { id: 3, name: "Youtube Name Generator", link: "youtube-name-generator" },
+    { id: 4, name: "Youtube Title Generator", link: "youtube-title-generator" },
+    { id: 5, name: "Youtube Tags Generator", link: "youtube-tags-generator" },
     { id: 5, name: "YouTube Thumbnail Downloader" },
   ]);
   return (
