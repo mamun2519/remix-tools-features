@@ -33,6 +33,7 @@ export async function action({ request }: { request: Request }) {
 
     const tags =
       response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
+    //     const tags = tagsText ? tagsText.split(",").map((tag) => tag.trim()) : [];
     console.log("tags", tags);
     return json({
       titles: tags,
@@ -89,11 +90,11 @@ const YoutubeTitleGenerate = () => {
             {actionData.error}
           </div>
         )}
-        {actionData?.titles?.length > 0 && (
+        {actionData?.tags?.length > 0 && (
           <div>
             <h2>Generated Titles:</h2>
             <ul>
-              {actionData?.titles.map((title, index) => (
+              {actionData?.tags.map((title, index) => (
                 <li key={index}>{title}</li>
               ))}
             </ul>
