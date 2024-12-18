@@ -65,6 +65,12 @@ export const meta: MetaFunction = () => {
 };
 const YoutubeThumbnailDownloader = () => {
   const actionData = useActionData();
+  const handleDownload = (url, filename) => {
+    const link = document.createElement("a");
+    link.href = url; // Set the thumbnail URL
+    link.download = filename; // Set the desired file name
+    link.click(); // Trigger the download
+  };
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
