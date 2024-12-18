@@ -128,7 +128,11 @@ const YoutubeThumbnailDownloader = () => {
                 Download HD
               </a>
               {actionData.video.thumbnails.maxres && (
-                <a href={actionData.video.thumbnails.maxres.url} download>
+                <a
+                  className="runded bg-red-500 px-2 text-white"
+                  href={actionData.video.thumbnails.maxres.url}
+                  download
+                >
                   Download 4K
                 </a>
               )}
