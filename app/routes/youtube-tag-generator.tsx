@@ -32,9 +32,6 @@ export async function action({ request }: { request: Request }) {
     const rawContent = response.choices[0].message.content?.trim() || "";
     console.log("response", response);
 
-    //     const tags =
-    //       response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
-    //     const tags = tagsText ? tagsText.split(",").map((tag) => tag.trim()) : [];
     const tags = rawContent
       .split("\n") // Split into lines
       .filter((line) => line.trim() !== "")
