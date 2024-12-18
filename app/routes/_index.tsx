@@ -12,10 +12,11 @@ export default function Index() {
   return (
     <main className="p-10">
       <div className="h-96 w-full rounded-lg border p-5 shadow-sm">
-        <h1 className="text-xl font-semibold">Our free tools list</h1>
+        <h1 className="mb-4 text-2xl font-bold">Our free tools list</h1>
         {/* <h1 className="mb-4 text-2xl font-bold">Item List</h1> */}
         <div className="grid grid-cols-2">
           <ul className="space-y-4">
+            <h1 className="mb-4 text-2xl font-bold">Item List</h1>
             {items.map((item) => (
               <li
                 key={item.id}
