@@ -1,5 +1,6 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData } from "@remix-run/react";
+import { google } from "googleapis";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -13,6 +14,33 @@ export async function action({ request }: ActionFunctionArgs) {
   if (!videoId) {
     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
   }
+
+  const youtube = google.youtube({
+    version: "v3",
+    auth: process.env.YOUTUBE_API_KEY,
+  });
+
+  const response = await youtube.videos.list({
+    id: videoId,
+    part: ["snippet", "statistics", "status"],
+  });
+
+  const video = response.data.items?.[0];
+
+  if (!video) {
+    return json({ error: "Video not found." }, { status: 404 });
+  }
+
+  const { snippet, contentDetails, statistics } = video;
+
+  return json({
+    title: snippet.title,
+    thumbnails: snippet.thumbnails,
+    category: snippet.categoryId,
+    uploadDate: snippet.publishedAt,
+    duration: contentDetails.duration,
+    views: statistics.viewCount,
+  });
 }
 
 function extractVideoId(url: string) {
