@@ -25,15 +25,20 @@ export async function action({ request }: { request: Request }) {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 50,
+      max_tokens: 60,
       temperature: 0.7,
     });
 
+    const rawContent = response.choices[0].message.content?.trim() || "";
     console.log("response", response);
 
-    const tags =
-      response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
+    //     const tags =
+    //       response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
     //     const tags = tagsText ? tagsText.split(",").map((tag) => tag.trim()) : [];
+    const tags = rawContent
+      .split("\n") // Split into lines
+      .filter((line) => line.trim() !== "")
+      .map((line) => line.replace(/^\d+\.\s*/, "").trim());
     console.log("tags", tags);
     return json({
       titles: tags,
