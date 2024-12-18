@@ -5,9 +5,9 @@ export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
   const [items, setItems] = useState([
-    { id: 1, name: "Item 1" },
-    { id: 2, name: "Item 2" },
-    { id: 3, name: "Item 3" },
+    { id: 1, name: "Youtube Money Calculator" },
+    { id: 2, name: "Youtube Monetization Checker" },
+    { id: 3, name: "Youtube Name Generator" },
   ]);
   return (
     <main className="p-10">
