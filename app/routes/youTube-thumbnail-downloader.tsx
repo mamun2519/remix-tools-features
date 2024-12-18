@@ -15,7 +15,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
   }
 
-  console.log("video id", videoId);
+  //   console.log("video id", videoId);
 
   const youtube = google.youtube({
     version: "v3",
@@ -26,9 +26,9 @@ export async function action({ request }: ActionFunctionArgs) {
     id: videoId,
     part: ["snippet", "statistics", "status"],
   });
-  console.log("response", response);
+  //   console.log("response", response);
   const video = response.data.items?.[0];
-  console.log("video", video);
+  //   console.log("video", video);
 
   if (!video) {
     return json({ error: "Video not found." }, { status: 404 });
