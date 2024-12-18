@@ -1,7 +1,25 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData } from "@remix-run/react";
 
-export async function action({ request }: ActionFunctionArgs) {}
+export async function action({ request }: ActionFunctionArgs) {
+  const formData = await request.formData();
+  const url = formData.get("videoURL");
+
+  if (!url) {
+    return json({ error: "YouTube URL is required." }, { status: 400 });
+  }
+
+  const videoId = extractVideoId(url as string);
+  if (!videoId) {
+    return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
+  }
+}
+
+function extractVideoId(url: string) {
+  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
 
 export const meta: MetaFunction = () => {
   return [
