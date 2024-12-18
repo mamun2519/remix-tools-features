@@ -6,18 +6,11 @@ const openaiApiKey = process.env.OPENAI_API_KEY;
 
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
-  const videoDescription = formData.get("videoDescription");
-  const videoType = formData.get("videoType");
   const keyword = formData.get("keyword");
 
-  console.log("videoDescription", videoDescription);
-  console.log("videoType", videoType);
   //* handle input filed error
-  if (!videoDescription && !videoType && !keyword) {
-    return json(
-      { error: "Description, video type, or keyword is required." },
-      { status: 400 },
-    );
+  if (!keyword) {
+    return json({ error: "keyword is required." }, { status: 400 });
   }
 
   try {
