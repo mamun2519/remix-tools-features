@@ -13,11 +13,11 @@ export default function Index() {
       name: "Youtube Monetization Checker",
       link: "youtube-monetization-checker",
     },
-    { id: 3, name: "Youtube Name Generator", link: "youtube-name-generator" },
+    { id: 3, name: "Youtube Name Generator", link: "youtube-name-generate" },
     { id: 4, name: "Youtube Title Generator", link: "youtube-title-generator" },
-    { id: 5, name: "Youtube Tags Generator", link: "youtube-tags-generator" },
+    { id: 5, name: "Youtube Tags Generator", link: "youtube-tag-generator" },
     {
-      id: 5,
+      id: 6,
       name: "YouTube Thumbnail Downloader",
       link: "youTube-thumbnail-downloader",
     },
@@ -29,7 +29,7 @@ export default function Index() {
         {/* <h1 className="mb-4 text-2xl font-bold">Item List</h1> */}
         <div className="grid grid-cols-2">
           <ul className="space-y-4">
-            <h1 className="mb-4 text-2xl font-bold">Item List</h1>
+            <h1 className="mb-4 text-2xl font-bold">Youtube Tools</h1>
             {items.map((item) => (
               <li
                 key={item.id}
@@ -37,7 +37,7 @@ export default function Index() {
               >
                 <span className="text-lg font-medium">{item.name}</span>
                 <button
-                  onClick={() => alert(`You clicked on ${item.name}`)}
+                  onClick={() => navigate(item.link)}
                   className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                 >
                   View
