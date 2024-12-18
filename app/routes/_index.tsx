@@ -5,11 +5,12 @@ export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
   const [items, setItems] = useState([
-    { id: 1, name: "Youtube Money Calculator" },
+    { id: 1, name: "Youtube Money Calculator" ,link:},
     { id: 2, name: "Youtube Monetization Checker" },
     { id: 3, name: "Youtube Name Generator" },
-    { id: 3, name: "Youtube Title Generator" },
-    { id: 3, name: "Youtube Title Generator" },
+    { id: 4, name: "Youtube Title Generator" },
+    { id: 5, name: "Youtube Tags Generator" },
+    { id: 5, name: "YouTube Thumbnail Downloader" },
   ]);
   return (
     <main className="p-10">
