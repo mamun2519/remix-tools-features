@@ -31,11 +31,11 @@ export async function action({ request }: { request: Request }) {
 
     console.log("response", response);
 
-    const titles =
+    const tags =
       response.choices[0]?.message?.content?.split("\n").filter(Boolean) || [];
-    console.log("titles", titles);
+    console.log("tags", tags);
     return json({
-      titles: titles,
+      titles: tags,
       error: null,
     });
   } catch (error) {
