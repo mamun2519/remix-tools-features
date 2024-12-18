@@ -41,7 +41,7 @@ export async function action({ request }: { request: Request }) {
       .map((line) => line.replace(/^\d+\.\s*/, "").trim());
     console.log("tags", tags);
     return json({
-      titles: tags,
+      tags: tags,
       error: null,
     });
   } catch (error) {
