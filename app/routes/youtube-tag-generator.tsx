@@ -78,7 +78,7 @@ const YoutubeTitleGenerate = () => {
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
-        <h3>YouTube Title Generate</h3>
+        <h3>YouTube Tags Generate</h3>
 
         <div className="mt-2">
           <Form method="post">
