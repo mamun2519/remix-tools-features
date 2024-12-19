@@ -19,7 +19,8 @@ export async function action({ request }: { request: Request }) {
     });
 
     //* generate prompt
-    const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}". please provide minimum 5 description`;
+    //     const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}". please provide minimum 5 description`;
+    const prompt = `Generate at least 5 unique YouTube video descriptions for the topic: "${videoTopic}". Make sure to include the following keywords in each description: "${keywords}". The descriptions should be creative, engaging, and suitable for a YouTube audience.`;
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       // model: "text-davinci-003",
