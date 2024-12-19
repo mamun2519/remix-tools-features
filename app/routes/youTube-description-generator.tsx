@@ -39,13 +39,13 @@ export async function action({ request }: { request: Request }) {
     const rawContent = response.choices[0].message.content?.trim() || "";
 
     //* convert to array
-    const generatedNames = rawContent
+    const description = rawContent
       .split("\n") // Split into lines
       .filter((line) => line.trim() !== "")
       .map((line) => line.replace(/^\d+\.\s*/, "").trim());
 
     return json({
-      generatedNames: generatedNames,
+      generatedNames: description,
       error: null,
     });
 
