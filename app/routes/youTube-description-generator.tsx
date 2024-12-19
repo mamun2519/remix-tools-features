@@ -43,7 +43,7 @@ export async function action({ request }: { request: Request }) {
       .split("\n") // Split into lines
       .filter((line) => line.trim() !== "")
       .map((line) => line.replace(/^\d+\.\s*/, "").trim());
-
+    console.log("description", description);
     return json({
       generatedNames: description,
       error: null,
