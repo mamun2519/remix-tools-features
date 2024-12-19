@@ -109,12 +109,7 @@ const YoutubeDescriptionGenerate = () => {
               placeholder="Enter Account Category"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
-            <input
-              type="text"
-              name="description"
-              placeholder="Enter Description"
-              className="h-14 w-96 rounded border px-4 outline-slate-300"
-            />
+
             <button
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
