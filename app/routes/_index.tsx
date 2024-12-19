@@ -21,6 +21,11 @@ export default function Index() {
       name: "YouTube Thumbnail Downloader",
       link: "youTube-thumbnail-downloader",
     },
+    {
+      id: 6,
+      name: "YouTube Tag Extractor",
+      link: "youTube-thumbnail-downloader",
+    },
   ]);
   return (
     <main className="p-10">
@@ -33,7 +38,7 @@ export default function Index() {
             {items.map((item) => (
               <li
                 key={item.id}
-                className="flex items-center justify-between rounded-md bg-white p-4 shadow-md hover:bg-gray-50"
+                className="flex items-center justify-between rounded-md border bg-white p-4 hover:bg-gray-50"
               >
                 <span className="text-lg font-medium">{item.name}</span>
                 <button
