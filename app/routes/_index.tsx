@@ -56,7 +56,7 @@ export default function Index() {
       <div className="h-full w-full rounded-lg border p-5 shadow-sm">
         <h1 className="mb-4 text-2xl font-bold">Our free tools list</h1>
         {/* <h1 className="mb-4 text-2xl font-bold">Item List</h1> */}
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-3">
           <ul className="space-y-4">
             <h1 className="mb-4 text-2xl font-bold">Youtube Tools</h1>
             {items.map((item) => (
@@ -64,7 +64,7 @@ export default function Index() {
                 key={item.id}
                 className="flex items-center justify-between rounded-md border bg-white p-4 hover:bg-gray-50"
               >
-                <span className="text-lg font-medium">{item.name}</span>
+                <span className="font-medium">{item.name}</span>
                 <div className="flex gap-5">
                   <a
                     target="_blank"
