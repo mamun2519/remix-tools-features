@@ -88,7 +88,7 @@ export const meta: MetaFunction = () => {
     },
   ];
 };
-const YoutubeDescrptionGenerate = () => {
+const YoutubeDescriptionGenerate = () => {
   const actionData = useActionData();
   return (
     <div className="p-10">
