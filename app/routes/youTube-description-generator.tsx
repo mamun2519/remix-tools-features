@@ -19,7 +19,7 @@ export async function action({ request }: { request: Request }) {
     });
 
     //* generate prompt
-    const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}".`;
+    const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}". please provide minimum 5 description`;
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       // model: "text-davinci-003",
@@ -32,12 +32,13 @@ export async function action({ request }: { request: Request }) {
 
       max_tokens: 120,
       temperature: 0.7,
+      // n: 5,
     });
     console.log("response", response);
 
     //* receive only first index
     const rawContent = response.choices[0].message.content?.trim() || "";
-
+    console.log("rawContent", rawContent);
     //* convert to array
     const description = rawContent
       .split("\n") // Split into lines
