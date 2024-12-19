@@ -48,43 +48,6 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 }
 
-// export const loader = async ({ request }: { request: Request }) => {
-//   const url = new URL(request.url);
-//   const imageUrl = url.searchParams.get("url");
-
-//   if (!imageUrl) {
-//     return json({ error: "No URL provided" }, { status: 400 });
-//   }
-
-//   try {
-//     // Fetch the image from the external URL (YouTube thumbnail)
-//     const response = await fetch(imageUrl);
-
-//     if (!response.ok) {
-//       return json(
-//         { error: "Failed to fetch image from the source" },
-//         { status: 500 },
-//       );
-//     }
-
-//     // Get the image as a buffer and send it as a response
-//     const imageBuffer = await response.arrayBuffer();
-//     const contentType = response.headers.get("Content-Type") || "image/jpeg"; // Set default to JPEG
-
-//     return new Response(imageBuffer, {
-//       headers: {
-//         "Content-Type": contentType,
-//         "Content-Disposition": `attachment; filename="thumbnail.jpg"`, // Use a fixed filename
-//       },
-//     });
-//   } catch (error) {
-//     return json(
-//       { error: "Error fetching image from the URL" },
-//       { status: 500 },
-//     );
-//   }
-// };
-
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
   const match = url.match(regex);
