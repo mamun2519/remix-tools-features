@@ -66,16 +66,6 @@ export const meta: MetaFunction = () => {
 const YoutubeTagExtractor = () => {
   const actionData = useActionData();
 
-  // const handleDownload = (url, filename) => {
-  //   // Create a temporary <a> element to trigger the download
-  //   const link = document.createElement("a");
-  //   link.href = url; // Set the thumbnail URL
-  //   link.download = filename; // Set the desired file name for the download
-
-  //   // Trigger the download by clicking the link programmatically
-  //   link.click();
-  // };
-
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
