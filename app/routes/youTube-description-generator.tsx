@@ -19,36 +19,19 @@ export async function action({ request }: { request: Request }) {
     });
 
     //* generate prompt
-    const prompt = `Generate  12 YouTube channel names for a ${accountType} channel focused on ${category}. 
-    The channel's essence is: ${description}. 
-    
-    Output Format:
-    1. Descriptive Word + Thematic Noun 
-    2. Compact Brand Name
-    3. Descriptive Phrase + Content Type
-  
-    Generate names that are:
-    - Unique and memorable
-    - Reflect the channel's content
-    - Concise 
-    - Appealing to viewers`;
-
+    const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}".`;
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      // model: "gpt-3.5-turbo",
+      model: "text-davinci-003",
       messages: [
-        {
-          role: "system",
-          content:
-            "You are a creative YouTube channel name generator. Provide output in the specified format.",
-        },
         {
           role: "user",
           content: prompt,
         },
       ],
+
       max_tokens: 120,
       temperature: 0.7,
-      n: 3,
     });
 
     //* receive only first index
