@@ -13,7 +13,7 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    //* open api integration
+    //* open api integration api
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
