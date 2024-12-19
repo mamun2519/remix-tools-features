@@ -63,7 +63,7 @@ export const meta: MetaFunction = () => {
     },
   ];
 };
-const YoutubeThumbnailDownloader = () => {
+const YoutubeTagExtractor = () => {
   const actionData = useActionData();
 
   // const handleDownload = (url, filename) => {
@@ -252,4 +252,4 @@ const YoutubeThumbnailDownloader = () => {
   );
 };
 
-export default YoutubeThumbnailDownloader;
+export default YoutubeTagExtractor;
