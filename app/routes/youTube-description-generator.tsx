@@ -4,12 +4,11 @@ import OpenAI from "openai";
 
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
-  const accountType = formData.get("accountType");
-  const category = formData.get("category");
-  const description = formData.get("description");
+  const videoTopic = formData.get("videoTopic");
+  const keywords = formData.get("keywords");
 
   //* handle input filed error
-  if (!accountType || !category || !description) {
+  if (!videoTopic || !keywords) {
     return json({ error: "All fields are required" }, { status: 400 });
   }
 
