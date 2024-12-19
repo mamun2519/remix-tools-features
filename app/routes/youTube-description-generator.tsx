@@ -54,7 +54,7 @@ export async function action({ request }: { request: Request }) {
     ];
 
     return json({
-      generatedNames: fullDescription,
+      fullDescription: fullDescription,
       error: null,
     });
 
@@ -116,20 +116,24 @@ const YoutubeDescriptionGenerate = () => {
             {actionData.error}
           </div>
         )}
-        {actionData?.generatedNames && actionData.generatedNames.length > 0 && (
-          <div className="mt-6 rounded-md bg-gray-100 p-4">
-            <h2 className="mb-4 text-center text-xl font-semibold">
-              Generated Channel Names
-            </h2>
-            <div className="space-y-2">
-              {actionData.generatedNames.map((name, index) => (
-                <div key={index} className="text-left text-lg text-indigo-600">
-                  {name}
-                </div>
-              ))}
+        {actionData?.fullDescription &&
+          actionData.fullDescription.length > 0 && (
+            <div className="mt-6 rounded-md bg-gray-100 p-4">
+              <h2 className="mb-4 text-center text-xl font-semibold">
+                Generated Channel Names
+              </h2>
+              <div className="space-y-2">
+                {actionData.fullDescription.map((name, index) => (
+                  <div
+                    key={index}
+                    className="text-left text-lg text-indigo-600"
+                  >
+                    {name}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </div>
   );
