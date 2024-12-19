@@ -76,32 +76,6 @@ const YoutubeTagExtractor = () => {
   //   link.click();
   // };
 
-  // const handleDownload = async (url, filename) => {
-  //   try {
-  //     // Call the Remix API route to fetch the image
-  //     const proxyUrl = `/api/thumbnailProxy?url=${encodeURIComponent(url)}`;
-  //     const response = await fetch(proxyUrl);
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to download image.");
-  //     }
-
-  //     const blob = await response.blob();
-
-  //     // Create a link to download the image
-  //     const link = document.createElement("a");
-  //     link.href = URL.createObjectURL(blob);
-  //     link.download = filename; // Specify the filename
-
-  //     // Trigger the download
-  //     link.click();
-
-  //     // Clean up the URL object
-  //     URL.revokeObjectURL(link.href);
-  //   } catch (error) {
-  //     console.error("Error downloading the image:", error);
-  //   }
-  // };
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
