@@ -37,14 +37,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const { snippet } = video;
   console.log("tags", snippet.tags);
   return json({
-    video: {
-      title: snippet.title,
-      thumbnails: snippet.thumbnails,
-      category: snippet.categoryId,
-      uploadDate: snippet.publishedAt,
-      duration: contentDetails?.duration ?? null,
-      views: statistics.viewCount,
-    },
+    tags: snippet.tags,
   });
 }
 
