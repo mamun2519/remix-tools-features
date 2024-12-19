@@ -19,8 +19,8 @@ export async function action({ request }: { request: Request }) {
     });
 
     //* generate prompt
-    //     const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}". please provide minimum 5 description`;
-    const prompt = `Generate at least 5 unique YouTube video descriptions for the topic: "${videoTopic}". Make sure to include the following keywords in each description: "${keywords}". The descriptions should be creative, engaging, and suitable for a YouTube audience.`;
+    const prompt = `Generate  unique a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}"`;
+    //     const prompt = `Generate at least 5 unique YouTube video descriptions for the topic: "${videoTopic}". Make sure to include the following keywords in each description: "${keywords}". The descriptions should be creative, engaging, and suitable for a YouTube audience.`;
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       // model: "text-davinci-003",
@@ -33,15 +33,22 @@ export async function action({ request }: { request: Request }) {
 
       max_tokens: 120,
       temperature: 0.7,
-      // n: 5,
+      n: 5,
     });
     console.log("response", response);
 
     //* receive only first index
-    const rawContent = response.choices[0].message.content?.trim() || "";
-    console.log("rawContent", rawContent);
+    const contentOne = response.choices[0].message.content?.trim() || "";
+    console.log("ContentOne", contentOne);
+    const contentTwo = response.choices[1].message.content?.trim() || "";
+    console.log("contentOne", contentTwo);
+    const contentThree = response.choices[2].message.content?.trim() || "";
+    console.log("contentThree", contentThree);
+
+    const fullDescription = [contentOne, contentTwo, contentThree];
+    console.log("fullDescription", fullDescription);
     //* convert to array
-    const description = rawContent
+    const description = fullDescription
       .split("\n") // Split into lines
       .filter((line) => line.trim() !== "")
       .map((line) => line.replace(/^\d+\.\s*/, "").trim());
