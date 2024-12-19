@@ -7,13 +7,19 @@ export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 export default function Index() {
   const navigate = useNavigate();
   const [items, setItems] = useState([
-    { id: 1, name: "Youtube Money Calculator", link: "" },
+    { id: 1, name: "Youtube Money Calculator", link: "", docs: "" },
     {
       id: 2,
       name: "Youtube Monetization Checker",
       link: "youtube-monetization-checker",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Monetization-Checker-15f380f1a04580a9b3d1c6052fc02d27?pvs=4",
     },
-    { id: 3, name: "Youtube Name Generator", link: "youtube-name-generate" },
+    {
+      id: 3,
+      name: "Youtube Name Generator",
+      link: "youtube-name-generate",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/YouTube-Name-Generator-15f380f1a04580aea0c3e9c158cbee72?pvs=4",
+    },
     { id: 4, name: "Youtube Title Generator", link: "youtube-title-generator" },
     { id: 5, name: "Youtube Tags Generator", link: "youtube-tag-generator" },
     {
