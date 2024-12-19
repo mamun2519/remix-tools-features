@@ -44,8 +44,16 @@ export async function action({ request }: { request: Request }) {
     console.log("contentOne", contentTwo);
     const contentThree = response.choices[2].message.content?.trim() || "";
     console.log("contentThree", contentThree);
+    const contentFour = response.choices[3].message.content?.trim() || "";
+    const contentFive = response.choices[4].message.content?.trim() || "";
 
-    const fullDescription = [contentOne, contentTwo, contentThree];
+    const fullDescription = [
+      contentOne,
+      contentTwo,
+      contentThree,
+      contentFour,
+      contentFive,
+    ];
     console.log("fullDescription", fullDescription);
 
     return json({
