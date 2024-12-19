@@ -33,9 +33,9 @@ export async function action({ request }: ActionFunctionArgs) {
   if (!video) {
     return json({ error: "Video not found." }, { status: 404 });
   }
-
-  const { snippet, contentDetails, statistics } = video;
-
+  console.log("response", response);
+  const { snippet } = video;
+  console.log("tags", snippet.tags);
   return json({
     video: {
       title: snippet.title,
