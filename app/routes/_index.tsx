@@ -61,8 +61,10 @@ export default function Index() {
                 <span className="text-lg font-medium">{item.name}</span>
                 <div className="flex gap-5">
                   <a
+                    target="_blank"
                     className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                     href={item.docs}
+                    rel="noreferrer"
                   >
                     Docs
                   </a>
