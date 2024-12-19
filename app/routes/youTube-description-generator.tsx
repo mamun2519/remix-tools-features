@@ -81,7 +81,7 @@ export async function action({ request }: { request: Request }) {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Channel Name Generator" },
+    { title: "YouTube Video Description Generator" },
     {
       name: "description",
       content: "Generate unique YouTube channel names instantly",
