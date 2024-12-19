@@ -24,7 +24,7 @@ export default function Index() {
   ]);
   return (
     <main className="p-10">
-      <div className="h-96 w-full rounded-lg border p-5 shadow-sm">
+      <div className="h-full w-full rounded-lg border p-5 shadow-sm">
         <h1 className="mb-4 text-2xl font-bold">Our free tools list</h1>
         {/* <h1 className="mb-4 text-2xl font-bold">Item List</h1> */}
         <div className="grid grid-cols-2">
@@ -38,7 +38,7 @@ export default function Index() {
                 <span className="text-lg font-medium">{item.name}</span>
                 <button
                   onClick={() => navigate(item.link)}
-                  className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                  className="rounded bg-red-500 px-4 py-2 text-white hover:bg-blue-600"
                 >
                   View
                 </button>
