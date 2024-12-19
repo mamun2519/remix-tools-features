@@ -33,6 +33,7 @@ export async function action({ request }: { request: Request }) {
       max_tokens: 120,
       temperature: 0.7,
     });
+    console.log("response", response);
 
     //* receive only first index
     const rawContent = response.choices[0].message.content?.trim() || "";
