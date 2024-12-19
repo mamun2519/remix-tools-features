@@ -26,11 +26,17 @@ export default function Index() {
       link: "youtube-title-generator",
       docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Title-Generator-15f380f1a0458090a968e07d896d1f60?pvs=4",
     },
-    { id: 5, name: "Youtube Tags Generator", link: "youtube-tag-generator" },
+    {
+      id: 5,
+      name: "Youtube Tags Generator",
+      link: "youtube-tag-generator",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Tag-Generator-160380f1a0458048a419eacc1c34b054?pvs=4",
+    },
     {
       id: 6,
       name: "YouTube Thumbnail Downloader",
       link: "youTube-thumbnail-downloader",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Thumbnail-Downloader-161380f1a04580498119ebdc897374b5?pvs=4",
     },
     {
       id: 7,
