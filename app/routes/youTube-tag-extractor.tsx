@@ -24,18 +24,18 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const response = await youtube.videos.list({
     id: videoId,
-    part: ["snippet", "statistics", "status"],
+    part: ["snippet"],
   });
-  //   console.log("response", response);
+  console.log("response", response);
   const video = response.data.items?.[0];
   //   console.log("video", video);
 
   if (!video) {
     return json({ error: "Video not found." }, { status: 404 });
   }
-  console.log("response", response);
+
   const { snippet } = video;
-  console.log("tags", snippet.tags);
+
   return json({
     tags: snippet.tags,
   });
