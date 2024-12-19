@@ -46,9 +46,9 @@ export default function Index() {
     },
     {
       id: 8,
-      name: "YouTube Tag Extractor",
-      link: "youTube - description - generator",
-      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-tag-Extractor-161380f1a04580ca8e17dff94c9f9b3a?pvs=4",
+      name: "YouTube Description Generator",
+      link: "youTube-description-generator",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/YouTube-Description-Generator-161380f1a045805db960f33ab9aec72a?pvs=4",
     },
   ]);
   return (
