@@ -99,14 +99,14 @@ const YoutubeDescriptionGenerate = () => {
           <Form method="post">
             <input
               type="text"
-              name="accountType"
-              placeholder="Enter Account Type"
+              name="videoTopic"
+              placeholder="Enter Video Topic"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
             <input
               type="text"
-              name="category"
-              placeholder="Enter Account Category"
+              name="keywords"
+              placeholder="Enter Keyword"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
 
