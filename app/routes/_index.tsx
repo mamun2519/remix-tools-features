@@ -59,6 +59,7 @@ export default function Index() {
                 className="flex items-center justify-between rounded-md border bg-white p-4 hover:bg-gray-50"
               >
                 <span className="text-lg font-medium">{item.name}</span>
+                <a href={item.docs}>Docs</a>
                 <button
                   onClick={() => navigate(item.link)}
                   className="rounded bg-red-500 px-4 py-2 text-white hover:bg-blue-600"
