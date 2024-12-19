@@ -87,6 +87,13 @@ const YoutubeTagExtractor = () => {
             {actionData.error}
           </div>
         )}
+
+        {actionData?.tags &&
+          actionData.tags.map((tag) => (
+            <ul key={tag}>
+              <li>{tag}</li>
+            </ul>
+          ))}
       </div>
     </div>
   );
