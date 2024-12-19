@@ -22,9 +22,9 @@ export default function Index() {
       link: "youTube-thumbnail-downloader",
     },
     {
-      id: 6,
+      id: 7,
       name: "YouTube Tag Extractor",
-      link: "youTube-thumbnail-downloader",
+      link: "youTube-tag-extractor",
     },
   ]);
   return (
