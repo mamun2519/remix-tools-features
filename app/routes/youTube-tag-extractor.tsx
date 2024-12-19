@@ -56,7 +56,7 @@ function extractVideoId(url: string) {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Thumbnail Download" },
+    { title: "YouTube Tag Extractor" },
     {
       name: "description",
       content: "Generate unique YouTube channel names instantly",
@@ -84,7 +84,7 @@ const YoutubeTagExtractor = () => {
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
             >
-              Download
+              Get Tag
             </button>
           </Form>
         </div>
