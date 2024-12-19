@@ -35,15 +35,14 @@ export async function action({ request }: { request: Request }) {
       temperature: 0.7,
       n: 5,
     });
-    console.log("response", response);
 
     //* receive only first index
     const contentOne = response.choices[0].message.content?.trim() || "";
-    console.log("ContentOne", contentOne);
+
     const contentTwo = response.choices[1].message.content?.trim() || "";
-    console.log("contentOne", contentTwo);
+
     const contentThree = response.choices[2].message.content?.trim() || "";
-    console.log("contentThree", contentThree);
+
     const contentFour = response.choices[3].message.content?.trim() || "";
     const contentFive = response.choices[4].message.content?.trim() || "";
 
@@ -54,7 +53,6 @@ export async function action({ request }: { request: Request }) {
       contentFour,
       contentFive,
     ];
-    console.log("fullDescription", fullDescription);
 
     return json({
       generatedNames: fullDescription,
