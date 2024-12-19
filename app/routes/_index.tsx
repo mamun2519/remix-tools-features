@@ -42,6 +42,7 @@ export default function Index() {
       id: 7,
       name: "YouTube Tag Extractor",
       link: "youTube-tag-extractor",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-tag-Extractor-161380f1a04580ca8e17dff94c9f9b3a?pvs=4",
     },
   ]);
   return (
