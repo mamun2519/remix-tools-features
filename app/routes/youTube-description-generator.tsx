@@ -21,8 +21,8 @@ export async function action({ request }: { request: Request }) {
     //* generate prompt
     const prompt = `Generate a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}".`;
     const response = await openai.chat.completions.create({
-      // model: "gpt-3.5-turbo",
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo",
+      // model: "text-davinci-003",
       messages: [
         {
           role: "user",
