@@ -26,9 +26,9 @@ export async function action({ request }: ActionFunctionArgs) {
     id: videoId,
     part: ["snippet"],
   });
-  console.log("response", response);
+  // console.log("response", response);
   const video = response.data.items?.[0];
-  //   console.log("video", video);
+  console.log("video", video);
 
   if (!video) {
     return json({ error: "Video not found." }, { status: 404 });
@@ -88,12 +88,14 @@ const YoutubeTagExtractor = () => {
           </div>
         )}
 
-        {actionData?.tags &&
-          actionData.tags.map((tag) => (
-            <ul key={tag}>
-              <li>{tag}</li>
-            </ul>
-          ))}
+        <div className="mt-10">
+          {actionData?.tags &&
+            actionData.tags.map((tag) => (
+              <ul key={tag}>
+                <li>{tag}</li>
+              </ul>
+            ))}
+        </div>
       </div>
     </div>
   );
