@@ -20,7 +20,12 @@ export default function Index() {
       link: "youtube-name-generate",
       docs: "https://kiwi-parrotfish-5f9.notion.site/YouTube-Name-Generator-15f380f1a04580aea0c3e9c158cbee72?pvs=4",
     },
-    { id: 4, name: "Youtube Title Generator", link: "youtube-title-generator" },
+    {
+      id: 4,
+      name: "Youtube Title Generator",
+      link: "youtube-title-generator",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Title-Generator-15f380f1a0458090a968e07d896d1f60?pvs=4",
+    },
     { id: 5, name: "Youtube Tags Generator", link: "youtube-tag-generator" },
     {
       id: 6,
