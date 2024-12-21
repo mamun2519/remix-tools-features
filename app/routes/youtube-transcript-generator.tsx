@@ -118,7 +118,7 @@ function formatSRTTime(seconds: number): string {
   return `${pad(hours)}:${pad(minutes)}:${pad(secs)},${ms.toString().padStart(3, "0")}`;
 }
 
-function formatVTTTime(seconds: number): string {
+const formatVTTTime = (seconds: number): string => {
   const pad = (num: number): string => num.toString().padStart(2, "0");
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -126,7 +126,7 @@ function formatVTTTime(seconds: number): string {
   const ms = Math.floor((seconds % 1) * 1000);
 
   return `${pad(hours)}:${pad(minutes)}:${pad(secs)}.${ms.toString().padStart(3, "0")}`;
-}
+};
 
 const convertToSRT = (items: TranscriptItem[]): string => {
   return items
