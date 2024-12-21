@@ -102,12 +102,6 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-// function decodeHTMLEntities(text: string): string {
-//   const textarea = document.createElement("textarea");
-//   textarea.innerHTML = text;
-//   return textarea.value;
-// }
-
 function decodeHTMLEntities(text: string): string {
   return text
     .replace(/&amp;/g, "&")
