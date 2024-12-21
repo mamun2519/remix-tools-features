@@ -128,7 +128,7 @@ function formatVTTTime(seconds: number): string {
   return `${pad(hours)}:${pad(minutes)}:${pad(secs)}.${ms.toString().padStart(3, "0")}`;
 }
 
-function convertToSRT(items: TranscriptItem[]): string {
+const convertToSRT = (items: TranscriptItem[]): string => {
   return items
     .map((item, index) => {
       const startTime = formatSRTTime(item.offset);
@@ -138,7 +138,7 @@ function convertToSRT(items: TranscriptItem[]): string {
       return `${index + 1}\n${startTime} --> ${endTime}\n${decodedText}\n`;
     })
     .join("\n");
-}
+};
 const YoutubeTranscriptGenerator = () => {
   const actionData = useActionData();
   const navigation = useNavigation();
