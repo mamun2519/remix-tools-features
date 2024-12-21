@@ -1,7 +1,8 @@
-import { MetaFunction } from "@remix-run/node";
+import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData } from "@remix-run/react";
 import { google } from "googleapis";
 import OpenAI from "openai";
+import { YoutubeTranscript } from "youtube-transcript";
 
 // const youtube = google.youtube("v3");
 // export async function action({ request }: { request: Request }) {
@@ -66,9 +67,10 @@ import OpenAI from "openai";
 //     );
 //   }
 // }
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  const videoUrl = formData.get("videoUrl") as string;
+  const videoUrl = formData.get("videoURL") as string;
 
   try {
     // Extract video ID from URL
@@ -77,28 +79,20 @@ export async function action({ request }: ActionFunctionArgs) {
       throw new Error("Invalid YouTube URL");
     }
 
-    // Get video captions
-    const captions = await youtube.captions.list({
-      part: ["snippet"],
-      videoId: videoId,
-      key: process.env.YOUTUBE_API_KEY, // Make sure to set this in your .env file
+    // Get transcript
+    const transcriptItems = await YoutubeTranscript.fetchTranscript(videoId);
+
+    // Format transcript with timestamps
+    const formattedTranscript = transcriptItems
+      .map((item) => `[${formatTime(item.offset)}] ${item.text}`)
+      .join("\n");
+
+    console.log("formattedTranscript", formattedTranscript);
+
+    return json({
+      success: true,
+      transcript: formattedTranscript,
     });
-
-    // Get transcript for the first available caption track
-    if (captions.data.items && captions.data.items.length > 0) {
-      const captionTrack = captions.data.items[0];
-      const transcript = await youtube.captions.download({
-        id: captionTrack.id!,
-        key: process.env.YOUTUBE_API_KEY,
-      });
-
-      return json({
-        success: true,
-        transcript: transcript.data,
-      });
-    } else {
-      throw new Error("No captions found for this video");
-    }
   } catch (error) {
     return json({
       success: false,
@@ -106,6 +100,23 @@ export async function action({ request }: ActionFunctionArgs) {
         error instanceof Error ? error.message : "Failed to get transcript",
     });
   }
+}
+
+function formatTime(milliseconds: number): string {
+  const seconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  const remainingMinutes = minutes % 60;
+  const remainingSeconds = seconds % 60;
+
+  const parts = [
+    hours.toString().padStart(2, "0"),
+    remainingMinutes.toString().padStart(2, "0"),
+    remainingSeconds.toString().padStart(2, "0"),
+  ];
+
+  return parts.join(":");
 }
 
 function extractVideoId(url: string) {
