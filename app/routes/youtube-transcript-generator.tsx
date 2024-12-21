@@ -12,6 +12,11 @@ export async function action({ request }: { request: Request }) {
     return json({ error: "All fields are required" }, { status: 400 });
   }
 
+   const videoId = extractVideoId(videoUrl as string);
+    if (!videoId) {
+      return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
+    }
+
   const youTube = google.youtube({
     version: "v3",
     auth: process.env.YOUTUBE_API_KEY,
@@ -39,6 +44,13 @@ export async function action({ request }: { request: Request }) {
     );
   }
 }
+
+function extractVideoId(url: string) {
+      const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+    
 
 export const meta: MetaFunction = () => {
   return [
