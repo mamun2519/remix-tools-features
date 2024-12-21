@@ -1,5 +1,6 @@
 import { MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData } from "@remix-run/react";
+import { google } from "googleapis";
 import OpenAI from "openai";
 
 export async function action({ request }: { request: Request }) {
@@ -10,6 +11,10 @@ export async function action({ request }: { request: Request }) {
   if (!videoUrl) {
     return json({ error: "All fields are required" }, { status: 400 });
   }
+
+  const youTube = google.youtube({
+    version: "v3",
+  });
 
   try {
     return json({
