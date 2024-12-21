@@ -76,7 +76,7 @@ export const meta: MetaFunction = () => {
     { title: "YouTube Transcript Generator" },
     {
       name: "description",
-      content: "Generate unique YouTube channel names instantly",
+      content: "Generate youtube transcript generator",
     },
   ];
 };
