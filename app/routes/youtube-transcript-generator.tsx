@@ -31,6 +31,8 @@ export async function action({ request }: { request: Request }) {
     transcriptResponse.data.items ||
     transcriptResponse.data.items.length === 0
   ) {
+      return json({ error: "No captions available for this video." }, { status: 404 });
+}
   }
 
   try {
