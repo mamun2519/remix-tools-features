@@ -16,6 +16,7 @@ export async function action({ request }: { request: Request }) {
   if (!videoId) {
     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
   }
+  console.log("videoId", videoId);
 
   const youTube = google.youtube({
     version: "v3",
