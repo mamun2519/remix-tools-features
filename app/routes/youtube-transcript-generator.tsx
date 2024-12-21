@@ -150,7 +150,7 @@ const YoutubeTranscriptGenerator = () => {
     let content = "";
     let filename = `transcript.${format}`;
     let mimeType = "text/plain";
-
+    console.log("format", format);
     switch (format) {
       case "srt":
         content = convertToSRT(actionData.rawTranscript);
@@ -210,6 +210,27 @@ const YoutubeTranscriptGenerator = () => {
             <h2 className="mb-3 text-xl font-semibold">Transcript</h2>
             <div className="whitespace-pre-wrap rounded bg-gray-100 p-4 font-mono text-sm">
               {actionData.transcript}
+
+              {/* <div className="space-x-2">
+                <button
+                  onClick={() => downloadTranscript("txt")}
+                  className="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300"
+                >
+                  Download .txt
+                </button>
+                <button
+                  onClick={() => downloadTranscript("srt")}
+                  className="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300"
+                >
+                  Download .srt
+                </button>
+                <button
+                  onClick={() => downloadTranscript("vtt")}
+                  className="rounded bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300"
+                >
+                  Download .vtt
+                </button>
+              </div> */}
             </div>
           </div>
         )}
