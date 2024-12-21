@@ -24,7 +24,7 @@ export async function action({ request }: { request: Request }) {
 
   const transcriptResponse = await youTube.captions.list({
     id: videoId,
-    part: [""],
+    part: ["snippet"],
   });
 
   try {
