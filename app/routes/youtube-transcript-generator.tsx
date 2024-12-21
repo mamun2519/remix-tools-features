@@ -27,15 +27,18 @@ export async function action({ request }: { request: Request }) {
     part: ["snippet"],
   });
 
-
-  console.log("response", transcriptResponse)
+  console.log("response", transcriptResponse);
   if (
     transcriptResponse.data.items ||
     transcriptResponse.data.items.length === 0
   ) {
-      return json({ error: "No captions available for this video." }, { status: 404 });
-}
+    return json(
+      { error: "No captions available for this video." },
+      { status: 404 },
+    );
   }
+
+  const captionId = transcriptResponse.data.items[0].id;
 
   try {
     return json({
