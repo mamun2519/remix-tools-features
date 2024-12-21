@@ -5,7 +5,6 @@ import OpenAI from "openai";
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const videoTopic = formData.get("videoTopic");
-  const keywords = formData.get("keywords");
 
   //* handle input filed error
   if (!videoTopic || !keywords) {
