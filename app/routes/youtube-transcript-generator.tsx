@@ -143,6 +143,40 @@ const YoutubeTranscriptGenerator = () => {
   const actionData = useActionData();
   const navigation = useNavigation();
   const isGenerating = navigation.state === "submitting";
+
+  const downloadTranscript = (format: "txt" | "srt" | "vtt") => {
+    if (!actionData?.success || !actionData.rawTranscript) return;
+
+    let content = "";
+    let filename = `transcript.${format}`;
+    let mimeType = "text/plain";
+
+    switch (format) {
+      case "srt":
+        content = convertToSRT(actionData.rawTranscript);
+        mimeType = "application/x-subrip";
+        break;
+      case "vtt":
+        content = convertToVTT(actionData.rawTranscript);
+        mimeType = "text/vtt";
+        break;
+      case "txt":
+      default:
+        content = convertToTXT(actionData.rawTranscript);
+        break;
+    }
+
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
