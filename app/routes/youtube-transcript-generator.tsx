@@ -92,7 +92,7 @@ const YoutubeTranscriptGenerator = () => {
             <input
               type="text"
               name="videoURL"
-              placeholder="Enter Video Topic"
+              placeholder="Enter Youtube Video URL"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
 
