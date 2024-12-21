@@ -13,7 +13,7 @@ export async function action({ request }: { request: Request }) {
 
   try {
     return json({
-      fullDescription: fullDescription,
+      // fullDescription: fullDescription,
       error: null,
     });
 
