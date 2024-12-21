@@ -12,9 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    //* receive only first index
-    const contentOne = response.choices[0].message.content?.trim() || "";
-
     const contentTwo = response.choices[1].message.content?.trim() || "";
 
     const contentThree = response.choices[2].message.content?.trim() || "";
