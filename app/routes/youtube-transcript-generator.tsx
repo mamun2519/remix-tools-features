@@ -3,85 +3,69 @@ import { Form, json, useActionData } from "@remix-run/react";
 import { google } from "googleapis";
 import OpenAI from "openai";
 
-const youtube = google.youtube("v3");
-export async function action({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const videoUrl = formData.get("videoURL");
+// const youtube = google.youtube("v3");
+// export async function action({ request }: { request: Request }) {
+//   const formData = await request.formData();
+//   const videoUrl = formData.get("videoURL");
 
-  //* handle input filed error
-  if (!videoUrl) {
-    return json({ error: "All fields are required" }, { status: 400 });
-  }
+//   //* handle input filed error
+//   if (!videoUrl) {
+//     return json({ error: "All fields are required" }, { status: 400 });
+//   }
 
-  const videoId = extractVideoId(videoUrl as string);
-  if (!videoId) {
-    return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
-  }
+//   const videoId = extractVideoId(videoUrl as string);
+//   if (!videoId) {
+//     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
+//   }
 
-  //   const youTube = google.youtube({
-  //     version: "v3",
-  //     auth: process.env.YOUTUBE_API_KEY,
-  //   });
+//   const youTube = google.youtube({
+//     version: "v3",
+//     auth: process.env.YOUTUBE_API_KEY,
+//   });
 
-  //   //* get the video details
-  //   const captionResponse = await youTube.captions.list({
-  //     videoId,
-  //     part: ["snippet"],
-  //   });
+//   //* get the video details
+//   const captionResponse = await youTube.captions.list({
+//     videoId,
+//     part: ["snippet"],
+//   });
 
-  //   if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
-  //     return json(
-  //       { error: "No captions available for this video." },
-  //       { status: 404 },
-  //     );
-  //   }
+//   if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
+//     return json(
+//       { error: "No captions available for this video." },
+//       { status: 404 },
+//     );
+//   }
 
-  //   //* get the video caption id
-  //   const captionId = captionResponse.data.items[0].id;
-  //   console.log("captionId", captionId);
-  //   const transcriptResponse = await youTube.captions.download(
-  //     { id: captionId },
-  //     { responseType: "text" },
-  //   );
-  //   console.log("transcriptResponse", transcriptResponse);
+//   //* get the video caption id
+//   const captionId = captionResponse.data.items[0].id;
+//   console.log("captionId", captionId);
+//   const transcriptResponse = await youTube.captions.download(
+//     { id: captionId },
+//     { responseType: "text" },
+//   );
+//   console.log("transcriptResponse", transcriptResponse);
 
-  //   const transcript = transcriptResponse.data;
-  //   console.log("transcript", transcript);
-  const captions = await youtube.captions.list({
-    part: ["snippet"],
-    videoId: videoId,
-    key: process.env.YOUTUBE_API_KEY, // Make sure to set this in your .env file
-  });
+//   const transcript = transcriptResponse.data;
+//   console.log("transcript", transcript);
 
-  // Get transcript for the first available caption track
-  if (captions.data.items && captions.data.items.length > 0) {
-    const captionTrack = captions.data.items[0];
-    const transcript = await youtube.captions.download({
-      id: captionTrack.id!,
-      key: process.env.YOUTUBE_API_KEY,
-    });
+//   try {
+//     return json({
+//       // fullDescription: fullDescription,
+//       error: null,
+//     });
 
-    console.log("transcript", transcript.data);
-  }
-
-  try {
-    return json({
-      // fullDescription: fullDescription,
-      error: null,
-    });
-
-    //
-  } catch (error) {
-    console.log(error);
-    return json(
-      {
-        names: [],
-        error: "Failed to generate channel name",
-      },
-      { status: 500 },
-    );
-  }
-}
+//     //
+//   } catch (error) {
+//     console.log(error);
+//     return json(
+//       {
+//         names: [],
+//         error: "Failed to generate channel name",
+//       },
+//       { status: 500 },
+//     );
+//   }
+// }
 
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
