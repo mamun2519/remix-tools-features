@@ -23,6 +23,7 @@ export async function action({ request }: { request: Request }) {
     auth: process.env.YOUTUBE_API_KEY,
   });
 
+  //* get the video details
   const transcriptResponse = await youTube.captions.list({
     videoId,
     part: ["snippet"],
@@ -30,7 +31,7 @@ export async function action({ request }: { request: Request }) {
 
   console.log("response", transcriptResponse);
   if (
-    transcriptResponse.data.items ||
+    !transcriptResponse.data.items ||
     transcriptResponse.data.items.length === 0
   ) {
     return json(
