@@ -16,7 +16,6 @@ export async function action({ request }: { request: Request }) {
   if (!videoId) {
     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
   }
-  console.log("videoId", videoId);
 
   const youTube = google.youtube({
     version: "v3",
@@ -29,15 +28,12 @@ export async function action({ request }: { request: Request }) {
     part: ["snippet"],
   });
 
-  console.log("response", captionResponse);
   if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
     return json(
       { error: "No captions available for this video." },
       { status: 404 },
     );
   }
-
-  console.log(captionResponse.data.items[0]);
 
   //* get the video caption id
   const captionId = captionResponse.data.items[0].id;
