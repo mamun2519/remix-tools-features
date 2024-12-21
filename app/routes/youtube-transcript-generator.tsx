@@ -24,15 +24,15 @@ export async function action({ request }: { request: Request }) {
   });
 
   //* get the video details
-  const transcriptResponse = await youTube.captions.list({
+  const captionResponse = await youTube.captions.list({
     videoId,
     part: ["snippet"],
   });
 
-  console.log("response", transcriptResponse);
+  console.log("response", captionResponse);
   if (
-    !transcriptResponse.data.items ||
-    transcriptResponse.data.items.length === 0
+    !captionResponse.data.items ||
+    captionResponse.data.items.length === 0
   ) {
     return json(
       { error: "No captions available for this video." },
@@ -40,11 +40,13 @@ export async function action({ request }: { request: Request }) {
     );
   }
 
-  console.log(transcriptResponse.data.items[0]);
+  console.log(captionResponse.data.items[0]);
 
   //* get the video caption id
-  const captionId = transcriptResponse.data.items[0].id;
+  const captionId = captionResponse.data.items[0].id;
   console.log("captionId", captionId);
+
+  const 
 
   try {
     return json({
