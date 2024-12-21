@@ -14,6 +14,7 @@ export async function action({ request }: { request: Request }) {
 
   const youTube = google.youtube({
     version: "v3",
+    auth: process.env.YOUTUBE_API_KEY,
   });
 
   try {
