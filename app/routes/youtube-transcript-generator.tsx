@@ -12,8 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    const response = await 
-
     //* receive only first index
     const contentOne = response.choices[0].message.content?.trim() || "";
 
