@@ -102,7 +102,7 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-function decodeHTMLEntities(text: string): string {
+const decodeHTMLEntities = (text: string): string => {
   return text
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
@@ -110,7 +110,7 @@ function decodeHTMLEntities(text: string): string {
     .replace(/&quot;/g, '"')
     .replace(/&#039;/g, "'")
     .replace(/&#39;/g, "'");
-}
+};
 
 const formatTime = (milliseconds: number): string => {
   const totalSeconds = Math.floor(milliseconds / 1000);
