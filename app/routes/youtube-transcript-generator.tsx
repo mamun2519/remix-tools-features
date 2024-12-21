@@ -89,8 +89,6 @@ export async function action({ request }: ActionFunctionArgs) {
       })
       .join("\n");
 
-    console.log("formattedTranscript", formattedTranscript);
-
     return json({
       success: true,
       transcript: formattedTranscript,
