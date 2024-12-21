@@ -55,7 +55,7 @@ export default function Index() {
       id: 8,
       name: "YouTube Transcript Generator",
       link: "youtube-transcript-generator",
-      docs: "https://kiwi-parrotfish-5f9.notion.site/YouTube-Description-Generator-161380f1a045805db960f33ab9aec72a?pvs=4",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Transcript-Generator-163380f1a04580fc8a48da7d50b14b86?pvs=4",
     },
   ]);
   return (
