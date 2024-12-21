@@ -98,7 +98,7 @@ function convertToVTT(items: TranscriptItem[]): string {
   return header + body;
 }
 
-function convertToTXT(items: TranscriptItem[]): string {
+const convertToTXT = (items: TranscriptItem[]): string => {
   return items
     .map((item) => {
       const timestamp = formatTime(item.offset * 1000);
@@ -106,7 +106,7 @@ function convertToTXT(items: TranscriptItem[]): string {
       return `[${timestamp}] ${decodedText}`;
     })
     .join("\n");
-}
+};
 
 function formatSRTTime(seconds: number): string {
   const pad = (num: number): string => num.toString().padStart(2, "0");
