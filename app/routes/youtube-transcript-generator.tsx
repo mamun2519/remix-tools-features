@@ -95,12 +95,6 @@ const YoutubeTranscriptGenerator = () => {
               placeholder="Enter Video Topic"
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
-            <input
-              type="text"
-              name="keywords"
-              placeholder="Enter Keyword"
-              className="h-14 w-96 rounded border px-4 outline-slate-300"
-            />
 
             <button
               type="submit"
