@@ -86,7 +86,10 @@ export async function action({ request }: ActionFunctionArgs) {
 
     // Format transcript with timestamps
     const formattedTranscript = transcriptItems
-      .map((item) => `[${formatTime(item.offset)}] ${item.text}`)
+      .map((item) => {
+        const decodedText = decodeHTMLEntities(item.text);
+        return `[${formatTime(item.offset * 1000)}] ${decodedText}`;
+      })
       .join("\n");
 
     console.log("formattedTranscript", formattedTranscript);
@@ -104,21 +107,22 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
+function decodeHTMLEntities(text: string): string {
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = text;
+  return textarea.value;
+}
+
 function formatTime(milliseconds: number): string {
-  const seconds = Math.floor(milliseconds / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
-  const remainingMinutes = minutes % 60;
-  const remainingSeconds = seconds % 60;
-
-  const parts = [
-    hours.toString().padStart(2, "0"),
-    remainingMinutes.toString().padStart(2, "0"),
-    remainingSeconds.toString().padStart(2, "0"),
-  ];
-
-  return parts.join(":");
+  if (hours > 0) {
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
+  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 
 function extractVideoId(url: string) {
