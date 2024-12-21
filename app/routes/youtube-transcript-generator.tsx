@@ -7,7 +7,7 @@ export async function action({ request }: { request: Request }) {
   const videoTopic = formData.get("videoTopic");
 
   //* handle input filed error
-  if (!videoTopic || !keywords) {
+  if (!videoTopic) {
     return json({ error: "All fields are required" }, { status: 400 });
   }
 
