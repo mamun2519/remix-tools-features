@@ -83,7 +83,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-function convertToVTT(items: TranscriptItem[]): string {
+const convertToVTT = (items: TranscriptItem[]): string => {
   const header = "WEBVTT\n\n";
   const body = items
     .map((item, index) => {
@@ -96,7 +96,7 @@ function convertToVTT(items: TranscriptItem[]): string {
     .join("\n");
 
   return header + body;
-}
+};
 
 const convertToTXT = (items: TranscriptItem[]): string => {
   return items
