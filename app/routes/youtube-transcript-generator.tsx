@@ -12,8 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    const contentFive = response.choices[4].message.content?.trim() || "";
-
     const fullDescription = [
       contentOne,
       contentTwo,
