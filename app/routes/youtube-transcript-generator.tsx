@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Form, json, useActionData } from "@remix-run/react";
+import { Form, json, useActionData, useNavigation } from "@remix-run/react";
 import { google } from "googleapis";
 import OpenAI from "openai";
 import { YoutubeTranscript } from "youtube-transcript";
@@ -107,10 +107,20 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
+// function decodeHTMLEntities(text: string): string {
+//   const textarea = document.createElement("textarea");
+//   textarea.innerHTML = text;
+//   return textarea.value;
+// }
+
 function decodeHTMLEntities(text: string): string {
-  const textarea = document.createElement("textarea");
-  textarea.innerHTML = text;
-  return textarea.value;
+  return text
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'");
 }
 
 function formatTime(milliseconds: number): string {
