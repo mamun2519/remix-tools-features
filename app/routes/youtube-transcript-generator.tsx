@@ -82,6 +82,8 @@ export async function action({ request }: ActionFunctionArgs) {
     // Get transcript
     const transcriptItems = await YoutubeTranscript.fetchTranscript(videoId);
 
+    console.log("transcriptItems", transcriptItems);
+
     // Format transcript with timestamps
     const formattedTranscript = transcriptItems
       .map((item) => `[${formatTime(item.offset)}] ${item.text}`)
