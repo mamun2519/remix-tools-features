@@ -14,12 +14,6 @@ export async function action({ request }: { request: Request }) {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
 
       max_tokens: 120,
       temperature: 0.7,
