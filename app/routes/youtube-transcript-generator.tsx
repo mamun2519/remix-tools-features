@@ -12,14 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    //* open api integration api
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-
-    // //* generate prompt
-    // const prompt = `Generate  unique a YouTube video description for the topic: "${videoTopic}". Include the following keywords: "${keywords}"`;
-
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
