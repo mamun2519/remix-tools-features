@@ -1,7 +1,6 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
-import { google } from "googleapis";
-import OpenAI from "openai";
+
 import { YoutubeTranscript } from "youtube-transcript";
 
 // const youtube = google.youtube("v3");
@@ -81,8 +80,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
     // Get transcript
     const transcriptItems = await YoutubeTranscript.fetchTranscript(videoId);
-
-    console.log("transcriptItems", transcriptItems);
 
     // Format transcript with timestamps
     const formattedTranscript = transcriptItems
