@@ -2,6 +2,12 @@ import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
 import { YoutubeTranscript } from "youtube-transcript";
 
+type TranscriptItem = {
+  text: string;
+  duration: number;
+  offset: number;
+};
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
@@ -76,6 +82,63 @@ export const meta: MetaFunction = () => {
     },
   ];
 };
+
+function convertToVTT(items: TranscriptItem[]): string {
+  const header = "WEBVTT\n\n";
+  const body = items
+    .map((item, index) => {
+      const startTime = formatVTTTime(item.offset);
+      const endTime = formatVTTTime(item.offset + item.duration);
+      const decodedText = decodeHTMLEntities(item.text);
+
+      return `${startTime} --> ${endTime}\n${decodedText}\n`;
+    })
+    .join("\n");
+
+  return header + body;
+}
+
+function convertToTXT(items: TranscriptItem[]): string {
+  return items
+    .map((item) => {
+      const timestamp = formatTime(item.offset * 1000);
+      const decodedText = decodeHTMLEntities(item.text);
+      return `[${timestamp}] ${decodedText}`;
+    })
+    .join("\n");
+}
+
+function formatSRTTime(seconds: number): string {
+  const pad = (num: number): string => num.toString().padStart(2, "0");
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+  const ms = Math.floor((seconds % 1) * 1000);
+
+  return `${pad(hours)}:${pad(minutes)}:${pad(secs)},${ms.toString().padStart(3, "0")}`;
+}
+
+function formatVTTTime(seconds: number): string {
+  const pad = (num: number): string => num.toString().padStart(2, "0");
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+  const ms = Math.floor((seconds % 1) * 1000);
+
+  return `${pad(hours)}:${pad(minutes)}:${pad(secs)}.${ms.toString().padStart(3, "0")}`;
+}
+
+function convertToSRT(items: TranscriptItem[]): string {
+  return items
+    .map((item, index) => {
+      const startTime = formatSRTTime(item.offset);
+      const endTime = formatSRTTime(item.offset + item.duration);
+      const decodedText = decodeHTMLEntities(item.text);
+
+      return `${index + 1}\n${startTime} --> ${endTime}\n${decodedText}\n`;
+    })
+    .join("\n");
+}
 const YoutubeTranscriptGenerator = () => {
   const actionData = useActionData();
   const navigation = useNavigation();
