@@ -12,8 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    const contentTwo = response.choices[1].message.content?.trim() || "";
-
     const contentThree = response.choices[2].message.content?.trim() || "";
 
     const contentFour = response.choices[3].message.content?.trim() || "";
