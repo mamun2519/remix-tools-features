@@ -48,6 +48,9 @@ export async function action({ request }: { request: Request }) {
     { responseType: "text" },
   );
   console.log("transcriptResponse", transcriptResponse);
+
+  const transcript = transcriptResponse.data;
+
   try {
     return json({
       // fullDescription: fullDescription,
