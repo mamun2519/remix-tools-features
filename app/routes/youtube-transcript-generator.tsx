@@ -60,6 +60,7 @@ const formatTime = (milliseconds: number): string => {
   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 };
 
+//* extract video id using regex
 const extractVideoId = (url: string) => {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
   const match = url.match(regex);
