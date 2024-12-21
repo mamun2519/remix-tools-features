@@ -3,6 +3,7 @@ import { Form, json, useActionData } from "@remix-run/react";
 import { google } from "googleapis";
 import OpenAI from "openai";
 
+const youtube = google.youtube("v3");
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL");
@@ -46,6 +47,22 @@ export async function action({ request }: { request: Request }) {
 
   //   const transcript = transcriptResponse.data;
   //   console.log("transcript", transcript);
+  const captions = await youtube.captions.list({
+    part: ["snippet"],
+    videoId: videoId,
+    key: process.env.YOUTUBE_API_KEY, // Make sure to set this in your .env file
+  });
+
+  // Get transcript for the first available caption track
+  if (captions.data.items && captions.data.items.length > 0) {
+    const captionTrack = captions.data.items[0];
+    const transcript = await youtube.captions.download({
+      id: captionTrack.id!,
+      key: process.env.YOUTUBE_API_KEY,
+    });
+
+    console.log("transcript", transcript.data);
+  }
 
   try {
     return json({
