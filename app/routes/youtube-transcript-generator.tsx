@@ -17,6 +17,8 @@ export async function action({ request }: { request: Request }) {
     auth: process.env.YOUTUBE_API_KEY,
   });
 
+  const transcriptResponse =
+
   try {
     return json({
       // fullDescription: fullDescription,
