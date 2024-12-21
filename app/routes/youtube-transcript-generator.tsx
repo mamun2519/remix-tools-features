@@ -166,24 +166,14 @@ const YoutubeTranscriptGenerator = () => {
             {actionData.error}
           </div>
         )}
-        {actionData?.fullDescription &&
-          actionData.fullDescription.length > 0 && (
-            <div className="mt-6 rounded-md bg-gray-100 p-4">
-              <h2 className="mb-4 text-center text-xl font-semibold">
-                Generated Channel Names
-              </h2>
-              <div className="space-y-2">
-                {actionData.fullDescription.map((name, index) => (
-                  <div
-                    key={index}
-                    className="text-left text-lg text-indigo-600"
-                  >
-                    {name}
-                  </div>
-                ))}
-              </div>
+        {actionData?.success && (
+          <div className="mt-6">
+            <h2 className="mb-3 text-xl font-semibold">Transcript</h2>
+            <div className="whitespace-pre-wrap rounded bg-gray-100 p-4 font-mono text-sm">
+              {actionData.transcript}
             </div>
-          )}
+          </div>
+        )}
       </div>
     </div>
   );
