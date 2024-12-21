@@ -17,7 +17,7 @@ export async function action({ request }: { request: Request }) {
     auth: process.env.YOUTUBE_API_KEY,
   });
 
-  const transcriptResponse =
+  const transcriptResponse = await youTube.captions.list({});
 
   try {
     return json({
