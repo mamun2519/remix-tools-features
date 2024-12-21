@@ -112,7 +112,7 @@ function decodeHTMLEntities(text: string): string {
     .replace(/&#39;/g, "'");
 }
 
-function formatTime(milliseconds: number): string {
+const formatTime = (milliseconds: number): string => {
   const totalSeconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -122,7 +122,7 @@ function formatTime(milliseconds: number): string {
     return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   }
   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-}
+};
 
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
