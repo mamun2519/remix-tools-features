@@ -17,35 +17,35 @@ export async function action({ request }: { request: Request }) {
     return json({ error: "Invalid YouTube URL provided." }, { status: 400 });
   }
 
-  const youTube = google.youtube({
-    version: "v3",
-    auth: process.env.YOUTUBE_API_KEY,
-  });
+  //   const youTube = google.youtube({
+  //     version: "v3",
+  //     auth: process.env.YOUTUBE_API_KEY,
+  //   });
 
-  //* get the video details
-  const captionResponse = await youTube.captions.list({
-    videoId,
-    part: ["snippet"],
-  });
+  //   //* get the video details
+  //   const captionResponse = await youTube.captions.list({
+  //     videoId,
+  //     part: ["snippet"],
+  //   });
 
-  if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
-    return json(
-      { error: "No captions available for this video." },
-      { status: 404 },
-    );
-  }
+  //   if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
+  //     return json(
+  //       { error: "No captions available for this video." },
+  //       { status: 404 },
+  //     );
+  //   }
 
-  //* get the video caption id
-  const captionId = captionResponse.data.items[0].id;
-  console.log("captionId", captionId);
-  const transcriptResponse = await youTube.captions.download(
-    { id: captionId },
-    { responseType: "text" },
-  );
-  console.log("transcriptResponse", transcriptResponse);
+  //   //* get the video caption id
+  //   const captionId = captionResponse.data.items[0].id;
+  //   console.log("captionId", captionId);
+  //   const transcriptResponse = await youTube.captions.download(
+  //     { id: captionId },
+  //     { responseType: "text" },
+  //   );
+  //   console.log("transcriptResponse", transcriptResponse);
 
-  const transcript = transcriptResponse.data;
-  console.log("transcript", transcript);
+  //   const transcript = transcriptResponse.data;
+  //   console.log("transcript", transcript);
 
   try {
     return json({
