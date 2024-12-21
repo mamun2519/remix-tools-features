@@ -39,6 +39,8 @@ export async function action({ request }: { request: Request }) {
     );
   }
 
+  console.log(transcriptResponse.data.items[0]);
+
   const captionId = transcriptResponse.data.items[0].id;
   console.log("captionId", captionId);
 
