@@ -30,10 +30,7 @@ export async function action({ request }: { request: Request }) {
   });
 
   console.log("response", captionResponse);
-  if (
-    !captionResponse.data.items ||
-    captionResponse.data.items.length === 0
-  ) {
+  if (!captionResponse.data.items || captionResponse.data.items.length === 0) {
     return json(
       { error: "No captions available for this video." },
       { status: 404 },
@@ -46,8 +43,11 @@ export async function action({ request }: { request: Request }) {
   const captionId = captionResponse.data.items[0].id;
   console.log("captionId", captionId);
 
-  const 
-
+  const transcriptResponse = await youTube.captions.download(
+    { id: captionId },
+    { responseType: "text" },
+  );
+  console.log("transcriptResponse", transcriptResponse);
   try {
     return json({
       // fullDescription: fullDescription,
