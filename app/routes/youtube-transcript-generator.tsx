@@ -50,6 +50,7 @@ export async function action({ request }: { request: Request }) {
   console.log("transcriptResponse", transcriptResponse);
 
   const transcript = transcriptResponse.data;
+  console.log("transcript", transcript);
 
   try {
     return json({
