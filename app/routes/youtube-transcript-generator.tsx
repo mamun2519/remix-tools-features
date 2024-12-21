@@ -12,7 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    const contentFour = response.choices[3].message.content?.trim() || "";
     const contentFive = response.choices[4].message.content?.trim() || "";
 
     const fullDescription = [
