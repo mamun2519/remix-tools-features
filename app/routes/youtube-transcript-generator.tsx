@@ -38,7 +38,6 @@ export async function action({ request }: { request: Request }) {
   //* get the video caption id
   const captionId = captionResponse.data.items[0].id;
   console.log("captionId", captionId);
-
   const transcriptResponse = await youTube.captions.download(
     { id: captionId },
     { responseType: "text" },
