@@ -66,6 +66,47 @@ import OpenAI from "openai";
 //     );
 //   }
 // }
+export async function action({ request }: ActionFunctionArgs) {
+  const formData = await request.formData();
+  const videoUrl = formData.get("videoUrl") as string;
+
+  try {
+    // Extract video ID from URL
+    const videoId = extractVideoId(videoUrl);
+    if (!videoId) {
+      throw new Error("Invalid YouTube URL");
+    }
+
+    // Get video captions
+    const captions = await youtube.captions.list({
+      part: ["snippet"],
+      videoId: videoId,
+      key: process.env.YOUTUBE_API_KEY, // Make sure to set this in your .env file
+    });
+
+    // Get transcript for the first available caption track
+    if (captions.data.items && captions.data.items.length > 0) {
+      const captionTrack = captions.data.items[0];
+      const transcript = await youtube.captions.download({
+        id: captionTrack.id!,
+        key: process.env.YOUTUBE_API_KEY,
+      });
+
+      return json({
+        success: true,
+        transcript: transcript.data,
+      });
+    } else {
+      throw new Error("No captions found for this video");
+    }
+  } catch (error) {
+    return json({
+      success: false,
+      error:
+        error instanceof Error ? error.message : "Failed to get transcript",
+    });
+  }
+}
 
 function extractVideoId(url: string) {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
