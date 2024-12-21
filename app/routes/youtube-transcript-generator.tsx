@@ -47,6 +47,7 @@ const decodeHTMLEntities = (text: string): string => {
     .replace(/&#39;/g, "'");
 };
 
+//* format time
 const formatTime = (milliseconds: number): string => {
   const totalSeconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(totalSeconds / 3600);
