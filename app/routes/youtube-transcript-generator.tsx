@@ -27,6 +27,12 @@ export async function action({ request }: { request: Request }) {
     part: ["snippet"],
   });
 
+  if (
+    transcriptResponse.data.items ||
+    transcriptResponse.data.items.length === 0
+  ) {
+  }
+
   try {
     return json({
       // fullDescription: fullDescription,
