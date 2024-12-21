@@ -27,6 +27,8 @@ export async function action({ request }: { request: Request }) {
     part: ["snippet"],
   });
 
+
+  console.log("response", transcriptResponse)
   if (
     transcriptResponse.data.items ||
     transcriptResponse.data.items.length === 0
