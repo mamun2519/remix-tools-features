@@ -4,7 +4,7 @@ import OpenAI from "openai";
 
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
-  const videoTopic = formData.get("videoTopic");
+  const videoUrl = formData.get("videoURL");
 
   //* handle input filed error
   if (!videoTopic) {
