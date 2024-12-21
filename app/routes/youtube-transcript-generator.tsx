@@ -142,6 +142,8 @@ export const meta: MetaFunction = () => {
 };
 const YoutubeTranscriptGenerator = () => {
   const actionData = useActionData();
+  const navigation = useNavigation();
+  const isGenerating = navigation.state === "submitting";
   return (
     <div className="p-10">
       <div className="mt-10 h-96 rounded border p-6">
@@ -160,7 +162,7 @@ const YoutubeTranscriptGenerator = () => {
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
             >
-              Generate
+              {isGenerating ? "Generating..." : "Generate Transcript"}
             </button>
           </Form>
         </div>
