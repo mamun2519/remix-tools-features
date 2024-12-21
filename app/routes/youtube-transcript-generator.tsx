@@ -12,14 +12,6 @@ export async function action({ request }: { request: Request }) {
   }
 
   try {
-    const fullDescription = [
-      contentOne,
-      contentTwo,
-      contentThree,
-      contentFour,
-      contentFive,
-    ];
-
     return json({
       fullDescription: fullDescription,
       error: null,
