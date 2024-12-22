@@ -326,22 +326,34 @@ const YoutubeTranscriptGenerator = () => {
   const handleDownload = (format: string) => {
     if (!actionData?.transcript) return;
 
-    let content = "";
+    let content = '';
     switch (format) {
-      case "SRT":
+      case 'SRT':
         content = convertToSRT(actionData.transcript);
         break;
-      case "VTT":
+      case 'VTT':
         content = convertToVTT(actionData.transcript);
         break;
-      case "TTML":
+      case 'TTML':
         content = convertToTTML(actionData.transcript);
         break;
-      case "TXT":
-        content = convertToTXT(actionData.transcript);
+      case 'STL':
+        content = convertToSTL(actionData.transcript);
+        break;
+      case 'SUB':
+        content = convertToSUB(actionData.transcript);
+        break;
+      case 'DFXP':
+        content = convertToDFXP(actionData.transcript);
+        break;
+      case 'SBV':
+        content = convertToSBV(actionData.transcript);
+        break;
+      case 'TXT':
+        content = actionData.transcript.join('\n\n');
         break;
       default:
-        content = convertToTXT(actionData.transcript);
+        content = actionData.transcript.join('\n\n');
     }
 
     downloadTranscript(content, format, actionData.videoId);
