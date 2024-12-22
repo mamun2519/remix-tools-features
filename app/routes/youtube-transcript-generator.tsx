@@ -21,14 +21,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
     // Get transcript
 
-    // Format transcript with timestamps
-    const formattedTranscript = transcriptItems
-      .map((item) => {
-        const decodedText = decodeHTMLEntities(item.text);
-        return `[${formatTime(item.offset * 1000)}] ${decodedText}`;
-      })
-      .join("\n");
-
     return json({
       success: true,
       transcript: formattedTranscript,
