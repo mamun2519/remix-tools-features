@@ -1,6 +1,5 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
-import { YoutubeTranscript } from "youtube-transcript";
 
 interface TranscriptItem {
   text: string;
@@ -21,7 +20,7 @@ export async function action({ request }: ActionFunctionArgs) {
       throw new Error("Invalid YouTube URL");
     }
 
-    // Get transcript
+    // Initialize Youtube
     const youtube = await Innertube.create({
       lang: "en",
       location: "US",
