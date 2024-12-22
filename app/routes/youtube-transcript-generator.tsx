@@ -51,6 +51,7 @@ const convertToTXT = (transcript: string[]) => {
   return transcript.join("\n\n");
 };
 
+// convert content to STL format
 const convertToSTL = (transcript: string[]) => {
   let stl = `//Font select and font size
 $FontName = Arial
