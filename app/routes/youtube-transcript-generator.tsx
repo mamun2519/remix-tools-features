@@ -226,7 +226,6 @@ const YoutubeTranscriptGenerator = () => {
 
         {actionData?.transcript && (
           <>
-            (
             <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
               {actionData?.transcript?.map((line, index) => {
                 return (
@@ -237,12 +236,11 @@ const YoutubeTranscriptGenerator = () => {
               })}
             </div>
             {/* Download transcript button */}
-            <div>
-              <button className="rounded-xl bg-red-500 px-4 py-1 text-white">
+            <div className="mt-5">
+              <button className="rounded-xl bg-red-500 px-2 py-1 text-white">
                 Download .txt
               </button>
             </div>
-            )
           </>
         )}
       </div>
