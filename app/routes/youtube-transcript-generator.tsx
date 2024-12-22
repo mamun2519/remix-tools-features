@@ -224,15 +224,17 @@ const YoutubeTranscriptGenerator = () => {
           </div>
         )} */}
 
-        <div className="text-md max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
-          {actionData?.transcript?.map((line, index) => {
-            return (
-              <div key={index} className={index !== 0 && "mt-4"}>
-                <span className="text-gray-90">{line}</span>
-              </div>
-            );
-          })}
-        </div>
+        {actionData?.transcript && (
+          <div className="text-md max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
+            {actionData?.transcript?.map((line, index) => {
+              return (
+                <div key={index} className={index !== 0 && "mt-4"}>
+                  <span className="text-gray-90">{line}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
