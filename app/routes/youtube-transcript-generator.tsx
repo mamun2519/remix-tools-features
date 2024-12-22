@@ -2,7 +2,7 @@ import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
 import { Innertube } from "youtubei.js";
 
-// Helper function to format time (converts seconds to HH:MM:SS,mmm format)
+// format time
 const formatTime = (seconds: number) => {
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours().toString().padStart(2, "0");
