@@ -237,9 +237,14 @@ const YoutubeTranscriptGenerator = () => {
             </div>
             {/* Download transcript button */}
             <div className="mt-5">
-              <button className="rounded-xl bg-red-500 px-2 py-1 text-white">
+              <a
+                href={`data:text/plain;charset=utf-8,${encodeURIComponent(
+                  generatedTranscript,
+                )}`}
+                className="rounded-xl bg-red-500 px-2 py-1 text-white"
+              >
                 Download .txt
-              </button>
+              </a>
             </div>
           </>
         )}
