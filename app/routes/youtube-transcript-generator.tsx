@@ -64,6 +64,33 @@ const convertToTXT = (transcript: string[]) => {
   return transcript.join("\n\n");
 };
 
+const convertToSTL = (transcript: string[]) => {
+  let stl = `//Font select and font size
+$FontName = Arial
+$FontSize = 30
+
+//Max number of rows to display on screen
+$MaxRows = 2
+
+//Header
+Title: Generated Transcript
+Original Script: Transcript
+Author: YouTube Transcript Generator
+Time: ${new Date().toISOString()}
+
+`;
+
+  transcript.forEach((text, index) => {
+    const startTimeSeconds = index * 5;
+    const endTimeSeconds = (index + 1) * 5;
+    const startTimecode = formatTimecodeSTL(startTimeSeconds);
+    const endTimecode = formatTimecodeSTL(endTimeSeconds);
+    stl += `${startTimecode}, ${endTimecode}\n${text}\n\n`;
+  });
+
+  return stl;
+};
+
 // Helper function to trigger download
 const downloadTranscript = (
   content: string,
