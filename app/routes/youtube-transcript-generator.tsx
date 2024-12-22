@@ -225,7 +225,7 @@ const YoutubeTranscriptGenerator = () => {
         )} */}
 
         {actionData?.transcript && (
-          <div className="text-md max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
+          <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
             {actionData?.transcript?.map((line, index) => {
               return (
                 <div key={index} className={index !== 0 && "mt-4"}>
