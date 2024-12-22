@@ -8,6 +8,8 @@ interface TranscriptItem {
   offset: number;
 }
 
+import { Innertube } from "youtubei.js";
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
@@ -20,6 +22,11 @@ export async function action({ request }: ActionFunctionArgs) {
     }
 
     // Get transcript
+    const youtube = await Innertube.create({
+      lang: "en",
+      location: "US",
+      retrieve_player: false,
+    });
 
     return json({
       success: true,
