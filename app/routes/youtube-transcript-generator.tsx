@@ -136,6 +136,8 @@ const convertToSBV = (transcript: string[]) => {
     .join("\n");
 };
 
+//* helper function
+
 const formatTimeSBV = (seconds: number) => {
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours().toString().padStart(2, "0");
