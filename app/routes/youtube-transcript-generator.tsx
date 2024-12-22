@@ -29,6 +29,20 @@ const convertToSRT = (transcript: string[]) => {
     .join("");
 };
 
+const convertToVTT = (transcript: string[]) => {
+  let vtt = "WEBVTT\n\n";
+  return (
+    vtt +
+    transcript
+      .map((text, index) => {
+        const startTime = formatTime(index * 5);
+        const endTime = formatTime((index + 1) * 5);
+        return `${startTime} --> ${endTime}\n${text}\n\n`;
+      })
+      .join("")
+  );
+};
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
