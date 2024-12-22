@@ -267,9 +267,6 @@ const YoutubeTranscriptGenerator = () => {
         content = convertToTXT(actionData.transcript);
     }
 
-    console.log("content", content);
-    console.log("format", format);
-    console.log("videoId", actionData.videoId);
     downloadTranscript(content, format, actionData.videoId);
   };
 
