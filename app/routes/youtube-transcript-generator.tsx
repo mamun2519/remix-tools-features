@@ -79,6 +79,7 @@ Time: ${new Date().toISOString()}
   return stl;
 };
 
+//* convert content to Sub format
 const convertToSUB = (transcript: string[]) => {
   return transcript
     .map((text, index) => {
