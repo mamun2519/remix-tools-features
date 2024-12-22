@@ -79,7 +79,7 @@ Time: ${new Date().toISOString()}
   return stl;
 };
 
-//* convert content to Sub format
+//* convert content to SUB format
 const convertToSUB = (transcript: string[]) => {
   return transcript
     .map((text, index) => {
@@ -90,7 +90,7 @@ const convertToSUB = (transcript: string[]) => {
     .join("\n");
 };
 
-// Existing format converters
+// convert content to SRT format
 const convertToSRT = (transcript: string[]) => {
   return transcript
     .map((text, index) => {
