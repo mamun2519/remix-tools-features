@@ -149,6 +149,7 @@ const formatTimeSBV = (seconds: number) => {
   return `${hh}:${mm}:${ss}.${ms}`;
 };
 
+//* helper function for STL Format
 const formatTimecodeSTL = (seconds: number) => {
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours().toString().padStart(2, "0");
