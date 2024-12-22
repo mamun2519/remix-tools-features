@@ -30,7 +30,7 @@ const convertToSRT = (transcript: string[]) => {
 };
 
 const convertToVTT = (transcript: string[]) => {
-  let vtt = "WEBVTT\n\n";
+  const vtt = "WEBVTT\n\n";
   return (
     vtt +
     transcript
