@@ -226,7 +226,7 @@ const YoutubeTranscriptGenerator = () => {
                 Download .txt
               </a>
             </div> */}
-
+            STL,SUB,DFXP,SBV
             <div className="mt-4 flex gap-2">
               {["SRT", "VTT", "TTML", "TXT"].map((format) => (
                 <button
