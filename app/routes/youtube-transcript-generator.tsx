@@ -235,8 +235,10 @@ const YoutubeTranscriptGenerator = () => {
             })}
           </div>
         )}
-        {/* Download button */}
-        <div></div>
+        {/* Download transcript button */}
+        <div>
+          <button>Download .txt</button>
+        </div>
       </div>
     </div>
   );
