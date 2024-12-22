@@ -80,17 +80,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-const convertToSRT = (items: TranscriptItem[]): string => {
-  return items
-    .map((item, index) => {
-      const startTime = formatSRTTime(item.offset);
-      const endTime = formatSRTTime(item.offset + item.duration);
-      const decodedText = decodeHTMLEntities(item.text);
-
-      return `${index + 1}\n${startTime} --> ${endTime}\n${decodedText}\n`;
-    })
-    .join("\n");
-};
 const YoutubeTranscriptGenerator = () => {
   const actionData = useActionData();
   const navigation = useNavigation();
