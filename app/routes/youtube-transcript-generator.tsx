@@ -229,6 +229,16 @@ const formatTimeSBV = (seconds: number) => {
   return `${hh}:${mm}:${ss}.${ms}`;
 };
 
+const formatTimecodeSTL = (seconds: number) => {
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours().toString().padStart(2, '0');
+  const mm = date.getUTCMinutes().toString().padStart(2, '0');
+  const ss = date.getUTCSeconds().toString().padStart(2, '0');
+  const ff = Math.floor((date.getUTCMilliseconds() / 1000) * 25).toString().padStart(2, '0');
+  return `${hh}:${mm}:${ss}:${ff}`;
+};
+
+
 
 // Helper function to trigger download
 const downloadTranscript = (
