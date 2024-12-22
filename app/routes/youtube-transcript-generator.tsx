@@ -269,7 +269,7 @@ const YoutubeTranscriptGenerator = () => {
         content = convertToTXT(actionData.transcript);
         break;
       default:
-        content = actionData.transcript.join("\n\n");
+        content = convertToTXT(actionData.transcript);
     }
 
     downloadTranscript(content, format, actionData.videoId);
