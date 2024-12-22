@@ -29,6 +29,13 @@ export async function action({ request }: ActionFunctionArgs) {
 
     //* get video info by video id
     const info = await youtube.getInfo(videoId);
+
+    const transcriptData = await info.getTranscript();
+    const mappedData =
+      transcriptData.transcript.content.body.initial_segments.map(
+        (segment) => segment.snippet.text,
+      );
+
     return json({
       success: true,
       transcript: formattedTranscript,
