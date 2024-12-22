@@ -20,7 +20,6 @@ export async function action({ request }: ActionFunctionArgs) {
     }
 
     // Get transcript
-    const transcriptItems = await YoutubeTranscript.fetchTranscript(videoId);
 
     // Format transcript with timestamps
     const formattedTranscript = transcriptItems
