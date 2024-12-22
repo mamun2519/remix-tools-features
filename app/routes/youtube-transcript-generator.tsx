@@ -136,7 +136,7 @@ const convertToSBV = (transcript: string[]) => {
     .join("\n");
 };
 
-//* helper function
+//* helper function for SBV Format
 
 const formatTimeSBV = (seconds: number) => {
   const date = new Date(seconds * 1000);
