@@ -93,21 +93,6 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-const convertToVTT = (items: TranscriptItem[]): string => {
-  const header = "WEBVTT\n\n";
-  const body = items
-    .map((item, index) => {
-      const startTime = formatVTTTime(item.offset);
-      const endTime = formatVTTTime(item.offset + item.duration);
-      const decodedText = decodeHTMLEntities(item.text);
-
-      return `${startTime} --> ${endTime}\n${decodedText}\n`;
-    })
-    .join("\n");
-
-  return header + body;
-};
-
 const convertToTXT = (items: TranscriptItem[]): string => {
   return items
     .map((item) => {
@@ -241,7 +226,7 @@ const YoutubeTranscriptGenerator = () => {
                 href={`data:text/plain;charset=utf-8,${encodeURIComponent(
                   actionData?.transcript,
                 )}`}
-                download="transcript.txt"
+                download="test.txt"
                 className="rounded-xl bg-red-500 px-2 py-1 text-white"
                 target="_blank"
                 rel="noopener noreferrer"
