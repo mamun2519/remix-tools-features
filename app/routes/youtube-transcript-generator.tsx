@@ -12,6 +12,7 @@ const formatTime = (seconds: number) => {
   return `${hh}:${mm}:${ss},${ms}`;
 };
 
+//* covert content to VTT format
 const convertToVTT = (transcript: string[]) => {
   const vtt = "WEBVTT\n\n";
   return (
