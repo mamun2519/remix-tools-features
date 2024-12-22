@@ -43,6 +43,24 @@ const convertToVTT = (transcript: string[]) => {
   );
 };
 
+const convertToTTML = (transcript: string[]) => {
+  let ttml = `<?xml version="1.0" encoding="UTF-8"?>
+<tt xmlns="http://www.w3.org/ns/ttml">
+  <body>
+    <div>\n`;
+
+  transcript.forEach((text, index) => {
+    const startTime = formatTime(index * 5);
+    const endTime = formatTime((index + 1) * 5);
+    ttml += `      <p begin="${startTime}" end="${endTime}">${text}</p>\n`;
+  });
+
+  ttml += `    </div>
+  </body>
+</tt>`;
+  return ttml;
+};
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
