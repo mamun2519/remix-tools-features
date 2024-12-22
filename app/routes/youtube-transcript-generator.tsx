@@ -147,6 +147,30 @@ const YoutubeTranscriptGenerator = () => {
   const navigation = useNavigation();
   const isGenerating = navigation.state === "submitting";
 
+  const handleDownload = (format: string) => {
+    if (!actionData?.transcript) return;
+
+    let content = "";
+    switch (format) {
+      case "SRT":
+        content = convertToSRT(actionData.transcript);
+        break;
+      case "VTT":
+        content = convertToVTT(actionData.transcript);
+        break;
+      case "TTML":
+        content = convertToTTML(actionData.transcript);
+        break;
+      case "TXT":
+        content = convertToTXT(actionData.transcript);
+        break;
+      default:
+        content = convertToTXT(actionData.transcript);
+    }
+
+    downloadTranscript(content, format, actionData.videoId);
+  };
+
   return (
     <div className="p-10">
       <div className="mt-10 h-full rounded border p-6">
