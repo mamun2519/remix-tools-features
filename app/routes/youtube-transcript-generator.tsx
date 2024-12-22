@@ -241,7 +241,11 @@ const YoutubeTranscriptGenerator = () => {
                 href={`data:text/plain;charset=utf-8,${encodeURIComponent(
                   actionData?.transcript,
                 )}`}
+                download="transcript.txt"
                 className="rounded-xl bg-red-500 px-2 py-1 text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Download Transcript"
               >
                 Download .txt
               </a>
