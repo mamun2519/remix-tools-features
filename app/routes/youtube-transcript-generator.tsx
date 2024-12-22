@@ -225,22 +225,26 @@ const YoutubeTranscriptGenerator = () => {
         )} */}
 
         {actionData?.transcript && (
-          <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
-            {actionData?.transcript?.map((line, index) => {
-              return (
-                <div key={index} className={index !== 0 && "mt-4"}>
-                  <span className="text-gray-90">{line}</span>
-                </div>
-              );
-            })}
-          </div>
+          <>
+            (
+            <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
+              {actionData?.transcript?.map((line, index) => {
+                return (
+                  <div key={index} className={index !== 0 && "mt-4"}>
+                    <span className="text-gray-90">{line}</span>
+                  </div>
+                );
+              })}
+            </div>
+            {/* Download transcript button */}
+            <div>
+              <button className="rounded-xl bg-red-500 px-4 py-1 text-white">
+                Download .txt
+              </button>
+            </div>
+            )
+          </>
         )}
-        {/* Download transcript button */}
-        <div>
-          <button className="rounded-xl bg-red-500 px-4 py-1 text-white">
-            Download .txt
-          </button>
-        </div>
       </div>
     </div>
   );
