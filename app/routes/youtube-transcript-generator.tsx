@@ -237,7 +237,9 @@ const YoutubeTranscriptGenerator = () => {
         )}
         {/* Download transcript button */}
         <div>
-          <button>Download .txt</button>
+          <button className="rounded-xl bg-red-500 px-4 py-1 text-white">
+            Download .txt
+          </button>
         </div>
       </div>
     </div>
