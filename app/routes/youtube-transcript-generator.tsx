@@ -215,14 +215,14 @@ const YoutubeTranscriptGenerator = () => {
             {actionData.error}
           </div>
         )}
-        {actionData?.success && (
+        {/* {actionData?.success && (
           <div className="mt-6">
             <h2 className="mb-3 text-xl font-semibold">Transcript</h2>
             <div className="whitespace-pre-wrap rounded bg-gray-100 p-4 font-mono text-sm">
               {actionData.transcript}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
