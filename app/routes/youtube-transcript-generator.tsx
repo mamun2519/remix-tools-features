@@ -212,7 +212,7 @@ const YoutubeTranscriptGenerator = () => {
               })}
             </div>
             {/* Download transcript button */}
-            <div className="mt-5">
+            {/* <div className="mt-5">
               <a
                 href={`data:text/plain;charset=utf-8,${encodeURIComponent(
                   actionData?.transcript,
@@ -225,7 +225,7 @@ const YoutubeTranscriptGenerator = () => {
               >
                 Download .txt
               </a>
-            </div>
+            </div> */}
           </>
         )}
       </div>
