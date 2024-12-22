@@ -53,16 +53,6 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-const decodeHTMLEntities = (text: string): string => {
-  return text
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&#39;/g, "'");
-};
-
 //* extract video id using regex
 const extractVideoId = (url: string) => {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
