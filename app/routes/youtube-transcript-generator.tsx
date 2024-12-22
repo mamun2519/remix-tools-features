@@ -2,12 +2,6 @@ import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
 import { Innertube } from "youtubei.js";
 
-interface TranscriptItem {
-  text: string;
-  duration: number;
-  offset: number;
-}
-
 // Helper function to format time (converts seconds to HH:MM:SS,mmm format)
 const formatTime = (seconds: number) => {
   const date = new Date(seconds * 1000);
