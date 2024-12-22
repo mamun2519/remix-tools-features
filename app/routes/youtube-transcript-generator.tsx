@@ -7,6 +7,17 @@ interface TranscriptItem {
   offset: number;
 }
 
+// Utility functions for format conversion
+const convertToSRT = (transcript: string[]) => {
+  return transcript
+    .map((text, index) => {
+      const startTime = formatTime(index * 5); // Assuming 5 seconds per segment
+      const endTime = formatTime((index + 1) * 5);
+      return `${index + 1}\n${startTime} --> ${endTime}\n${text}\n\n`;
+    })
+    .join("");
+};
+
 import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
