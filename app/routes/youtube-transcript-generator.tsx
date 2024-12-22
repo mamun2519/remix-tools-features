@@ -63,19 +63,6 @@ const decodeHTMLEntities = (text: string): string => {
     .replace(/&#39;/g, "'");
 };
 
-//* format time
-const formatTime = (milliseconds: number): string => {
-  const totalSeconds = Math.floor(milliseconds / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
-  if (hours > 0) {
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-  }
-  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-};
-
 //* extract video id using regex
 const extractVideoId = (url: string) => {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
