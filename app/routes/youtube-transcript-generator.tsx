@@ -266,7 +266,7 @@ const YoutubeTranscriptGenerator = () => {
         content = convertToSBV(actionData.transcript);
         break;
       case "TXT":
-        content = actionData.transcript.join("\n\n");
+        content = convertToTXT(actionData.transcript);
         break;
       default:
         content = actionData.transcript.join("\n\n");
