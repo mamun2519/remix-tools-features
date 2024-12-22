@@ -60,6 +60,9 @@ const convertToTTML = (transcript: string[]) => {
 </tt>`;
   return ttml;
 };
+const convertToTXT = (transcript: string[]) => {
+  return transcript.join("\n\n");
+};
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
