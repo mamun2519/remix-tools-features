@@ -210,6 +210,16 @@ const convertToDFXP = (transcript: string[]) => {
 };
 
 
+const convertToSBV = (transcript: string[]) => {
+  return transcript.map((text, index) => {
+    const startTime = formatTimeSBV(index * 5);
+    const endTime = formatTimeSBV((index + 1) * 5);
+    return `${startTime},${endTime}\n${text}\n`;
+  }).join('\n');
+};
+
+
+
 // Helper function to trigger download
 const downloadTranscript = (
   content: string,
