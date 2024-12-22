@@ -226,6 +226,18 @@ const YoutubeTranscriptGenerator = () => {
                 Download .txt
               </a>
             </div> */}
+
+            <div className="mt-4 flex gap-2">
+              {["SRT", "VTT", "TTML", "TXT"].map((format) => (
+                <button
+                  key={format}
+                  onClick={() => handleDownload(format)}
+                  className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600"
+                >
+                  Download {format}
+                </button>
+              ))}
+            </div>
           </>
         )}
       </div>
