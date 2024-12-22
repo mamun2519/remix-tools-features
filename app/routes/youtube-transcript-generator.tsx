@@ -101,6 +101,7 @@ const convertToSRT = (transcript: string[]) => {
     .join("");
 };
 
+// convert to DFXP
 const convertToDFXP = (transcript: string[]) => {
   let dfxp = `<?xml version="1.0" encoding="UTF-8"?>
 <tt xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling">
