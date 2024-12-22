@@ -192,9 +192,11 @@ export async function action({ request }: ActionFunctionArgs) {
     const transcriptData = await info.getTranscript();
     // transcript data
     const transcript =
-      transcriptData.transcript.content.body.initial_segments.map(
+      transcriptData?.transcript?.content?.body.initial_segments.map(
         (segment) => segment.snippet.text,
       );
+
+    console.log("data", transcriptData);
 
     return json({
       success: true,
