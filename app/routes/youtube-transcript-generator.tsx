@@ -27,6 +27,7 @@ const convertToVTT = (transcript: string[]) => {
   );
 };
 
+//* convert content to TTML
 const convertToTTML = (transcript: string[]) => {
   let ttml = `<?xml version="1.0" encoding="UTF-8"?>
 <tt xmlns="http://www.w3.org/ns/ttml">
