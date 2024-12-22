@@ -101,6 +101,115 @@ const convertToSUB = (transcript: string[]) => {
     .join("\n");
 };
 
+
+YouTube Transcript Generator with Multiple Format Downloads
+
+import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
+import { Form, json, useActionData, useNavigation } from "@remix-run/react";
+import { Innertube } from "youtubei.js";
+
+interface TranscriptItem {
+  text: string;
+  duration: number;
+  offset: number;
+}
+
+// Existing format converters
+const convertToSRT = (transcript: string[]) => {
+  return transcript.map((text, index) => {
+    const startTime = formatTime(index * 5);
+    const endTime = formatTime((index + 1) * 5);
+    return `${index + 1}\n${startTime} --> ${endTime}\n${text}\n\n`;
+  }).join('');
+};
+
+const convertToVTT = (transcript: string[]) => {
+  let vtt = "WEBVTT\n\n";
+  return vtt + transcript.map((text, index) => {
+    const startTime = formatTime(index * 5);
+    const endTime = formatTime((index + 1) * 5);
+    return `${startTime} --> ${endTime}\n${text}\n\n`;
+  }).join('');
+};
+
+const convertToTTML = (transcript: string[]) => {
+  let ttml = `<?xml version="1.0" encoding="UTF-8"?>
+<tt xmlns="http://www.w3.org/ns/ttml">
+  <body>
+    <div>\n`;
+  
+  transcript.forEach((text, index) => {
+    const startTime = formatTime(index * 5);
+    const endTime = formatTime((index + 1) * 5);
+    ttml += `      <p begin="${startTime}" end="${endTime}">${text}</p>\n`;
+  });
+  
+  ttml += `    </div>
+  </body>
+</tt>`;
+  return ttml;
+};
+
+// New format converters
+const convertToSTL = (transcript: string[]) => {
+  let stl = `//Font select and font size
+$FontName = Arial
+$FontSize = 30
+
+//Max number of rows to display on screen
+$MaxRows = 2
+
+//Header
+Title: Generated Transcript
+Original Script: Transcript
+Author: YouTube Transcript Generator
+Time: ${new Date().toISOString()}
+
+`;
+  
+  transcript.forEach((text, index) => {
+    const startTimeSeconds = index * 5;
+    const endTimeSeconds = (index + 1) * 5;
+    const startTimecode = formatTimecodeSTL(startTimeSeconds);
+    const endTimecode = formatTimecodeSTL(endTimeSeconds);
+    stl += `${startTimecode}, ${endTimecode}\n${text}\n\n`;
+  });
+  
+  return stl;
+};
+
+const convertToSUB = (transcript: string[]) => {
+  return transcript.map((text, index) => {
+    const startTime = Math.floor(index * 5 * 1000); // Convert to milliseconds
+    const endTime = Math.floor((index + 1) * 5 * 1000);
+    return `{${startTime}}{${endTime}}${text}`;
+  }).join('\n');
+};
+
+const convertToDFXP = (transcript: string[]) => {
+  let dfxp = `<?xml version="1.0" encoding="UTF-8"?>
+<tt xmlns="http://www.w3.org/ns/ttml" xmlns:tts="http://www.w3.org/ns/ttml#styling">
+  <head>
+    <styling>
+      <style xml:id="defaultStyle" tts:fontFamily="Arial" tts:fontSize="16" tts:textAlign="center"/>
+    </styling>
+  </head>
+  <body>
+    <div>\n`;
+  
+  transcript.forEach((text, index) => {
+    const startTime = formatTime(index * 5).replace(',', '.');
+    const endTime = formatTime((index + 1) * 5).replace(',', '.');
+    dfxp += `      <p begin="${startTime}" end="${endTime}" style="defaultStyle">${text}</p>\n`;
+  });
+  
+  dfxp += `    </div>
+  </body>
+</tt>`;
+  return dfxp;
+};
+
+
 // Helper function to trigger download
 const downloadTranscript = (
   content: string,
