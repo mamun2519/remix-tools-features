@@ -239,7 +239,7 @@ const YoutubeTranscriptGenerator = () => {
             <div className="mt-5">
               <a
                 href={`data:text/plain;charset=utf-8,${encodeURIComponent(
-                  generatedTranscript,
+                  actionData?.transcript,
                 )}`}
                 className="rounded-xl bg-red-500 px-2 py-1 text-white"
               >
