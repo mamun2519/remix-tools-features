@@ -7,6 +7,16 @@ interface TranscriptItem {
   offset: number;
 }
 
+// Helper function to format time (converts seconds to HH:MM:SS,mmm format)
+const formatTime = (seconds: number) => {
+  const date = new Date(seconds * 1000);
+  const hh = date.getUTCHours().toString().padStart(2, "0");
+  const mm = date.getUTCMinutes().toString().padStart(2, "0");
+  const ss = date.getUTCSeconds().toString().padStart(2, "0");
+  const ms = date.getUTCMilliseconds().toString().padStart(3, "0");
+  return `${hh}:${mm}:${ss},${ms}`;
+};
+
 // Utility functions for format conversion
 const convertToSRT = (transcript: string[]) => {
   return transcript
