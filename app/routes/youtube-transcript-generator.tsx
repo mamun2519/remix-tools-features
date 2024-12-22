@@ -64,6 +64,23 @@ const convertToTXT = (transcript: string[]) => {
   return transcript.join("\n\n");
 };
 
+// Helper function to trigger download
+const downloadTranscript = (
+  content: string,
+  format: string,
+  videoId: string,
+) => {
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `transcript-${videoId}.${format.toLowerCase()}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
