@@ -91,6 +91,16 @@ Time: ${new Date().toISOString()}
   return stl;
 };
 
+const convertToSUB = (transcript: string[]) => {
+  return transcript
+    .map((text, index) => {
+      const startTime = Math.floor(index * 5 * 1000); // Convert to milliseconds
+      const endTime = Math.floor((index + 1) * 5 * 1000);
+      return `{${startTime}}{${endTime}}${text}`;
+    })
+    .join("\n");
+};
+
 // Helper function to trigger download
 const downloadTranscript = (
   content: string,
