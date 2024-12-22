@@ -27,6 +27,8 @@ export async function action({ request }: ActionFunctionArgs) {
       retrieve_player: false,
     });
 
+    //* get video info by video id
+    const info = await youtube.getInfo(videoId);
     return json({
       success: true,
       transcript: formattedTranscript,
