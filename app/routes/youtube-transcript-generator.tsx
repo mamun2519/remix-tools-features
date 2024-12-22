@@ -201,6 +201,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return json({
       success: true,
       transcript: transcript,
+      videoId: videoId,
     });
   } catch (error) {
     return json({
