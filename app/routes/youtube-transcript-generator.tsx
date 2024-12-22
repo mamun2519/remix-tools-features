@@ -196,7 +196,7 @@ export async function action({ request }: ActionFunctionArgs) {
         (segment) => segment.snippet.text,
       );
 
-    console.log("data", transcriptData);
+    console.log("data", transcriptData?.transcript?.content?.body);
 
     return json({
       success: true,
