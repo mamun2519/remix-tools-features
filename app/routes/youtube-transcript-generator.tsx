@@ -1,5 +1,6 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, json, useActionData, useNavigation } from "@remix-run/react";
+import { Innertube } from "youtubei.js";
 
 interface TranscriptItem {
   text: string;
@@ -27,8 +28,6 @@ const convertToSRT = (transcript: string[]) => {
     })
     .join("");
 };
-
-import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
