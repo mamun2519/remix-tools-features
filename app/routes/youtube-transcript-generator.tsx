@@ -32,8 +32,8 @@ export async function action({ request }: ActionFunctionArgs) {
 
     //* get video transcript
     const transcriptData = await info.getTranscript();
-    //*
-    const mappedData =
+    // transcript data
+    const transcript =
       transcriptData.transcript.content.body.initial_segments.map(
         (segment) => segment.snippet.text,
       );
