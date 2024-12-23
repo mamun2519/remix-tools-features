@@ -22,26 +22,6 @@ const CaseConverter = () => {
             </button>
           </div>
         </div>
-
-        {actionData?.error && (
-          <div className="mt-4 text-center text-red-600">
-            {actionData.error}
-          </div>
-        )}
-
-        {actionData?.transcript && (
-          <>
-            <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
-              {actionData?.transcript?.map((line, index) => {
-                return (
-                  <div key={index} className={index !== 0 && "mt-4"}>
-                    <span className="text-gray-90">{line}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </>
-        )}
       </div>
     </div>
   );
