@@ -26,12 +26,29 @@ const CaseConverter = () => {
               className="h-80 w-96 rounded border px-4 outline-slate-300"
             />
 
-            <button
-              type="submit"
-              className="h-14 border bg-red-400 px-4 font-bold text-white"
-            >
-              convert
-            </button>
+            <div>
+              {[
+                "sentence-case",
+                "capitalized-case",
+                "title-case",
+                "lower-case",
+                "upper-case",
+                "snake-case",
+                "dot-case",
+                "hyphen-case",
+                "remove-extra-spaces",
+                "remove-all-spaces",
+                "remove-enter",
+              ].map((type) => (
+                <button
+                  key={type}
+                  // onClick={() => handleConversion(type)}
+                  style={{ margin: "5px" }}
+                >
+                  {type.replace(/-/g, " ")}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
