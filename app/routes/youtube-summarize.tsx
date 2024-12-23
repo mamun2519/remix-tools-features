@@ -31,7 +31,8 @@ export async function action({ request }: ActionFunctionArgs) {
         (segment) => segment.snippet.text,
       );
 
-    const cleanedTranscript = transcriptArray
+    //* convert string
+    const cleanedTranscript = transcript
       ?.filter((text) => typeof text === "string")
       ?.join(" ");
 
