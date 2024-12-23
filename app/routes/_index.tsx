@@ -1,12 +1,13 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useNavigate } from "@remix-run/react";
 import { useState } from "react";
+import { youtubeToolsList } from "~/utils";
 
 export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
 export default function Index() {
   const navigate = useNavigate();
-  const [youtubeItems, setYoutubeItems] = useState();
+  const [youtubeItems, setYoutubeItems] = useState(youtubeToolsList || []);
   const [tools, setTools] = useState([]);
 
   return (
