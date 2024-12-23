@@ -48,7 +48,7 @@ const Base64EncodedDecodedConverter = () => {
               <textarea
                 id="inputText"
                 name="inputText"
-                rows="4"
+                rows={4}
                 className="w-full rounded border p-2"
                 defaultValue=""
               />
