@@ -42,7 +42,9 @@ const Base64EncodedDecodedConverter = () => {
     <>
       <>
         <div className="mx-auto mt-20 max-w-4xl border p-6">
-          <h1 className="mb-4 text-2xl font-bold">Base64 Encoder/Decoder</h1>
+          <h1 className="mb-4 text-2xl font-bold">
+            Base64 Encoder/Decoder Tools
+          </h1>
           <form method="post" className="space-y-4">
             <div>
               <label htmlFor="input" className="mb-1 block font-medium">
