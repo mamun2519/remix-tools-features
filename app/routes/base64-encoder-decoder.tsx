@@ -5,10 +5,10 @@ import { json, MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Summarize" },
+    { title: "Base64 encoded & decoded" },
     {
       name: "description",
-      content: "Youtube summarize tools",
+      content: "Base64 encoded & decoded tools",
     },
   ];
 };
