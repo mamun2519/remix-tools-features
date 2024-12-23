@@ -67,6 +67,14 @@ const CaseConverter = () => {
   const convertHyphenCase = () => {
     return text.toLowerCase().replace(/\s+/g, "-");
   };
+
+  const convertRemoveExtraSpaces = () => {
+    return text.replace(/\s+/g, " ").trim();
+  };
+
+  const removeExtraSpaces = () => {
+    return text.replace(/\s+/g, "");
+  };
   const handleConversion = (conversionType: string) => {
     setText("");
     switch (conversionType) {
@@ -95,10 +103,10 @@ const CaseConverter = () => {
         setText(convertHyphenCase());
         break;
       case "remove-extra-spaces":
-        setText(text.replace(/\s+/g, " ").trim());
+        setText(convertRemoveExtraSpaces());
         break;
       case "remove-all-spaces":
-        setText(text.replace(/\s+/g, ""));
+        setText(removeExtraSpaces());
         break;
       case "remove-enter":
         setText(text.replace(/\n+/g, ""));
