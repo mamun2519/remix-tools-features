@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useActionData } from "@remix-run/react";
 import { decodeFromBase64, encodeToBase64 } from "./base64";
 
@@ -49,7 +50,7 @@ const Base64EncodedDecodedConverter = () => {
                 id="inputText"
                 name="inputText"
                 rows={4}
-                className="w-full rounded border p-2"
+                className="w-full rounded border p-2 outline-slate-100"
                 defaultValue=""
               />
             </div>
