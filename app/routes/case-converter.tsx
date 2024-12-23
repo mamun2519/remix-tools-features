@@ -1,3 +1,15 @@
+import { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Case-Converter" },
+    {
+      name: "description",
+      content: "Case-Converter tools",
+    },
+  ];
+};
+
 const CaseConverter = () => {
   return (
     <div className="p-10">
