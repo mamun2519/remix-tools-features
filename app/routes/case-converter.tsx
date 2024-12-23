@@ -9,10 +9,11 @@ const CaseConverter = () => {
 
         <div className="mt-2">
           <div>
-            <input
-              type="text"
+            <textarea
+              rows={10}
+              cols={50}
               name="videoURL"
-              placeholder="Enter Youtube Video URL"
+              placeholder="Enter your text here..."
               className="h-14 w-96 rounded border px-4 outline-slate-300"
             />
 
