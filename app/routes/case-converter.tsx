@@ -63,6 +63,10 @@ const CaseConverter = () => {
   const convertDotCase = () => {
     return text.toLowerCase().replace(/\s+/g, ".");
   };
+
+  const convertHyphenCase = () => {
+    return text.toLowerCase().replace(/\s+/g, "-");
+  };
   const handleConversion = (conversionType: string) => {
     setText("");
     switch (conversionType) {
@@ -85,10 +89,10 @@ const CaseConverter = () => {
         setText(convertSnakeCase());
         break;
       case "dot-case":
-        setText(text.toLowerCase().replace(/\s+/g, "."));
+        setText(convertDotCase());
         break;
       case "hyphen-case":
-        setText(text.toLowerCase().replace(/\s+/g, "-"));
+        setText(convertHyphenCase());
         break;
       case "remove-extra-spaces":
         setText(text.replace(/\s+/g, " ").trim());
