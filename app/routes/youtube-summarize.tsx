@@ -1,4 +1,4 @@
-import { ActionFunctionArgs, json } from "@remix-run/node";
+import { ActionFunctionArgs, json, MetaFunction } from "@remix-run/node";
 import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -49,6 +49,16 @@ const extractVideoId = (url: string) => {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
   const match = url.match(regex);
   return match ? match[1] : null;
+};
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "YouTube Transcript Generator" },
+    {
+      name: "description",
+      content: "Generate youtube transcript generator",
+    },
+  ];
 };
 
 const YoutubeSummarize = () => {
