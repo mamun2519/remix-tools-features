@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const youtube-summrize = () => {
-      return (
-            <div>
-                  
-            </div>
-      );
+const YoutubeSummrize = () => {
+  return <div></div>;
 };
 
-export default youtube-summrize;
+export default youtube - summrize;
