@@ -22,12 +22,12 @@ const CaseConverter = () => {
     "snake-case",
     "dot-case",
     "hyphen-case",
-    //     "remove-extra-spaces",
-    //     "remove-all-spaces",
-    //     "remove-enter",
+    "remove-extra-spaces",
+    "remove-all-spaces",
+    "remove-enter",
     "clear",
-    "rAndOM caSE",
-    "iNVERSE cASE",
+    "random-case",
+    "inverse-case",
   ]);
 
   const convertSentenceCase = () => {
@@ -110,6 +110,29 @@ const CaseConverter = () => {
         break;
       case "remove-enter":
         setText(removeExtraSpaces());
+        break;
+
+      case "random-case":
+        setText(
+          text
+            .split("")
+            .map((char) =>
+              Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase(),
+            )
+            .join(""),
+        );
+        break;
+      case "inverse-case":
+        setText(
+          text
+            .split("")
+            .map((char) =>
+              char === char.toUpperCase()
+                ? char.toLowerCase()
+                : char.toUpperCase(),
+            )
+            .join(""),
+        );
         break;
       case "clear":
         setText("");
