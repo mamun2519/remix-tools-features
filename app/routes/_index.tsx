@@ -58,7 +58,7 @@ export default function Index() {
       docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Transcript-Generator-163380f1a04580fc8a48da7d50b14b86?pvs=4",
     },
   ]);
-  const [tools, setTools];
+  const [tools, setTools] = useState([]);
 
   return (
     <main className="p-10">
