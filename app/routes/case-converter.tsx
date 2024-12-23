@@ -19,11 +19,11 @@ const CaseConverter = () => {
         <div className="mt-2">
           <div>
             <textarea
-              rows={10}
-              cols={50}
+              //   rows={10}
+              //   cols={150}
               name="videoURL"
               placeholder="Enter your text here..."
-              className="h-14 w-96 rounded border px-4 outline-slate-300"
+              className="h-80 w-96 rounded border px-4 outline-slate-300"
             />
 
             <button
