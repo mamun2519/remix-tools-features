@@ -1,4 +1,4 @@
-import { ActionFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, json } from "@remix-run/node";
 import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
