@@ -24,7 +24,7 @@ export const action = async ({ request }) => {
     if (operation === "encode") {
       output = encodeToBase64(inputText, charset);
     } else {
-      output = decodeFromBase64(input, charset);
+      output = decodeFromBase64(inputText, charset);
     }
     return json({ success: true, output });
   } catch (error) {
