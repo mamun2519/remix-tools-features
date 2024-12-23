@@ -30,17 +30,17 @@ const CaseConverter = () => {
     "inverse-case",
   ]);
 
-  const convertSentenceCase = () => {
+  const convertSentenceCase = (text: string) => {
     return text
       .toLowerCase()
       .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase());
   };
 
-  const convertCapitalizedCase = () => {
+  const convertCapitalizedCase = (text: string) => {
     return text.replace(/\b\w/g, (c) => c.toUpperCase());
   };
 
-  const convertTitleCase = () => {
+  const convertTitleCase = (text: string) => {
     return text
       .toLowerCase()
       .replace(
@@ -49,34 +49,34 @@ const CaseConverter = () => {
       );
   };
 
-  const convertTowerCase = () => {
+  const convertTowerCase = (text: string) => {
     return text.toLowerCase();
   };
-  const convertUpperCase = () => {
+  const convertUpperCase = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, "_");
   };
 
-  const convertSnakeCase = () => {
+  const convertSnakeCase = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, "_");
   };
 
-  const convertDotCase = () => {
+  const convertDotCase = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, ".");
   };
 
-  const convertHyphenCase = () => {
+  const convertHyphenCase = (text: string) => {
     return text.toLowerCase().replace(/\s+/g, "-");
   };
 
-  const convertRemoveExtraSpaces = () => {
+  const convertRemoveExtraSpaces = (text: string) => {
     return text.replace(/\s+/g, " ").trim();
   };
 
-  const removeExtraSpaces = () => {
+  const removeExtraSpaces = (text: string) => {
     return text.replace(/\s+/g, "");
   };
 
-  const addRandomCase = () => {
+  const addRandomCase = (text: string) => {
     return text
       .split("")
       .map((char) =>
@@ -85,7 +85,7 @@ const CaseConverter = () => {
       .join("");
   };
 
-  const inverseCase = () => {
+  const inverseCase = (text: string) => {
     return text
       .split("")
       .map((char) =>
@@ -97,44 +97,44 @@ const CaseConverter = () => {
     setText("");
     switch (conversionType) {
       case "sentence-case":
-        setText(convertSentenceCase());
+        setText(convertSentenceCase(text));
         break;
       case "capitalized-case":
-        setText(convertCapitalizedCase());
+        setText(convertCapitalizedCase(text));
         break;
       case "title-case":
-        setText(convertTitleCase());
+        setText(convertTitleCase(text));
         break;
       case "lower-case":
-        setText(convertTowerCase());
+        setText(convertTowerCase(text));
         break;
       case "upper-case":
-        setText(convertUpperCase());
+        setText(convertUpperCase(text));
         break;
       case "snake-case":
-        setText(convertSnakeCase());
+        setText(convertSnakeCase(text));
         break;
       case "dot-case":
-        setText(convertDotCase());
+        setText(convertDotCase(text));
         break;
       case "hyphen-case":
-        setText(convertHyphenCase());
+        setText(convertHyphenCase(text));
         break;
       case "remove-extra-spaces":
-        setText(convertRemoveExtraSpaces());
+        setText(convertRemoveExtraSpaces(text));
         break;
       case "remove-all-spaces":
-        setText(removeExtraSpaces());
+        setText(removeExtraSpaces(text));
         break;
       case "remove-enter":
-        setText(removeExtraSpaces());
+        setText(removeExtraSpaces(text));
         break;
 
       case "random-case":
-        setText(addRandomCase());
+        setText(addRandomCase(text));
         break;
       case "inverse-case":
-        setText(inverseCase());
+        setText(inverseCase(text));
         break;
       case "clear":
         setText("");
