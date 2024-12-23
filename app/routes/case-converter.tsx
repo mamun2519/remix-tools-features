@@ -25,7 +25,59 @@ const CaseConverter = () => {
     "remove-extra-spaces",
     "remove-all-spaces",
     "remove-enter",
+    "clear",
   ]);
+
+  const handleConversion = (conversionType: string) => {
+    switch (conversionType) {
+      case "sentence-case":
+        setText(
+          text
+            .toLowerCase()
+            .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase()),
+        );
+        break;
+      case "capitalized-case":
+        setText(text.replace(/\b\w/g, (c) => c.toUpperCase()));
+        break;
+      case "title-case":
+        setText(
+          text
+            .toLowerCase()
+            .replace(
+              /\b(?!and|or|but|nor|for|so|yet|a|an|the|in|on|at|by|to|of|off|up|down)\w+/g,
+              (c) => c.charAt(0).toUpperCase() + c.slice(1),
+            ),
+        );
+        break;
+      case "lower-case":
+        setText(text.toLowerCase());
+        break;
+      case "upper-case":
+        setText(text.toUpperCase());
+        break;
+      case "snake-case":
+        setText(text.toLowerCase().replace(/\s+/g, "_"));
+        break;
+      case "dot-case":
+        setText(text.toLowerCase().replace(/\s+/g, "."));
+        break;
+      case "hyphen-case":
+        setText(text.toLowerCase().replace(/\s+/g, "-"));
+        break;
+      case "remove-extra-spaces":
+        setText(text.replace(/\s+/g, " ").trim());
+        break;
+      case "remove-all-spaces":
+        setText(text.replace(/\s+/g, ""));
+        break;
+      case "remove-enter":
+        setText(text.replace(/\n+/g, ""));
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="p-10">
@@ -35,6 +87,7 @@ const CaseConverter = () => {
         <div className="mt-2">
           <div>
             <textarea
+              value={text}
               onChange={(e) => setText(e.target.value)}
               name="videoURL"
               placeholder="Enter your text here..."
@@ -45,7 +98,7 @@ const CaseConverter = () => {
               {converterOptions.map((type) => (
                 <button
                   key={type}
-                  // onClick={() => handleConversion(type)}
+                  onClick={() => handleConversion(type)}
                   className="rounded bg-red-500 p-2 text-white"
                   style={{ margin: "5px" }}
                 >
