@@ -8,7 +8,7 @@ const CaseConverter = () => {
         <h3>Text Converter</h3>
 
         <div className="mt-2">
-          <Form method="post">
+          <div>
             <input
               type="text"
               name="videoURL"
@@ -22,7 +22,7 @@ const CaseConverter = () => {
             >
               {isGenerating ? "Summarizing..." : "Summarize"}
             </button>
-          </Form>
+          </div>
         </div>
 
         {actionData?.error && (
