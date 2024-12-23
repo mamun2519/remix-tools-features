@@ -35,6 +35,10 @@ const CaseConverter = () => {
       .toLowerCase()
       .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase());
   };
+
+  const convertCapitalizedCase = () => {
+    return text.replace(/\b\w/g, (c) => c.toUpperCase());
+  };
   const handleConversion = (conversionType: string) => {
     setText("");
     switch (conversionType) {
