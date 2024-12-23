@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => {
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
-  const inputText = formData.get("input") || "";
+  const inputText = formData.get("inputText") || "";
   const charset = formData.get("charset") || "utf-8";
   const operation = formData.get("operation") || "encode";
 
@@ -44,8 +44,8 @@ const Base64EncodedDecodedConverter = () => {
             Input Text
           </label>
           <textarea
-            id="input"
-            name="input"
+            id="inputText"
+            name="inputText"
             rows="4"
             className="w-full rounded border p-2"
             defaultValue=""
