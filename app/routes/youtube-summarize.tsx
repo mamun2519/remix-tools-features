@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json, MetaFunction } from "@remix-run/node";
-import { Form, json, useActionData, useNavigation } from "@remix-run/react";
+import { Form, useActionData, useNavigation } from "@remix-run/react";
 import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -69,7 +69,7 @@ const YoutubeSummarize = () => {
   return (
     <div className="p-10">
       <div className="mt-10 h-full rounded border p-6">
-        <h3>YouTube Transcript Generate</h3>
+        <h3>YouTube Summarize</h3>
 
         <div className="mt-2">
           <Form method="post">
