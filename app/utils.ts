@@ -56,3 +56,12 @@ export const youtubeToolsList = [
     docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Summarize-165380f1a04580af98a7e50177c379ac?pvs=4",
   },
 ];
+
+export const otherTools = [
+  {
+    id: 10,
+    name: "YouTube Summarize",
+    link: "youtube-summarize",
+    docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Summarize-165380f1a04580af98a7e50177c379ac?pvs=4",
+  },
+];
