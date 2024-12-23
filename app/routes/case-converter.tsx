@@ -1,4 +1,5 @@
 import { MetaFunction } from "@remix-run/node";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,6 +12,20 @@ export const meta: MetaFunction = () => {
 };
 
 const CaseConverter = () => {
+  const [text, setText] = useState("");
+  const [converterOptions, setConverterOptions] = useState([
+    "sentence-case",
+    "capitalized-case",
+    "title-case",
+    "lower-case",
+    "upper-case",
+    "snake-case",
+    "dot-case",
+    "hyphen-case",
+    "remove-extra-spaces",
+    "remove-all-spaces",
+    "remove-enter",
+  ]);
   return (
     <div className="p-10">
       <div className="mt-10 h-full rounded border p-6">
@@ -23,7 +38,7 @@ const CaseConverter = () => {
               //   cols={150}
               name="videoURL"
               placeholder="Enter your text here..."
-              className="h-72 w-full rounded border px-4 outline-slate-300"
+              className="h-72 w-full rounded border p-4 outline-slate-300"
             />
 
             <div>
