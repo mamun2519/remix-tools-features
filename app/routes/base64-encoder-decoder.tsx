@@ -4,8 +4,7 @@ import { useState } from "react";
 
 const Base64EncodedDecodedConverter = () => {
   const actionData = useActionData();
-  //   const [input, setInput] = useState("");
-  //   const [output, setOutput] = useState("");
+
   return (
     <div className="mx-auto max-w-4xl p-6">
       <h1 className="mb-4 text-2xl font-bold">Base64 Encoder/Decoder</h1>
