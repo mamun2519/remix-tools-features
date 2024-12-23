@@ -109,7 +109,7 @@ const CaseConverter = () => {
         setText(removeExtraSpaces());
         break;
       case "remove-enter":
-        setText(text.replace(/\n+/g, ""));
+        setText(removeExtraSpaces());
         break;
       case "clear":
         setText("");
