@@ -1,6 +1,6 @@
 import React from "react";
 
-const YoutubeSummrize = () => {
+const YoutubeSummarize = () => {
   return <div></div>;
 };
 
