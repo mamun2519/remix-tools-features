@@ -230,10 +230,10 @@ const extractVideoId = (url: string) => {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "YouTube Summarize" },
+    { title: "YouTube Transcript Generator" },
     {
       name: "description",
-      content: "Youtube summarize tools",
+      content: "Generate youtube transcript generator",
     },
   ];
 };
