@@ -22,13 +22,21 @@ const CaseConverter = () => {
     "snake-case",
     "dot-case",
     "hyphen-case",
-    "remove-extra-spaces",
-    "remove-all-spaces",
-    "remove-enter",
+    //     "remove-extra-spaces",
+    //     "remove-all-spaces",
+    //     "remove-enter",
     "clear",
+    "rAndOM caSE",
+    "iNVERSE cASE",
   ]);
 
+  const convertSentenceCase = () => {
+    return text
+      .toLowerCase()
+      .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase());
+  };
   const handleConversion = (conversionType: string) => {
+    setText("");
     switch (conversionType) {
       case "sentence-case":
         setText(
@@ -73,6 +81,9 @@ const CaseConverter = () => {
         break;
       case "remove-enter":
         setText(text.replace(/\n+/g, ""));
+        break;
+      case "clear":
+        setText("");
         break;
       default:
         break;
