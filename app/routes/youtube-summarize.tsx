@@ -1,7 +1,5 @@
-import React from "react";
-
 const YoutubeSummarize = () => {
-  return <div></div>;
+  return <div>This is youtube summarize tools</div>;
 };
 
 export default YoutubeSummarize;
