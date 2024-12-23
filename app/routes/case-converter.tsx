@@ -39,37 +39,50 @@ const CaseConverter = () => {
   const convertCapitalizedCase = () => {
     return text.replace(/\b\w/g, (c) => c.toUpperCase());
   };
+
+  const convertTitleCase = () => {
+    return text
+      .toLowerCase()
+      .replace(
+        /\b(?!and|or|but|nor|for|so|yet|a|an|the|in|on|at|by|to|of|off|up|down)\w+/g,
+        (c) => c.charAt(0).toUpperCase() + c.slice(1),
+      );
+  };
+
+  const convertTowerCase = () => {
+    return text.toLowerCase();
+  };
+  const convertUpperCase = () => {
+    return text.toLowerCase().replace(/\s+/g, "_");
+  };
+
+  const convertSnakeCase = () => {
+    return text.toLowerCase().replace(/\s+/g, "_");
+  };
+
+  const convertDotCase = () => {
+    return text.toLowerCase().replace(/\s+/g, ".");
+  };
   const handleConversion = (conversionType: string) => {
     setText("");
     switch (conversionType) {
       case "sentence-case":
-        setText(
-          text
-            .toLowerCase()
-            .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase()),
-        );
+        setText(convertSentenceCase());
         break;
       case "capitalized-case":
-        setText(text.replace(/\b\w/g, (c) => c.toUpperCase()));
+        setText(convertCapitalizedCase());
         break;
       case "title-case":
-        setText(
-          text
-            .toLowerCase()
-            .replace(
-              /\b(?!and|or|but|nor|for|so|yet|a|an|the|in|on|at|by|to|of|off|up|down)\w+/g,
-              (c) => c.charAt(0).toUpperCase() + c.slice(1),
-            ),
-        );
+        setText(convertTitleCase());
         break;
       case "lower-case":
-        setText(text.toLowerCase());
+        setText(convertTowerCase());
         break;
       case "upper-case":
-        setText(text.toUpperCase());
+        setText(convertUpperCase());
         break;
       case "snake-case":
-        setText(text.toLowerCase().replace(/\s+/g, "_"));
+        setText(convertSnakeCase());
         break;
       case "dot-case":
         setText(text.toLowerCase().replace(/\s+/g, "."));
