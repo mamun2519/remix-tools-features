@@ -1,4 +1,5 @@
 import { useActionData } from "@remix-run/react";
+import { decodeFromBase64, encodeToBase64 } from "./base64";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
