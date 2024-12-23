@@ -23,6 +23,7 @@ export const action = async ({ request }) => {
   try {
     let output;
     if (operation === "encode") {
+      //* convert text to base64
       output = encodeToBase64(inputText, charset);
     } else {
       output = decodeFromBase64(inputText, charset);
