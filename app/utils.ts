@@ -62,6 +62,6 @@ export const otherTools = [
     id: 1,
     name: "Case Converter",
     link: "case-converter",
-    docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Summarize-165380f1a04580af98a7e50177c379ac?pvs=4",
+    docs: "https://kiwi-parrotfish-5f9.notion.site/Case-converter-165380f1a0458080a0e6fd81c51c8d90?pvs=4",
   },
 ];
