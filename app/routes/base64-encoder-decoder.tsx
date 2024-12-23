@@ -1,7 +1,17 @@
 import { useActionData } from "@remix-run/react";
 import { decodeFromBase64, encodeToBase64 } from "./base64";
 
-import { json } from "@remix-run/node";
+import { json, MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "YouTube Summarize" },
+    {
+      name: "description",
+      content: "Youtube summarize tools",
+    },
+  ];
+};
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
