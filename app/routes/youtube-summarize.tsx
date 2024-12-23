@@ -31,6 +31,8 @@ export async function action({ request }: ActionFunctionArgs) {
         (segment) => segment.snippet.text,
       );
 
+    console.log("transcript", transcript);
+
     return json({
       success: true,
       transcript: transcript,
