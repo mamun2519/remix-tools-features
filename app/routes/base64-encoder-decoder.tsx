@@ -15,14 +15,14 @@ export const meta: MetaFunction = () => {
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
-  const input = formData.get("input") || "";
+  const inputText = formData.get("input") || "";
   const charset = formData.get("charset") || "utf-8";
   const operation = formData.get("operation") || "encode";
 
   try {
     let output;
     if (operation === "encode") {
-      output = encodeToBase64(input, charset);
+      output = encodeToBase64(inputText, charset);
     } else {
       output = decodeFromBase64(input, charset);
     }
