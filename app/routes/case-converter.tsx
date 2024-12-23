@@ -23,7 +23,7 @@ const CaseConverter = () => {
               //   cols={150}
               name="videoURL"
               placeholder="Enter your text here..."
-              className="h-80 w-96 rounded border px-4 outline-slate-300"
+              className="h-72 w-full rounded border px-4 outline-slate-300"
             />
 
             <div>
