@@ -10,6 +10,8 @@ export function decodeFromBase64(input: string, charset = "utf-8") {
 }
 
 const Base64EncodedDecodedConverter = () => {
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   return <div>Hello world</div>;
 };
 
