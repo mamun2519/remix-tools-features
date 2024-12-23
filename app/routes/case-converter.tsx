@@ -75,6 +75,24 @@ const CaseConverter = () => {
   const removeExtraSpaces = () => {
     return text.replace(/\s+/g, "");
   };
+
+  const addRandomCase = () => {
+    return text
+      .split("")
+      .map((char) =>
+        Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase(),
+      )
+      .join("");
+  };
+
+  const inverseCase = () => {
+    return text
+      .split("")
+      .map((char) =>
+        char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase(),
+      )
+      .join("");
+  };
   const handleConversion = (conversionType: string) => {
     setText("");
     switch (conversionType) {
@@ -113,26 +131,10 @@ const CaseConverter = () => {
         break;
 
       case "random-case":
-        setText(
-          text
-            .split("")
-            .map((char) =>
-              Math.random() > 0.5 ? char.toUpperCase() : char.toLowerCase(),
-            )
-            .join(""),
-        );
+        setText(addRandomCase());
         break;
       case "inverse-case":
-        setText(
-          text
-            .split("")
-            .map((char) =>
-              char === char.toUpperCase()
-                ? char.toLowerCase()
-                : char.toUpperCase(),
-            )
-            .join(""),
-        );
+        setText(inverseCase());
         break;
       case "clear":
         setText("");
