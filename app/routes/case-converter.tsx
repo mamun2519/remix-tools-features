@@ -26,6 +26,7 @@ const CaseConverter = () => {
     "remove-all-spaces",
     "remove-enter",
   ]);
+
   return (
     <div className="p-10">
       <div className="mt-10 h-full rounded border p-6">
@@ -34,30 +35,18 @@ const CaseConverter = () => {
         <div className="mt-2">
           <div>
             <textarea
-              //   rows={10}
-              //   cols={150}
+              onChange={(e) => setText(e.target.value)}
               name="videoURL"
               placeholder="Enter your text here..."
               className="h-72 w-full rounded border p-4 outline-slate-300"
             />
 
             <div>
-              {[
-                "sentence-case",
-                "capitalized-case",
-                "title-case",
-                "lower-case",
-                "upper-case",
-                "snake-case",
-                "dot-case",
-                "hyphen-case",
-                "remove-extra-spaces",
-                "remove-all-spaces",
-                "remove-enter",
-              ].map((type) => (
+              {converterOptions.map((type) => (
                 <button
                   key={type}
                   // onClick={() => handleConversion(type)}
+                  className="rounded bg-red-500 p-2 text-white"
                   style={{ margin: "5px" }}
                 >
                   {type.replace(/-/g, " ")}
