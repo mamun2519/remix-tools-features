@@ -67,7 +67,7 @@ export const otherTools = [
   {
     id: 2,
     name: "base64 encoder & decoder",
-    link: "case-converter",
-    docs: "https://kiwi-parrotfish-5f9.notion.site/Case-converter-165380f1a0458080a0e6fd81c51c8d90?pvs=4",
+    link: "base64-encoder-decoder",
+    docs: "https://kiwi-parrotfish-5f9.notion.site/base64-encoder-decoder-165380f1a045809caa2fe1e338ef4af9",
   },
 ];
