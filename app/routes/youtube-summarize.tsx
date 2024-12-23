@@ -36,7 +36,7 @@ export async function action({ request }: ActionFunctionArgs) {
       ?.filter((text) => typeof text === "string")
       ?.join(" ");
 
-    console.log("Cleaned Transcript:", cleanedTranscript);
+    // console.log("Cleaned Transcript:", cleanedTranscript);
 
     return json({
       success: true,
