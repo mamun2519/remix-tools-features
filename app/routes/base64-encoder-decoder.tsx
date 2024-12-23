@@ -75,6 +75,7 @@ const Base64EncodedDecodedConverter = () => {
                   <input
                     type="radio"
                     name="operation"
+                    className="bg-red-500"
                     value="encode"
                     defaultChecked
                   />
