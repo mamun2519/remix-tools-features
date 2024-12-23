@@ -4,4 +4,4 @@ const YoutubeSummrize = () => {
   return <div></div>;
 };
 
-export default youtube - summrize;
+export default YoutubeSummarize;
