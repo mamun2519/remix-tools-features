@@ -36,8 +36,8 @@ const Base64EncodedDecodedConverter = () => {
   const actionData = useActionData();
 
   return (
-    <div className="p-10">
-      <div className="mt-10 h-full rounded border p-6">
+    <>
+      <>
         <div className="mx-auto max-w-4xl border p-6">
           <h1 className="mb-4 text-2xl font-bold">Base64 Encoder/Decoder</h1>
           <form method="post" className="space-y-4">
@@ -109,8 +109,8 @@ const Base64EncodedDecodedConverter = () => {
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </>
+    </>
   );
 };
 
