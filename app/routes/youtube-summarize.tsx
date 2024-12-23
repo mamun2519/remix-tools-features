@@ -1,3 +1,6 @@
+import { ActionFunctionArgs } from "@remix-run/node";
+import { Innertube } from "youtubei.js";
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const videoUrl = formData.get("videoURL") as string;
