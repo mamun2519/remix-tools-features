@@ -62,6 +62,9 @@ export const meta: MetaFunction = () => {
 };
 
 const YoutubeSummarize = () => {
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isGenerating = navigation.state === "submitting";
   return (
     <div className="p-10">
       <div className="mt-10 h-full rounded border p-6">
