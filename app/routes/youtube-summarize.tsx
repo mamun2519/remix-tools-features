@@ -41,6 +41,13 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
+//* extract video id using regex
+const extractVideoId = (url: string) => {
+  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+};
+
 const YoutubeSummarize = () => {
   return <div>This is youtube summarize tools</div>;
 };
