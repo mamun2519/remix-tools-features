@@ -1,6 +1,23 @@
 import { useActionData } from "@remix-run/react";
-import iconv from "iconv-lite";
-import { useState } from "react";
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const input = formData.get("input") || "";
+  const charset = formData.get("charset") || "utf-8";
+  const operation = formData.get("operation") || "encode";
+
+  try {
+    let output;
+    if (operation === "encode") {
+      output = encodeToBase64(input, charset);
+    } else {
+      output = decodeFromBase64(input, charset);
+    }
+    return json({ success: true, output });
+  } catch (error) {
+    return json({ success: false, error: "Invalid input or character set." });
+  }
+};
 
 const Base64EncodedDecodedConverter = () => {
   const actionData = useActionData();
