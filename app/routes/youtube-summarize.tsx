@@ -84,7 +84,7 @@ const YoutubeSummarize = () => {
               type="submit"
               className="h-14 border bg-red-400 px-4 font-bold text-white"
             >
-              {isGenerating ? "Generating..." : "Generate Transcript"}
+              {isGenerating ? "Generating..." : "Summarize"}
             </button>
           </Form>
         </div>
