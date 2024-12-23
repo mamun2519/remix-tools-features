@@ -59,9 +59,9 @@ export default function Index() {
     },
     {
       id: 10,
-      name: "YouTube Transcript Generator",
-      link: "youtube-transcript-generator",
-      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Transcript-Generator-163380f1a04580fc8a48da7d50b14b86?pvs=4",
+      name: "YouTube Summarize",
+      link: "youtube-summarize",
+      docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Summarize-165380f1a04580af98a7e50177c379ac?pvs=4",
     },
   ]);
   const [tools, setTools] = useState([]);
