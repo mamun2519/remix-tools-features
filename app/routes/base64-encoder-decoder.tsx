@@ -26,6 +26,7 @@ export const action = async ({ request }) => {
       //* convert text to base64
       output = encodeToBase64(inputText, charset);
     } else {
+      //* convert text from base 64
       output = decodeFromBase64(inputText, charset);
     }
     return json({ success: true, output });
