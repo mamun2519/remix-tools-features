@@ -8,6 +8,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const inputText = formData.get("inputText") || "";
   const charset = formData.get("charset") || "utf-8";
   const operation = formData.get("operation") || "encode";
+
+  return null;
 };
 
 export const meta: MetaFunction = () => {
