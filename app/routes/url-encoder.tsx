@@ -18,8 +18,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       result = urlDecoded(inputText);
     }
 
-    console.log("result", result);
-
     return json({ success: true, result });
   } catch (error) {
     console.log(error);
