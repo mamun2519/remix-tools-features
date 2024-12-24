@@ -8,4 +8,5 @@ export const urlEncoded = (text: any, charset = "utf-8" as any) => {
 export const urlDecoded = (text: any, charset = "utf-8" as any) => {
   const buffer = Buffer.from(text, "base64");
   const result = buffer.toString(charset);
+  return result;
 };
