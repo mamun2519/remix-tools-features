@@ -4,3 +4,5 @@ export const urlEncoded = (text: any, charset = "utf-8" as any) => {
   const result = buffer.toString("base64");
   return result;
 };
+
+export const urlDecoded = (text: any, charset = "utf-8" as any) => {};
