@@ -63,7 +63,10 @@ const UrlEncodedTools = () => {
           </div>
         </div>
 
-        <button type="submit"></button>
+        <button
+          type="submit"
+          className="rounded bg-red-500 px-4 py-2 text-white"
+        ></button>
       </Form>
     </div>
   );
