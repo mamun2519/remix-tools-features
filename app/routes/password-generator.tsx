@@ -1,16 +1,6 @@
-import { MetaFunction } from "@remix-run/node";
-import { useState } from "react";
-import { generatePassword } from "~/utils/passwordGenerator";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Password Generator" },
-    {
-      name: "description",
-      content: "password generator tools",
-    },
-  ];
-};
+// routes/password-generator.tsx
+import { useState, useEffect } from "react";
+// import { generatePassword } from "~/utils/passwordGenerator";
 
 interface Options {
   useNumbers: boolean;
@@ -20,7 +10,8 @@ interface Options {
   allowDuplicates: boolean;
   allowSequential: boolean;
 }
-const PasswordGeneratorTools = () => {
+
+export default function PasswordGenerator() {
   const [length, setLength] = useState<number>(12);
   const [options, setOptions] = useState<Options>({
     useNumbers: true,
@@ -30,16 +21,16 @@ const PasswordGeneratorTools = () => {
     allowDuplicates: true,
     allowSequential: true,
   });
-
   const [passwords, setPasswords] = useState<string[]>([]);
+
+  // Generate passwords whenever length or options change
+  useEffect(() => {
+    const generated = generatePassword({ length, ...options });
+    setPasswords(generated);
+  }, [length, options]);
 
   const handleOptionChange = (key: keyof Options) => {
     setOptions((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
-
-  const handleGenerate = () => {
-    const generated = generatePassword({ length, ...options });
-    setPasswords(generated);
   };
 
   return (
@@ -52,7 +43,9 @@ const PasswordGeneratorTools = () => {
           <input
             type="number"
             value={length}
-            onChange={(e) => setLength(Number(e.target.value))}
+            onChange={(e) =>
+              setLength(Math.max(4, Math.min(128, Number(e.target.value))))
+            }
             className="mt-1 w-full rounded-md border px-3 py-2 focus:ring focus:ring-blue-200"
             min={4}
             max={128}
@@ -79,13 +72,6 @@ const PasswordGeneratorTools = () => {
             </label>
           ))}
         </div>
-
-        <button
-          onClick={handleGenerate}
-          className="w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
-        >
-          Generate Passwords
-        </button>
       </div>
 
       {passwords.length > 0 && (
@@ -105,6 +91,4 @@ const PasswordGeneratorTools = () => {
       )}
     </div>
   );
-};
-
-export default PasswordGeneratorTools;
+}

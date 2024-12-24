@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// utils/passwordGenerator.ts
 interface PasswordOptions {
   length: number;
   useNumbers: boolean;
@@ -9,9 +9,7 @@ interface PasswordOptions {
   allowSequential: boolean;
 }
 
-export const generatePassword = (
-  options: PasswordOptions,
-): string[] | string => {
+export function generatePassword(options: PasswordOptions): string[] {
   const {
     length,
     useNumbers,
@@ -33,9 +31,9 @@ export const generatePassword = (
   if (useLowercase) charSet += lowercase;
   if (useSymbols) charSet += symbols;
 
-  if (!charSet) return "Please select at least one option.";
+  if (!charSet) return ["Please select at least one option."];
 
-  const generate = () => {
+  const generate = (): string => {
     let password = "";
     for (let i = 0; i < length; i++) {
       const char = charSet[Math.floor(Math.random() * charSet.length)];
@@ -56,4 +54,4 @@ export const generatePassword = (
   return Array(4)
     .fill(null)
     .map(() => generate());
-};
+}
