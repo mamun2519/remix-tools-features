@@ -48,7 +48,7 @@ const UrlEncodedTools = () => {
 
         <div>
           <label className="mb-1 block font-medium">Operation</label>
-          <div>
+          <div className="space-x-4">
             <label htmlFor="">
               <input type="text" />
             </label>
