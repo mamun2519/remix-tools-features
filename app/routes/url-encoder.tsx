@@ -11,6 +11,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   console.log("inputText", inputText);
   console.log("charset", charset);
+  console.log("operation", operation);
 
   return null;
 };
