@@ -7,6 +7,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputText = formData.get("inputText") || "";
   const charset = formData.get("charset") || "utf-8";
+  const operation = formData.get("operation") || "encode";
 };
 
 export const meta: MetaFunction = () => {
