@@ -73,7 +73,7 @@ export const otherTools = [
   {
     id: 3,
     name: "Password Generator",
-    link: "url-encoder",
+    link: "password-generator",
     docs: "https://kiwi-parrotfish-5f9.notion.site/15-URL-encoded-166380f1a04580d9a7c3c5af804553c1?pvs=4",
   },
 ];
