@@ -6,6 +6,7 @@ import { Form, useActionData } from "@remix-run/react";
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const inputText = formData.get("inputText") || "";
+  const charset = formData.get("charset") || "utf-8";
 };
 
 export const meta: MetaFunction = () => {
