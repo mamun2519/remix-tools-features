@@ -31,7 +31,6 @@ export default function PasswordGenerator() {
   });
   const [passwords, setPasswords] = useState<string[]>([]);
 
-  // Generate passwords whenever length or options change
   useEffect(() => {
     const generated = generatePassword({ length, ...options });
     setPasswords(generated);
