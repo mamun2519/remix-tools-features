@@ -21,6 +21,13 @@ const UrlEncodedTools = () => {
           <label htmlFor="input" className="mb-1 block font-medium">
             Input text
           </label>
+          <textarea
+            id="inputText"
+            name="inputText"
+            rows={4}
+            className="w-full rounded border p-2 outline-slate-100"
+            defaultValue=""
+          ></textarea>
         </div>
       </Form>
     </div>
