@@ -56,6 +56,7 @@ const UrlEncodedTools = () => {
                 value="encode"
                 defaultChecked
               />
+              <span className="ml-2">Encode</span>
             </label>
           </div>
         </div>
