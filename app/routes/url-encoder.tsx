@@ -41,6 +41,7 @@ const UrlEncodedTools = () => {
             defaultValue="utf-8"
           >
             <option value="utf-8">UTF-8 (Default)</option>
+            <option value="ascii">ASCII</option>
           </select>
         </div>
       </Form>
