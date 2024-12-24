@@ -17,9 +17,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   try {
     let result;
     if (operation == "encode") {
-      result = urlEncoded(inputText, charset);
+      result = urlEncoded(inputText);
     } else {
-      result = urlDecoded(inputText, charset);
+      result = urlDecoded(inputText);
     }
 
     console.log("result", result);
