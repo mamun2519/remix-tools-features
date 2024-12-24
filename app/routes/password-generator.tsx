@@ -33,7 +33,7 @@ const PasswordGeneratorTools = () => {
 
   const [passwords, setPasswords] = useState<string[]>([]);
 
-  const handleOptionChange = (key) => {
+  const handleOptionChange = (key: keyof Options) => {
     setOptions((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
