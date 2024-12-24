@@ -45,6 +45,10 @@ const UrlEncodedTools = () => {
             <option value="utf-16">UTF-16</option>
           </select>
         </div>
+
+        <div>
+          <label htmlFor=""></label>
+        </div>
       </Form>
     </div>
   );
