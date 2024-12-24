@@ -73,7 +73,7 @@ const UrlEncodedTools = () => {
         </button>
 
         {actionData?.success && <SuccessResult actionData={actionData} />}
-        {actionData?.error && <ErrorResult />}
+        {actionData?.error && <ErrorResult actionData={actionData} />}
       </Form>
     </div>
   );
