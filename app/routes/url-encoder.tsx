@@ -10,6 +10,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const operation = formData.get("operation") || "encode";
 
   console.log("inputText", inputText);
+  console.log("charset", charset);
 
   return null;
 };
