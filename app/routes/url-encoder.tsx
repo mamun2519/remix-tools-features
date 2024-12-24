@@ -40,7 +40,7 @@ const UrlEncodedTools = () => {
             className="w-full rounded border p-2"
             defaultValue="utf-8"
           >
-            <option value=""></option>
+            <option value="utf-8">UTF-8 (Default)</option>
           </select>
         </div>
       </Form>
