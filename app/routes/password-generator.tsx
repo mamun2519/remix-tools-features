@@ -1,4 +1,5 @@
 import { MetaFunction } from "@remix-run/node";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,6 +20,7 @@ const PasswordGeneratorTools = () => {
     allowDuplicates: true,
     allowSequential: true,
   });
+  const [passwords, setPasswords] = useState([]);
   return <div>Hello password generator tools</div>;
 };
 
