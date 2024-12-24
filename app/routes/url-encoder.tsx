@@ -95,7 +95,7 @@ const UrlEncodedTools = () => {
 export const SuccessResult = ({ actionData }: any) => {
   return (
     <>
-      (
+      (<h2 className="mb-2 text-xl font-bold">Output</h2>
       <textarea
         value={actionData?.output}
         readOnly
