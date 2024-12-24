@@ -93,3 +93,5 @@ export default function PasswordGenerator() {
     </div>
   );
 }
+
+export const SuccessResult = ({ passwords }: string[]) => {};
