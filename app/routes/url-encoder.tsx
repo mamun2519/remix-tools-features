@@ -31,7 +31,9 @@ const UrlEncodedTools = () => {
         </div>
 
         <div>
-          <label htmlFor="charset" className="mb-1 block font-medium"></label>
+          <label htmlFor="charset" className="mb-1 block font-medium">
+            Character Set
+          </label>
         </div>
       </Form>
     </div>
