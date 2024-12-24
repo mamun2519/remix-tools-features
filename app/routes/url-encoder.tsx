@@ -29,6 +29,10 @@ const UrlEncodedTools = () => {
             defaultValue=""
           ></textarea>
         </div>
+
+        <div>
+          <label htmlFor="charset" className="mb-1 block font-medium"></label>
+        </div>
       </Form>
     </div>
   );
