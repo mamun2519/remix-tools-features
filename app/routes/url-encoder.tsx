@@ -13,7 +13,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   console.log("charset", charset);
   console.log("operation", operation);
 
-  return null;
+  try {
+    let output;
+
+    return null;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const meta: MetaFunction = () => {
