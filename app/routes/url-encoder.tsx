@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => {
 const UrlEncodedTools = () => {
   return (
     <div className="mx-auto mt-20 max-w-4xl border p-6">
-      <h1 className="mb-4 text-2xl font-bold">Base64 Encoder/Decoder Tools</h1>
+      <h1 className="mb-4 text-2xl font-bold">Base64 Url encoded Tools</h1>
     </div>
   );
 };
