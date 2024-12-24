@@ -3,10 +3,10 @@ import { useState } from "react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Url encoded" },
+    { title: "Password Generator" },
     {
       name: "description",
-      content: "url encoded tools",
+      content: "password generator tools",
     },
   ];
 };
