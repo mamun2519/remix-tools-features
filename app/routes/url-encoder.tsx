@@ -25,7 +25,6 @@ const UrlEncodedTools = () => {
               rows={4}
               className="w-full rounded border p-2 outline-slate-100"
               defaultValue=""
-              id=""
             ></textarea>
           </label>
         </div>
