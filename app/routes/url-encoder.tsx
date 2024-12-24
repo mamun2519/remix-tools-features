@@ -34,6 +34,12 @@ const UrlEncodedTools = () => {
           <label htmlFor="charset" className="mb-1 block font-medium">
             Character Set
           </label>
+          <select
+            id="charset"
+            name="charset"
+            className="w-full rounded border p-2"
+            defaultValue="utf-8"
+          ></select>
         </div>
       </Form>
     </div>
