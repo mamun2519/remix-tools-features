@@ -24,6 +24,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ success: true, result });
   } catch (error) {
     console.log(error);
+    return json({ success: false, error: "Invalid input or character set." });
   }
 };
 
