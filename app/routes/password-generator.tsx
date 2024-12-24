@@ -1,5 +1,6 @@
 // routes/password-generator.tsx
 import { useState, useEffect } from "react";
+import { generatePassword } from "~/utils/passwordGenerator";
 // import { generatePassword } from "~/utils/passwordGenerator";
 
 interface Options {
