@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
+import { urlEncoded } from "~/utils/urlEncoded";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
@@ -14,9 +15,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   console.log("operation", operation);
 
   try {
-    let output;
-
-    return null;
+    let result;
+    if (operation == "encode") {
+      result = urlEncoded(inputText, operation);
+    }
   } catch (error) {
     console.log(error);
   }
