@@ -62,6 +62,8 @@ const UrlEncodedTools = () => {
             <span className="ml-2">Decode</span>
           </div>
         </div>
+
+        <button type="submit"></button>
       </Form>
     </div>
   );
