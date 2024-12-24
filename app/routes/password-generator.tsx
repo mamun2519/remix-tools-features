@@ -75,23 +75,22 @@ export default function PasswordGenerator() {
         </div>
       </div>
 
-      {passwords.length > 0 && (
-        <div className="mt-6 w-full max-w-md">
-          <h2 className="mb-2 text-lg font-bold">Generated Passwords</h2>
-          <ul className="rounded-md bg-white p-4 shadow-md">
-            {passwords.map((pwd, idx) => (
-              <li
-                key={idx}
-                className="border-b py-2 text-gray-800 last:border-b-0"
-              >
-                {pwd}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {passwords.length > 0 && <SuccessResult passwords={passwords} />}
     </div>
   );
 }
 
-export const SuccessResult = ({ passwords }: string[]) => {};
+export const SuccessResult = ({ passwords }: string[]) => {
+  return (
+    <div className="mt-6 w-full max-w-md">
+      <h2 className="mb-2 text-lg font-bold">Generated Passwords</h2>
+      <ul className="rounded-md bg-white p-4 shadow-md">
+        {passwords.map((pwd, idx) => (
+          <li key={idx} className="border-b py-2 text-gray-800 last:border-b-0">
+            {pwd}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
