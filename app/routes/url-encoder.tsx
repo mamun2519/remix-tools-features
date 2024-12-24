@@ -74,6 +74,7 @@ const UrlEncodedTools = () => {
         {actionData && (
           <div className="mt-6">
             <h2 className="mb-2 text-xl font-bold">Output</h2>
+            {actionData.success ? <textarea name="" id=""></textarea> : null}
           </div>
         )}
       </Form>
