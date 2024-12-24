@@ -31,7 +31,7 @@ const PasswordGeneratorTools = () => {
     allowSequential: true,
   });
 
-  const [passwords, setPasswords] = useState([]);
+  const [passwords, setPasswords] = useState<string[]>([]);
 
   const handleOptionChange = (key) => {
     setOptions((prev) => ({ ...prev, [key]: !prev[key] }));
