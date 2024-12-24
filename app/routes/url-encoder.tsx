@@ -72,7 +72,7 @@ const UrlEncodedTools = () => {
           Convert
         </button>
 
-        {actionData.success && <SuccessResult />}
+        {actionData?.success && <SuccessResult actionData={actionData} />}
       </Form>
     </div>
   );
