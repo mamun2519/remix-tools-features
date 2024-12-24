@@ -91,4 +91,19 @@ const UrlEncodedTools = () => {
   );
 };
 
+const SuccessResult = () => {
+  return (
+    <>
+      (
+      <textarea
+        value={actionData?.output}
+        readOnly
+        rows={4}
+        className="w-full rounded border bg-gray-100 p-2"
+      ></textarea>
+      ) : (<p className="text-red-500">{actionData.error}</p>)
+    </>
+  );
+};
+
 export default UrlEncodedTools;
