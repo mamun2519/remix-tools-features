@@ -11,7 +11,11 @@ export const meta: MetaFunction = () => {
 };
 
 const UrlEncodedTools = () => {
-  return <div>This is url encoded tools</div>;
+  return (
+    <div className="mx-auto mt-20 max-w-4xl border p-6">
+      This is url encoded tools
+    </div>
+  );
 };
 
 export default UrlEncodedTools;
