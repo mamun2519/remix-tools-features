@@ -107,4 +107,8 @@ export const SuccessResult = ({ actionData }: any) => {
   );
 };
 
+export const ErrorResult = ({ actionData }: any) => {
+  return <p className="text-red-500">{actionData.error}</p>;
+};
+
 export default UrlEncodedTools;
