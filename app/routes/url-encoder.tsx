@@ -50,7 +50,12 @@ const UrlEncodedTools = () => {
           <label className="mb-1 block font-medium">Operation</label>
           <div className="space-x-4">
             <label htmlFor="">
-              <input type="text" />
+              <input
+                type="radio"
+                name="operation"
+                value="encode"
+                defaultChecked
+              />
             </label>
           </div>
         </div>
