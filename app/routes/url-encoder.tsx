@@ -91,7 +91,7 @@ const UrlEncodedTools = () => {
   );
 };
 
-const SuccessResult = () => {
+export const SuccessResult = ({ actionData }: any) => {
   return (
     <>
       (
