@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { MetaFunction } from "@remix-run/node";
+import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
+
+export const action = ({ request }: ActionFunctionArgs) => {};
 
 export const meta: MetaFunction = () => {
   return [
