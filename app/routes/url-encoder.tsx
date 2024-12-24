@@ -1,7 +1,5 @@
-import React from "react";
-
 const UrlEncodedTools = () => {
-  return <div></div>;
+  return <div>This is url encoded tools</div>;
 };
 
 export default UrlEncodedTools;
