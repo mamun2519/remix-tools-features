@@ -21,6 +21,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     } else {
       result = urlDecoded(inputText, charset);
     }
+
     return json({ success: true, result });
   } catch (error) {
     console.log(error);
@@ -109,7 +110,7 @@ export const SuccessResult = ({ actionData }: any) => {
     <div className="mt-6">
       <h2 className="mb-2 text-xl font-bold">Output</h2>
       <textarea
-        value={actionData?.output}
+        value={actionData?.result}
         readOnly
         rows={4}
         className="w-full rounded border bg-gray-100 p-2"
