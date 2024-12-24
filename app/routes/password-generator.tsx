@@ -11,7 +11,14 @@ interface Options {
   allowDuplicates: boolean;
   allowSequential: boolean;
 }
-
+const SelectOptions = [
+  { label: "Numbers", key: "useNumbers" },
+  { label: "Uppercase Letters", key: "useUppercase" },
+  { label: "Lowercase Letters", key: "useLowercase" },
+  { label: "Symbols", key: "useSymbols" },
+  { label: "Allow Duplicate Characters", key: "allowDuplicates" },
+  { label: "Allow Sequential Characters", key: "allowSequential" },
+];
 export default function PasswordGenerator() {
   const [length, setLength] = useState<number>(12);
   const [options, setOptions] = useState<Options>({
@@ -54,14 +61,7 @@ export default function PasswordGenerator() {
         </label>
 
         <div className="mb-4">
-          {[
-            { label: "Numbers", key: "useNumbers" },
-            { label: "Uppercase Letters", key: "useUppercase" },
-            { label: "Lowercase Letters", key: "useLowercase" },
-            { label: "Symbols", key: "useSymbols" },
-            { label: "Allow Duplicate Characters", key: "allowDuplicates" },
-            { label: "Allow Sequential Characters", key: "allowSequential" },
-          ].map(({ label, key }) => (
+          {SelectOptions.map(({ label, key }) => (
             <label key={key} className="block text-gray-700">
               <input
                 type="checkbox"
