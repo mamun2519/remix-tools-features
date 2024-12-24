@@ -95,14 +95,13 @@ const UrlEncodedTools = () => {
 export const SuccessResult = ({ actionData }: any) => {
   return (
     <div className="mt-6">
-      (<h2 className="mb-2 text-xl font-bold">Output</h2>
+      <h2 className="mb-2 text-xl font-bold">Output</h2>
       <textarea
         value={actionData?.output}
         readOnly
         rows={4}
         className="w-full rounded border bg-gray-100 p-2"
       ></textarea>
-      ) : (<p className="text-red-500">{actionData.error}</p>)
     </div>
   );
 };
