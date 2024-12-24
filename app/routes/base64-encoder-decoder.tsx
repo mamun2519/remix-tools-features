@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useActionData } from "@remix-run/react";
-import { decodeFromBase64, encodeToBase64 } from "./base64";
+import { decodeFromBase64, encodeToBase64 } from "../utils/base64";
 
 import { json, MetaFunction } from "@remix-run/node";
 
