@@ -3,8 +3,9 @@
 import { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 
-export const action = ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
+  const inputText = formData.get("inputText") || "";
 };
 
 export const meta: MetaFunction = () => {
