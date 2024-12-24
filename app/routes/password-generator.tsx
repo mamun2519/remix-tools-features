@@ -21,6 +21,9 @@ const PasswordGeneratorTools = () => {
     allowSequential: true,
   });
   const [passwords, setPasswords] = useState([]);
+
+  // utils/passwordGenerator.js
+
   return <div>Hello password generator tools</div>;
 };
 
