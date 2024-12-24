@@ -17,7 +17,7 @@ const UrlEncodedTools = () => {
       <h1 className="mb-4 text-2xl font-bold">Base64 Url encoded Tools</h1>
       <Form action="post" className="space-y-4">
         <div>
-          <label htmlFor=""></label>
+          <label htmlFor="input" className="mb-1 block font-medium"></label>
         </div>
       </Form>
     </div>
