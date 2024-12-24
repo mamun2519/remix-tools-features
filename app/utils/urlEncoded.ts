@@ -1,1 +1,1 @@
-export const urlEncoded = () => {};
+export const urlEncoded = (text: string, charset: string) => {};
