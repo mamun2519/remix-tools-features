@@ -1,5 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function generatePassword(options: any) {
+interface PasswordOptions {
+  length: number;
+  useNumbers: boolean;
+  useUppercase: boolean;
+  useLowercase: boolean;
+  useSymbols: boolean;
+  allowDuplicates: boolean;
+  allowSequential: boolean;
+}
+
+export const generatePassword = (options: PasswordOptions) => {
   const {
     length,
     useNumbers,
@@ -44,4 +54,4 @@ export function generatePassword(options: any) {
   return Array(4)
     .fill(null)
     .map(() => generate());
-}
+};

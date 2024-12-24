@@ -1,5 +1,6 @@
 import { MetaFunction } from "@remix-run/node";
 import { useState } from "react";
+import { generatePassword } from "~/utils/passwordGenerator";
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,7 +23,14 @@ const PasswordGeneratorTools = () => {
   });
   const [passwords, setPasswords] = useState([]);
 
-  // utils/passwordGenerator.js
+  const handleOptionChange = (key) => {
+    setOptions((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleGenerate = () => {
+    const generated = generatePassword({ length, ...options });
+    setPasswords(generated);
+  };
 
   return <div>Hello password generator tools</div>;
 };
