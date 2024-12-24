@@ -76,12 +76,14 @@ const UrlEncodedTools = () => {
             <h2 className="mb-2 text-xl font-bold">Output</h2>
             {actionData.success ? (
               <textarea
-                value={actionData.output}
+                value={actionData?.output}
                 readOnly
                 rows="4"
                 className="w-full rounded border bg-gray-100 p-2"
               ></textarea>
-            ) : null}
+            ) : (
+              <p className="text-red-500">{actionData.error}</p>
+            )}
           </div>
         )}
       </Form>
