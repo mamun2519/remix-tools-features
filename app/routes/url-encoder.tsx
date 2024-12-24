@@ -21,6 +21,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     } else {
       result = urlDecoded(inputText, charset);
     }
+    return json({ success: true, result });
   } catch (error) {
     console.log(error);
   }
