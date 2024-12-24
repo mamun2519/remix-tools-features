@@ -11,6 +11,15 @@ export const meta: MetaFunction = () => {
     },
   ];
 };
+
+interface Options {
+  useNumbers: boolean;
+  useUppercase: boolean;
+  useLowercase: boolean;
+  useSymbols: boolean;
+  allowDuplicates: boolean;
+  allowSequential: boolean;
+}
 const PasswordGeneratorTools = () => {
   const [length, setLength] = useState(12);
   const [options, setOptions] = useState({

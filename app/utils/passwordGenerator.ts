@@ -9,7 +9,7 @@ interface PasswordOptions {
   allowSequential: boolean;
 }
 
-export const generatePassword = (options: PasswordOptions) => {
+export const generatePassword = (options: PasswordOptions): string[] => {
   const {
     length,
     useNumbers,
