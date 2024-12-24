@@ -21,8 +21,8 @@ interface Options {
   allowSequential: boolean;
 }
 const PasswordGeneratorTools = () => {
-  const [length, setLength] = useState(12);
-  const [options, setOptions] = useState({
+  const [length, setLength] = useState<number>(12);
+  const [options, setOptions] = useState<Options>({
     useNumbers: true,
     useUppercase: true,
     useLowercase: true,
@@ -30,6 +30,7 @@ const PasswordGeneratorTools = () => {
     allowDuplicates: true,
     allowSequential: true,
   });
+
   const [passwords, setPasswords] = useState([]);
 
   const handleOptionChange = (key) => {
