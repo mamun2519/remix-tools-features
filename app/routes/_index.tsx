@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { useNavigate } from "@remix-run/react";
 import { useState } from "react";
-import { otherTools, youtubeToolsList } from "~/utils";
+import { otherTools, youtubeToolsList } from "~/utils/utils";
 
 export const meta: MetaFunction = () => [{ title: "Remix Notes" }];
 
