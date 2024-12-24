@@ -72,7 +72,7 @@ export const otherTools = [
   },
   {
     id: 3,
-    name: "base64 encoder & decoder",
+    name: "Url Encoded",
     link: "base64-encoder-decoder",
     docs: "https://kiwi-parrotfish-5f9.notion.site/base64-encoder-decoder-165380f1a045809caa2fe1e338ef4af9",
   },
