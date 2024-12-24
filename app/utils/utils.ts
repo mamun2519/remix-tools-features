@@ -74,10 +74,10 @@ export const otherTools = [
     id: 3,
     name: "Url encoder & decoder",
     link: "url-encoder",
-    docs: "https://kiwi-parrotfish-5f9.notion.site/base64-encoder-decoder-165380f1a045809caa2fe1e338ef4af9",
+    docs: "https://kiwi-parrotfish-5f9.notion.site/15-URL-encoded-166380f1a04580d9a7c3c5af804553c1?pvs=4",
   },
   {
-    id: 3,
+    id: 4,
     name: "Password Generator",
     link: "password-generator",
     docs: "https://kiwi-parrotfish-5f9.notion.site/16-Password-generator-166380f1a045808b9976d964f132517c?pvs=4",
