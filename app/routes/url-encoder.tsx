@@ -73,7 +73,7 @@ const UrlEncodedTools = () => {
 
         {actionData && (
           <div>
-            <h2></h2>
+            <h2 className="mb-2 text-xl font-bold">Output</h2>
           </div>
         )}
       </Form>
