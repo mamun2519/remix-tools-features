@@ -58,7 +58,8 @@ const UrlEncodedTools = () => {
               />
               <span className="ml-2">Encode</span>
             </label>
-            <label></label>
+            <input type="radio" name="operation" value="decode" />
+            <span className="ml-2">Decode</span>
           </div>
         </div>
       </Form>
