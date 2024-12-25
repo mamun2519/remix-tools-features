@@ -161,11 +161,6 @@ const YoutubeSummarize = () => {
               <h3>Outlines</h3>
               <pre>{actionData.outlines}</pre>
             </section>
-
-            <section>
-              <h3>Mindmap</h3>
-              <pre>{actionData.mindmap}</pre>
-            </section>
           </div>
         )}
       </div>
