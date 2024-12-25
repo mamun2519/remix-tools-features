@@ -67,11 +67,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return json({
       success: true,
       videoId,
-      summary,
-      outlines,
-      mindmap,
-      keywords,
-      highlights,
+      ...results,
     });
   } catch (error) {
     return json({
