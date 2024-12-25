@@ -78,17 +78,19 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-const parseOpenAIResponse = (content: string) => {
+const parseOpenAIResponse = (content: string) {
   const sections = ["Summary", "Outlines", "Mindmap", "Keywords", "Highlights"];
   const results: Record<string, string> = {};
 
   sections.forEach((section, index) => {
     const regex = new RegExp(
-      `${section}:\\n([\\s\\S]*?)\\n(?:${sections[index + 1]}:|$)`,
+      `${section}:\\n([\\s\\S]*?)(?=\\n\\*\\*|\\n${sections[index + 1]}:|$)`,
+      "i",
     );
     const match = content.match(regex);
     results[section.toLowerCase()] = match?.[1]?.trim() || "Not available.";
   });
+
   return {
     summary: results.summary,
     outlines: results.outlines,
@@ -96,7 +98,7 @@ const parseOpenAIResponse = (content: string) => {
     keywords: results.keywords,
     highlights: results.highlights,
   };
-};
+}
 
 //* extract video id using regex
 const extractVideoId = (url: string) => {
