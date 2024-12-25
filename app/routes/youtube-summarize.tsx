@@ -63,7 +63,7 @@ export async function action({ request }: ActionFunctionArgs) {
     console.log("content", content);
 
     const [summary, outlines, mindmap, keywords, highlights] =
-      parseOpenAIResponse(content);
+      parseOpenAIResponse(content as string);
 
     return json({
       success: true,
