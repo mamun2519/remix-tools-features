@@ -144,18 +144,34 @@ const YoutubeSummarize = () => {
           <p style={{ color: "red" }}>{actionData.error}</p>
         )}
 
-        {actionData?.transcript && (
-          <>
-            <div className="text-md mt-10 max-h-[400px] overflow-y-auto rounded-md border p-4 text-justify">
-              {actionData?.transcript?.map((line, index) => {
-                return (
-                  <div key={index} className={index !== 0 && "mt-4"}>
-                    <span className="text-gray-90">{line}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </>
+        {actionData?.success && (
+          <div>
+            <h2>Results:</h2>
+            <section>
+              <h3>Summary</h3>
+              <p>{actionData.summary}</p>
+            </section>
+
+            <section>
+              <h3>Outlines</h3>
+              <pre>{actionData.outlines}</pre>
+            </section>
+
+            <section>
+              <h3>Mindmap</h3>
+              <pre>{actionData.mindmap}</pre>
+            </section>
+
+            <section>
+              <h3>Keywords</h3>
+              <p>{actionData.keywords}</p>
+            </section>
+
+            <section>
+              <h3>Highlights</h3>
+              <p>{actionData.highlights}</p>
+            </section>
+          </div>
         )}
       </div>
     </div>
