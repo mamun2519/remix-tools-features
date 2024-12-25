@@ -157,15 +157,6 @@ const YoutubeSummarize = () => {
                   {actionData.summary}
                 </p>
               </section>
-
-              <section>
-                <h3 className="text-lg font-semibold text-gray-700">
-                  Outlines
-                </h3>
-                <pre className="whitespace-pre-wrap rounded-lg bg-gray-100 p-4">
-                  {actionData.outlines}
-                </pre>
-              </section>
             </div>
           </div>
         )}
