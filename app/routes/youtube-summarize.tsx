@@ -37,7 +37,7 @@ export async function action({ request }: ActionFunctionArgs) {
       ?.filter((text) => typeof text === "string")
       ?.join(" ");
 
-    console.log("Cleaned Transcript:", cleanedTranscript);
+    // console.log("Cleaned Transcript:", cleanedTranscript);
 
     const prompt =
       "You are a helpful assistant. Provide a summary, outlines, mindmap, keywords, and highlights for the given transcript.";
