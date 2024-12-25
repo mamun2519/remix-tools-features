@@ -65,7 +65,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const [summary, outlines, mindmap, keywords, highlights] =
       parseOpenAIResponse(content as string);
 
-    console.log("mindmap", mindmap);
+    // console.log("mindmap", mindmap);
 
     return json({
       success: true,
