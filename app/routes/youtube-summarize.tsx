@@ -46,7 +46,21 @@ export async function action({ request }: ActionFunctionArgs) {
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const response = await openAi.chat.completions.create({});
+    const response = await openAi.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        {
+          role: "system",
+          content: prompt,
+        },
+        { role: "user", content: cleanedTranscript as string },
+      ],
+    });
+
+    console.log("response", response);
+
+    const content = response.choices[0].message?.content;
+    console.log("content", content);
 
     return json({
       success: true,
