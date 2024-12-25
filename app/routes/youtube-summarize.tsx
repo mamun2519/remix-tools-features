@@ -93,6 +93,13 @@ const parseOpenAIResponse = (content: string) => {
     const match = content.match(regex);
     results[section.toLowerCase()] = match?.[1]?.trim() || "Not available.";
   });
+  return {
+    summary: results.summary,
+    outlines: results.outlines,
+    mindmap: results.mindmap,
+    keywords: results.keywords,
+    highlights: results.highlights,
+  };
 };
 
 //* extract video id using regex
