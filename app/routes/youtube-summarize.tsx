@@ -63,6 +63,7 @@ export async function action({ request }: ActionFunctionArgs) {
       success: true,
       videoId,
       ...results,
+      transcript: cleanedTranscript,
     });
   } catch (error) {
     return json({
