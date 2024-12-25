@@ -78,7 +78,7 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-const parseOpenAIResponse = (content: string) {
+const parseOpenAIResponse = (content: string) => {
   const sections = ["Summary", "Outlines", "Mindmap", "Keywords", "Highlights"];
   const results: Record<string, string> = {};
 
@@ -98,7 +98,7 @@ const parseOpenAIResponse = (content: string) {
     keywords: results.keywords,
     highlights: results.highlights,
   };
-}
+};
 
 //* extract video id using regex
 const extractVideoId = (url: string) => {
