@@ -76,7 +76,7 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-function parseOpenAIResponse(content: string) {
+const parseOpenAIResponse = (content: string) => {
   const summary = content.match(/Summary:\n([\s\S]*?)\nOutlines:/)?.[1]?.trim();
   const outlines = content
     .match(/Outlines:\n([\s\S]*?)\nMindmap:/)?.[1]
@@ -88,7 +88,7 @@ function parseOpenAIResponse(content: string) {
   const highlights = content.match(/Highlights:\n([\s\S]*)/)?.[1]?.trim();
 
   return [summary, outlines, mindmap, keywords, highlights];
-}
+};
 
 //* extract video id using regex
 const extractVideoId = (url: string) => {
