@@ -140,11 +140,8 @@ const YoutubeSummarize = () => {
             </button>
           </Form>
         </div>
-
         {actionData?.error && (
-          <div className="mt-4 text-center text-red-600">
-            {actionData.error}
-          </div>
+          <p style={{ color: "red" }}>{actionData.error}</p>
         )}
 
         {actionData?.transcript && (
