@@ -62,6 +62,9 @@ export async function action({ request }: ActionFunctionArgs) {
     const content = response.choices[0].message?.content;
     console.log("content", content);
 
+    const [summary, outlines, mindmap, keywords, highlights] =
+      parseOpenAIResponse(content);
+
     return json({
       success: true,
       transcript: transcript,
