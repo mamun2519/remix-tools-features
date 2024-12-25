@@ -57,8 +57,6 @@ export async function action({ request }: ActionFunctionArgs) {
       ],
     });
 
-    console.log("response", response);
-
     const content = response.choices[0].message?.content;
     console.log("content", content);
 
