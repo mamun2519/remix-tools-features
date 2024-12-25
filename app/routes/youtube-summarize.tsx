@@ -76,6 +76,20 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
+function parseOpenAIResponse(content: string) {
+  const summary = content.match(/Summary:\n([\s\S]*?)\nOutlines:/)?.[1]?.trim();
+  const outlines = content
+    .match(/Outlines:\n([\s\S]*?)\nMindmap:/)?.[1]
+    ?.trim();
+  const mindmap = content.match(/Mindmap:\n([\s\S]*?)\nKeywords:/)?.[1]?.trim();
+  const keywords = content
+    .match(/Keywords:\n([\s\S]*?)\nHighlights:/)?.[1]
+    ?.trim();
+  const highlights = content.match(/Highlights:\n([\s\S]*)/)?.[1]?.trim();
+
+  return [summary, outlines, mindmap, keywords, highlights];
+}
+
 //* extract video id using regex
 const extractVideoId = (url: string) => {
   const regex = /(?:v=|\/)([0-9A-Za-z_-]{11})/;
