@@ -46,6 +46,8 @@ export async function action({ request }: ActionFunctionArgs) {
       apiKey: process.env.OPENAI_API_KEY,
     });
 
+    const response = await openAi.chat.completions.create({});
+
     return json({
       success: true,
       transcript: transcript,
