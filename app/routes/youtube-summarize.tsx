@@ -172,4 +172,10 @@ const Section = ({ title, content }: { title: string; content: string }) => {
   );
 };
 
+const ErrorResult = () =>{
+  return   (
+    <p style={{ color: "red" }}>{actionData.error}</p>
+  )}
+}
+
 export default YoutubeSummarize;
