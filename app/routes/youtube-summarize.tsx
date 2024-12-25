@@ -146,6 +146,19 @@ const YoutubeSummarize = () => {
         {actionData?.error && (
           <p style={{ color: "red" }}>{actionData.error}</p>
         )}
+
+        {actionData?.success && (
+          <div className="mt-6">
+            <h2 className="mb-4 text-xl font-bold text-gray-800">Results:</h2>
+            <div className="space-y-6">
+              <Section title="Summary" content={actionData.summary} />
+              <Section title="Outlines" content={actionData.outlines} />
+              <Section title="Mindmap" content={actionData.mindmap} />
+              <Section title="Keywords" content={actionData.keywords} />
+              <Section title="Highlights" content={actionData.highlights} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
