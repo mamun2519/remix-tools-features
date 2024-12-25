@@ -163,5 +163,17 @@ const YoutubeSummarize = () => {
     </div>
   );
 };
+function Section({ title, content }: { title: string; content: string }) {
+  return (
+    <section>
+      <h3 className="text-lg font-semibold text-gray-700">{title}</h3>
+      <div className="whitespace-pre-wrap rounded-lg bg-gray-100 p-4">
+        {content !== "Not available."
+          ? content
+          : "This section is not available."}
+      </div>
+    </section>
+  );
+}
 
 export default YoutubeSummarize;
