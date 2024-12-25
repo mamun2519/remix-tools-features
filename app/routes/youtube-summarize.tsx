@@ -152,10 +152,6 @@ const YoutubeSummarize = () => {
         {actionData?.success && (
           <div>
             <h2>Results:</h2>
-            <section>
-              <h3>Summary</h3>
-              <p>{actionData.summary}</p>
-            </section>
           </div>
         )}
       </div>
