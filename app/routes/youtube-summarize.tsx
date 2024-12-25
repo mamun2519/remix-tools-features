@@ -163,7 +163,7 @@ const YoutubeSummarize = () => {
     </div>
   );
 };
-const Section({ title, content }: { title: string; content: string }) => {
+const Section = ({ title, content }: { title: string; content: string }) => {
   return (
     <section>
       <h3 className="text-lg font-semibold text-gray-700">{title}</h3>
@@ -174,6 +174,6 @@ const Section({ title, content }: { title: string; content: string }) => {
       </div>
     </section>
   );
-}
+};
 
 export default YoutubeSummarize;
