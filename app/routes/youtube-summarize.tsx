@@ -139,9 +139,7 @@ const YoutubeSummarize = () => {
             </button>
           </Form>
         </div>
-        {actionData?.error && (
-          <p style={{ color: "red" }}>{actionData.error}</p>
-        )}
+        {actionData?.error && <ErrorResult actionData={actionData} />}
 
         {actionData?.success && (
           <div className="mt-6">
