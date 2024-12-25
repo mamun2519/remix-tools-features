@@ -150,14 +150,7 @@ const YoutubeSummarize = () => {
         {actionData?.success && (
           <div className="mt-6">
             <h2 className="mb-4 text-xl font-bold text-gray-800">Results:</h2>
-            <div className="space-y-6">
-              <section>
-                <h3 className="text-lg font-semibold text-gray-700">Summary</h3>
-                <p className="rounded-lg bg-gray-100 p-4">
-                  {actionData.summary}
-                </p>
-              </section>
-            </div>
+            <div className="space-y-6"></div>
           </div>
         )}
       </div>
