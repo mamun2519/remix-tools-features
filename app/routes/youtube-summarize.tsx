@@ -38,6 +38,10 @@ export async function action({ request }: ActionFunctionArgs) {
       ?.join(" ");
 
     console.log("Cleaned Transcript:", cleanedTranscript);
+
+    const prompt =
+      "You are a helpful assistant. Provide a summary, outlines, mindmap, keywords, and highlights for the given transcript.";
+
     const openAi = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
