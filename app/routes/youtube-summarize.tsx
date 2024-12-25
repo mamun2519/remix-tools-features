@@ -1,5 +1,6 @@
 import { ActionFunctionArgs, json, MetaFunction } from "@remix-run/node";
 import { Form, useActionData, useNavigation } from "@remix-run/react";
+import OpenAI from "openai";
 import { Innertube } from "youtubei.js";
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -36,7 +37,10 @@ export async function action({ request }: ActionFunctionArgs) {
       ?.filter((text) => typeof text === "string")
       ?.join(" ");
 
-    // console.log("Cleaned Transcript:", cleanedTranscript);
+    console.log("Cleaned Transcript:", cleanedTranscript);
+    const openAi = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
     return json({
       success: true,
