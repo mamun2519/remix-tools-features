@@ -148,6 +148,54 @@ const YoutubeSummarize = () => {
         {actionData?.error && (
           <p style={{ color: "red" }}>{actionData.error}</p>
         )}
+
+        {actionData?.success && (
+          <div className="mt-6">
+            <h2 className="mb-4 text-xl font-bold text-gray-800">Results:</h2>
+            <div className="space-y-6">
+              <section>
+                <h3 className="text-lg font-semibold text-gray-700">Summary</h3>
+                <p className="rounded-lg bg-gray-100 p-4">
+                  {actionData.summary}
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  Outlines
+                </h3>
+                <pre className="whitespace-pre-wrap rounded-lg bg-gray-100 p-4">
+                  {actionData.outlines}
+                </pre>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-semibold text-gray-700">Mindmap</h3>
+                <pre className="whitespace-pre-wrap rounded-lg bg-gray-100 p-4">
+                  {actionData.mindmap}
+                </pre>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  Keywords
+                </h3>
+                <p className="rounded-lg bg-gray-100 p-4">
+                  {actionData.keywords}
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  Highlights
+                </h3>
+                <p className="rounded-lg bg-gray-100 p-4">
+                  {actionData.highlights}
+                </p>
+              </section>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
