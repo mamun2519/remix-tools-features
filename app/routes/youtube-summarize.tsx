@@ -67,8 +67,12 @@ export async function action({ request }: ActionFunctionArgs) {
 
     return json({
       success: true,
-      transcript: transcript,
-      videoId: videoId,
+      videoId,
+      summary,
+      outlines,
+      mindmap,
+      keywords,
+      highlights,
     });
   } catch (error) {
     return json({
