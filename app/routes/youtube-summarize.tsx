@@ -47,7 +47,7 @@ export async function action({ request }: ActionFunctionArgs) {
     });
 
     const response = await openAi.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
