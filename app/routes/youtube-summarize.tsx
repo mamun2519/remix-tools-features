@@ -82,19 +82,15 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 }
 
-const parseOpenAIResponse = (content: string) => {
-  const summary = content.match(/Summary:\n([\s\S]*?)\nOutlines:/)?.[1]?.trim();
-  const outlines = content
-    .match(/Outlines:\n([\s\S]*?)\nMindmap:/)?.[1]
-    ?.trim();
-  const mindmap = content.match(/Mindmap:\n([\s\S]*?)\nKeywords:/)?.[1]?.trim();
-  const keywords = content
-    .match(/Keywords:\n([\s\S]*?)\nHighlights:/)?.[1]
-    ?.trim();
-  const highlights = content.match(/Highlights:\n([\s\S]*)/)?.[1]?.trim();
+function parseOpenAIResponse(content: string) {
+  const sections = ["Summary", "Outlines", "Mindmap", "Keywords", "Highlights"];
+  const results: Record<string, string> = {};
 
-  return [summary, outlines, mindmap, keywords, highlights];
-};
+  sections.forEach((section, index) => {
+    const regex = new RegExp(`${section}:\\n([\\s\\S]*?)\\n(?:${sections[index + 1]}:|$)`);
+    const match = content.match(regex);
+    results[section.toLowerCase()] = match?.[1]?.trim() || "Not available.";
+  });
 
 //* extract video id using regex
 const extractVideoId = (url: string) => {
