@@ -11,6 +11,7 @@ export const action: ActionFunction = async ({
   const format = fromData.get("format");
 
   console.log("url", url);
+  console.log("format", format);
   return null;
 };
 
