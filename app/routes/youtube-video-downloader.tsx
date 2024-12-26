@@ -7,6 +7,7 @@ export const action: ActionFunction = async ({
   request: Request;
 }) => {
   const fromData = await request.formData();
+  const url = fromData.get("url");
 };
 
 const YoutubeVideoDownloader = () => {
