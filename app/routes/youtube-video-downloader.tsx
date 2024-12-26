@@ -11,6 +11,10 @@ export const action: ActionFunction = async ({
   const url = fromData.get("url");
   const format = fromData.get("format");
 
+  if (!url || !ytdl.validateURL(url)) {
+    return { error: "Invalid YouTube URL. Please enter a valid link." };
+  }
+
   console.log("url", url);
   console.log("format", format);
   return null;
