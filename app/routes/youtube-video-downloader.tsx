@@ -8,7 +8,7 @@ export const action: ActionFunction = async ({
   request: Request;
 }) => {
   const fromData = await request.formData();
-  const url = fromData.get("url");
+  const url = fromData.get("url") as string;
   const format = fromData.get("format");
 
   if (!url || !ytdl.validateURL(url)) {
