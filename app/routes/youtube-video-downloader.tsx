@@ -10,6 +10,7 @@ export const action: ActionFunction = async ({
   const url = fromData.get("url");
   const format = fromData.get("format");
 
+  console.log("url", url);
   return null;
 };
 
