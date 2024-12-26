@@ -8,6 +8,7 @@ export const action: ActionFunction = async ({
 }) => {
   const fromData = await request.formData();
   const url = fromData.get("url");
+  const formet = fromData.get("format");
 };
 
 const YoutubeVideoDownloader = () => {
