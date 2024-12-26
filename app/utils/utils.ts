@@ -58,7 +58,7 @@ export const youtubeToolsList = [
   {
     id: 11,
     name: "Youtube video downloader",
-    link: "youtube-summarize",
+    link: "youtube-video-downloader",
     docs: "https://kiwi-parrotfish-5f9.notion.site/Youtube-Summarize-165380f1a04580af98a7e50177c379ac?pvs=4",
   },
 ];
