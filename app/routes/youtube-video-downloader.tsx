@@ -15,6 +15,8 @@ export const action: ActionFunction = async ({
     return { error: "Invalid YouTube URL. Please enter a valid link." };
   }
 
+  const videoInfo = ytdl.getInfo(url);
+
   console.log("url", url);
   console.log("format", format);
   return null;
