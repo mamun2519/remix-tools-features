@@ -11,12 +11,12 @@ export const action: ActionFunction = async ({
   const url = fromData.get("url") as string;
   const format = fromData.get("format");
 
-  if (!url || !ytdl.validateURL(url)) {
-    return { error: "Invalid YouTube URL. Please enter a valid link." };
-  }
+  // if (!url || !ytdl.validateURL(url)) {
+  //   return { error: "Invalid YouTube URL. Please enter a valid link." };
+  // }
 
-  const videoInfo = ytdl.getInfo(url);
-  console.log("video info", videoInfo);
+  // const videoInfo = ytdl.getInfo(url);
+  // console.log("video info", videoInfo);
 
   console.log("url", url);
   console.log("format", format);
