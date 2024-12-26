@@ -16,6 +16,7 @@ export const action: ActionFunction = async ({
   }
 
   const videoInfo = ytdl.getInfo(url);
+  console.log("video info", videoInfo);
 
   console.log("url", url);
   console.log("format", format);
