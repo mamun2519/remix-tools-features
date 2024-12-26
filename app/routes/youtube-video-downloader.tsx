@@ -15,11 +15,38 @@ export const action: ActionFunction = async ({
   if (!url || !url.startsWith("https://www.youtube.com/watch")) {
     return { error: "Invalid YouTube URL. Please provide a valid link." };
   }
-  console.log("video info", videoInfo);
+  const stream = new PassThrough();
+  const process = spawn("yt-dlp", [
+    url,
+    "-f",
+    format === "mp3" ? "bestaudio" : "bestvideo[ext=mp4]+bestaudio",
+    "-o",
+    "-",
+  ]);
 
-  console.log("url", url);
-  console.log("format", format);
-  return null;
+  process.stdout.pipe(stream);
+
+  process.stderr.on("data", (data) => {
+    console.error(`yt-dlp error: ${data}`);
+  });
+
+  process.on("close", (code) => {
+    if (code !== 0) {
+      console.error(`yt-dlp process exited with code ${code}`);
+      stream.end();
+    }
+  });
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": format === "mp3" ? "audio/mpeg" : "video/mp4",
+      "Content-Disposition": `attachment; filename="download.${format}"`,
+    },
+  });
+
+  // console.log("url", url);
+  // console.log("format", format);
+  // return null;
 };
 
 const YoutubeVideoDownloader = () => {
