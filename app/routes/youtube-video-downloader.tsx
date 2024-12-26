@@ -1,7 +1,13 @@
 import { ActionFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 
-export const action: ActionFunction = ({ request }: { request: Request }) => {};
+export const action: ActionFunction = async ({
+  request,
+}: {
+  request: Request;
+}) => {
+  const fromData = await request.formData();
+};
 
 const YoutubeVideoDownloader = () => {
   const actionData = useActionData();
