@@ -36,9 +36,9 @@ const fetchBreakingNews = async () => {
   }
 };
 export const loader = async () => {
-  const breakingNews = await fetchBreakingNews();
+  // const breakingNews = await fetchBreakingNews();
 
-  displayBreakingNews(breakingNews);
+  // displayBreakingNews(breakingNews);
   // console.log(result);
   return json({ ok: true });
 };
