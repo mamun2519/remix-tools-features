@@ -15,29 +15,31 @@ function displayBreakingNews(articles: any[]) {
   });
 }
 
-export const loader = async () => {
-  const fetchBreakingNews = async () => {
-    try {
-      const response = await axios.get(NEWS_API_URL, {
-        params: {
-          action: "getArticles",
-          keyword: "breaking news",
-          lang: "eng",
-          articlesCount: 10,
-          resultType: "articles",
-          apiKey: API_KEY,
-        },
-      });
+const fetchBreakingNews = async () => {
+  try {
+    const response = await axios.get(NEWS_API_URL, {
+      params: {
+        action: "getArticles",
+        keyword: "breaking news",
+        lang: "eng",
+        articlesCount: 10,
+        resultType: "articles",
+        apiKey: API_KEY,
+      },
+    });
 
-      const articles = response.data.articles.results;
-      return articles;
-    } catch (error) {
-      console.error("Error fetching breaking news:", error);
-      return [];
-    }
-  };
-  const result = await fetchBreakingNews();
-  console.log(result);
+    const articles = response.data.articles.results;
+    return articles;
+  } catch (error) {
+    console.error("Error fetching breaking news:", error);
+    return [];
+  }
+};
+export const loader = async () => {
+  const breakingNews = await fetchBreakingNews();
+
+  displayBreakingNews(breakingNews);
+  // console.log(result);
   return json({ ok: true });
 };
 const NewsApi = () => {
