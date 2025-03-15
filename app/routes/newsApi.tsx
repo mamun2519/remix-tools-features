@@ -41,10 +41,10 @@ async function fetchTrendingTopics() {
   try {
     const response = await axios.get(TRENDING_API_URL, {
       params: {
-        action: "getTrendingTopics",
-        lang: "eng", // English topics
+        action: "getTrendingTopics", // Ensure this is correct
+        lang: "eng", // Language (e.g., English)
         count: 10, // Number of topics to fetch
-        apiKey: API_KEY,
+        apiKey: API_KEY, // Your API key
       },
     });
 
