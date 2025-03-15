@@ -3,6 +3,18 @@ import axios from "axios";
 import React from "react";
 const NEWS_API_URL = "https://eventregistry.org/api/v1/article/getArticles";
 const API_KEY = "e76afccd-a989-4e02-b25e-14fde05cadd2";
+
+function displayBreakingNews(articles: any[]) {
+  console.log("Breaking News:");
+  articles.forEach((article, index) => {
+    console.log(`${index + 1}. ${article.title}`);
+    console.log(`   Source: ${article.source.title}`);
+    console.log(`   Published: ${article.publishedAt}`);
+    console.log(`   URL: ${article.url}`);
+    console.log("---");
+  });
+}
+
 export const loader = async () => {
   const fetchBreakingNews = async () => {
     try {
@@ -24,7 +36,7 @@ export const loader = async () => {
       return [];
     }
   };
-  const result = fetchBreakingNews();
+  const result = await fetchBreakingNews();
   console.log(result);
   return json({ ok: true });
 };
