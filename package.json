@@ -30,6 +30,7 @@
     "@remix-run/react": "*",
     "@remix-run/serve": "*",
     "@typegoose/typegoose": "^12.9.1",
+    "axios": "^1.8.3",
     "bcryptjs": "^2.4.3",
     "googleapis": "^144.0.0",
     "iconv-lite": "^0.6.3",
