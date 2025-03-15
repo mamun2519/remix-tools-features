@@ -22,7 +22,7 @@ const fetchBreakingNews = async () => {
         action: "getArticles",
         keyword: "breaking news",
         lang: "eng",
-        articlesCount: 10,
+        articlesCount: 50,
         resultType: "articles",
         apiKey: API_KEY,
       },
