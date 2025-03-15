@@ -64,11 +64,24 @@ async function fetchTrendingTopics() {
   }
 }
 
+function displayTrendingTopics(topics: any[]) {
+  console.log("Trending Topics:");
+  topics.forEach((topic, index) => {
+    console.log(`${index + 1}. ${topic.label}`);
+    console.log(`   Articles: ${topic.articleCount}`);
+    console.log(`   URL: ${topic.url}`);
+    console.log("---");
+  });
+}
+
 export const loader = async () => {
   // const breakingNews = await fetchBreakingNews();
 
   // displayBreakingNews(breakingNews);
   // console.log(result);
+  // -------------------------------
+  const trendingTopics = await fetchTrendingTopics();
+  displayTrendingTopics(trendingTopics);
   return json({ ok: true });
 };
 const NewsApi = () => {
