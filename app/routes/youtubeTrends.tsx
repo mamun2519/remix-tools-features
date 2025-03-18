@@ -4,10 +4,15 @@ import { useState } from "react";
 export const loader = ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const searchParams = url.searchParams;
+
+  // Get user inputs
   const keywords = searchParams.get("keywords")?.split(",") || [];
   const includeText = searchParams.get("includeText")?.toLowerCase() || "";
   const excludeText = searchParams.get("excludeText")?.toLowerCase() || "";
-  const minViews = parseInt(searchParams.get("minViews"), 10) || 250000;
+  const minViews =
+    parseInt(searchParams.get("minViews") as string, 10) || 250000;
+
+  //fetch the view base on keyword
   console.log("send", keywords, includeText, excludeText, minViews);
   return null;
 };
