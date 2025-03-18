@@ -19,13 +19,13 @@ export const loader = ({ request }: { request: Request }) => {
 };
 
 const searchVideosByKeywordAndViews = (
-  keyword: string[],
+  keywords: string[],
   mainViews: number,
   key: string,
 ) => {
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
-  )}&type=video&maxResults=50&key=${apiKey}`;
+  )}&type=video&maxResults=50&key=${key}`;
 };
 
 const YoutubeTrends = () => {
