@@ -66,7 +66,10 @@ const YoutubeTrends = () => {
               </label>
               <div className="flex gap-5">
                 {Views?.map((view) => (
-                  <button className="bg-red-500" key={view}>
+                  <button
+                    className="h-16 w-40 rounded bg-red-500 text-white"
+                    key={view}
+                  >
                     {view}
                   </button>
                 ))}
