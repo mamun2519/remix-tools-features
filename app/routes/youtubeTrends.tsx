@@ -40,6 +40,7 @@ const searchVideosByKeywordAndViews = async (
 
   const videoWithViews = data?.items?.map((item) => {
     const details = data.items.find((detail) => detail.id === item.id.videoId);
+    console.log("view", details.statistics.viewCount);
     return {
       videoId: item.id.videoId,
       title: item.snippet.title,
