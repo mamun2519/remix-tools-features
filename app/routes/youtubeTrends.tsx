@@ -13,8 +13,19 @@ export const loader = ({ request }: { request: Request }) => {
     parseInt(searchParams.get("minViews") as string, 10) || 250000;
 
   //fetch the view base on keyword
+  const apiKey = "AIzaSyBP2Qar2ApC_UDVS1Yv-AI-LwP3EPAiW8U";
   console.log("send", keywords, includeText, excludeText, minViews);
   return null;
+};
+
+const searchVideosByKeywordAndViews = (
+  keyword: string[],
+  mainViews: number,
+  key: string,
+) => {
+  const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+    keywords,
+  )}&type=video&maxResults=50&key=${apiKey}`;
 };
 
 const YoutubeTrends = () => {
