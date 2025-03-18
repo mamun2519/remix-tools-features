@@ -40,14 +40,31 @@ const searchVideosByKeywordAndViews = async (
 
   const videoIds = data.items.map((item) => item.id.videoId);
 
-  console.log("videoIds", videoIds);
-
   const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoIds.join(
     ",",
   )}&key=${key}`;
 
-  console.log("detailsUrl", detailsUrl);
-  // console.log("videoWithViews", videoWithViews);
+  const { data: videoDetailsResult } = await axios.get(detailsUrl);
+  console.log(videoDetailsResult);
+
+  if (!videoDetailsResult?.items) return [];
+
+  // Step 4: Combine video data with view counts
+  const videosWithViews = data.items.map((item) => {
+    const details = videoDetailsResult.items.find(
+      (detail) => detail.id === item.id.videoId,
+    );
+    return {
+      videoId: item.id.videoId,
+      title: item.snippet.title,
+      description: item.snippet.description,
+      channelTitle: item.snippet.channelTitle,
+      publishedAt: item.snippet.publishedAt,
+      viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
+    };
+  });
+
+  console.log("videosWithViews", videosWithViews);
 };
 
 const YoutubeTrends = () => {
