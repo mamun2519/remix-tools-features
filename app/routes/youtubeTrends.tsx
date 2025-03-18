@@ -34,8 +34,9 @@ const searchVideosByKeywordAndViews = async (
     keywords,
   )}&type=video&maxResults=50&key=${key}`;
 
-  const searchResponse = await axios.get(searchUrl);
-  console.log("searchResponse", searchResponse);
+  const { data } = await axios.get(searchUrl);
+  console.log("searchResponse", data);
+  if (!data?.items) return [];
 };
 
 const YoutubeTrends = () => {
