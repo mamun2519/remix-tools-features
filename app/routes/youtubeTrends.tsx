@@ -69,6 +69,7 @@ const YoutubeTrends = () => {
                 {Views?.map((view) => (
                   <button
                     onClick={() => setSelectedView(view)}
+                    type="button"
                     className={`h-10 w-36 rounded ${view === selectedView ? "bg-red-500 text-white" : "border bg-white text-black"}`}
                     key={view}
                   >
