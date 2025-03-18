@@ -13,7 +13,7 @@ const YoutubeTrends = () => {
             {/* Keywords Input */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Keywords (comma-separated):
+                Keywords
               </label>
               <input
                 type="text"
