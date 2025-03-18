@@ -65,7 +65,11 @@ const YoutubeTrends = () => {
                 Minimum Views:
               </label>
               <div className="flex gap-5">
-                {Views?.map((view) => <button key={view}>{view}</button>)}
+                {Views?.map((view) => (
+                  <button className="bg-red-500" key={view}>
+                    {view}
+                  </button>
+                ))}
               </div>
             </div>
 
