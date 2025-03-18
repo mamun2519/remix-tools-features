@@ -30,15 +30,19 @@ const searchVideosByKeywordAndViews = async (
   mainViews: number,
   key: string,
 ) => {
+  // Step 1: Search for videos by keywords
+
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
   )}&type=video&maxResults=50&key=${key}`;
 
-  const { data } = await axios.get(searchUrl);
+  const { data: searchResult } = await axios.get(searchUrl);
 
-  if (!data?.items) return [];
+  if (!searchResult?.items) return [];
+  // Step 2: Extract video IDs
+  const videoIds = searchResult.items.map((item) => item.id.videoId);
 
-  const videoIds = data.items.map((item) => item.id.videoId);
+  // Step 3: Fetch video details (including view counts)
 
   const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoIds.join(
     ",",
@@ -50,7 +54,7 @@ const searchVideosByKeywordAndViews = async (
   if (!videoDetailsResult?.items) return [];
 
   // Step 4: Combine video data with view counts
-  const videosWithViews = data.items.map((item) => {
+  const videosWithViews = searchResult.items.map((item) => {
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
