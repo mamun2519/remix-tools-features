@@ -14,13 +14,15 @@ export const loader = async ({ request }: { request: Request }) => {
     parseInt(searchParams.get("minViews") as string, 10) || 250000;
 
   //fetch the view base on keyword
-  const apiKey = "AIzaSyBP2Qar2ApC_UDVS1Yv-AI-LwP3EPAiW8U";
+  // const apiKey = "AIzaSyBP2Qar2ApC_UDVS1Yv-AI-LwP3EPAiW8U";
+  const apiKey = "AIzaSyA-07DvNBFsMAa2yMDyhCRkWSPZeI-Xz7c";
   console.log("send", keywords, includeText, excludeText, minViews);
-
+  const maxResults = 150;
   const videos = await searchVideosByKeywordAndViews(
-    keywords.join("|"),
+    keywords,
     minViews,
     apiKey,
+    // maxResults,
   );
 
   // Filter videos based on title include/exclude text
@@ -40,6 +42,8 @@ export const loader = async ({ request }: { request: Request }) => {
   console.log("Total output", filterVideos.length);
   return json({ success: true, data: filterVideos });
 };
+
+//version 1
 
 const searchVideosByKeywordAndViews = async (
   keywords: string[],
@@ -92,6 +96,74 @@ const searchVideosByKeywordAndViews = async (
   return videosWithViews.filter((video) => video.viewCount >= mainViews);
 };
 
+// version 2
+/* const searchVideosByKeywordAndViews = async (
+  keywords,
+  minViews,
+  key,
+  maxResults = 500,
+) => {
+  let allVideos = [];
+  let nextPageToken = null;
+  let totalResults = 0;
+
+  do {
+    // Step 1: Build the API URL
+    const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+      keywords.join("|"),
+    )}&type=video&maxResults=50&key=${key}${
+      nextPageToken ? `&pageToken=${nextPageToken}` : ""
+    }`;
+
+    // Step 2: Fetch the search results
+    const searchResponse = await axios.get(searchUrl);
+    const searchData = searchResponse.data;
+
+    if (!searchData.items) break;
+
+    // Step 3: Extract video IDs
+    const videoIds = searchData.items.map((item) => item.id.videoId);
+
+    // Step 4: Fetch video details (including view counts)
+    const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${videoIds.join(
+      ",",
+    )}&key=${key}`;
+
+    const detailsResponse = await axios.get(detailsUrl);
+    const detailsData = detailsResponse.data;
+
+    if (!detailsData.items) break;
+
+    // Step 5: Combine search results with view counts and thumbnails
+    const videosWithViews = searchData.items.map((item) => {
+      const details = detailsData.items.find(
+        (detail) => detail.id === item.id.videoId,
+      );
+      return {
+        videoId: item.id.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        channelTitle: item.snippet.channelTitle,
+        publishedAt: item.snippet.publishedAt,
+        viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
+        thumbnail: item.snippet.thumbnails.medium.url, // Use medium-sized thumbnail
+      };
+    });
+
+    // Step 6: Add the videos to the results array
+    allVideos = [...allVideos, ...videosWithViews];
+    totalResults += searchData.items.length;
+
+    // Step 7: Update the nextPageToken
+    nextPageToken = searchData.nextPageToken;
+
+    // Step 8: Break if we've reached the maxResults limit
+    if (totalResults >= maxResults) break;
+  } while (nextPageToken);
+
+  // Step 9: Filter videos by minimum view count
+  return allVideos.filter((video) => video.viewCount >= minViews);
+}; */
 const YoutubeTrends = () => {
   const Views = [100000, 250000, 500000, 750000, 900000];
   const [selectedView, setSelectedView] = useState(250000);
