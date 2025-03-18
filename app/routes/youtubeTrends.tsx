@@ -2,6 +2,7 @@ import { Form } from "@remix-run/react";
 import React from "react";
 
 const YoutubeTrends = () => {
+  const Views = [100000, 250000, 500000, 750000, 900000];
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
@@ -63,6 +64,9 @@ const YoutubeTrends = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Minimum Views:
               </label>
+              <div className="flex gap-5">
+                {Views?.map((view) => <button key={view}>{view}</button>)}
+              </div>
             </div>
 
             {/* Submit Button */}
