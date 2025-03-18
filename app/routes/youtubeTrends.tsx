@@ -53,6 +53,7 @@ const YoutubeTrends = () => {
                 Minimum Views:
               </label>
               <input
+                hidden
                 type="number"
                 name="minViews"
                 defaultValue={0}
