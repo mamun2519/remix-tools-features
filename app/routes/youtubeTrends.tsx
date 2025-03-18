@@ -64,7 +64,8 @@ const searchVideosByKeywordAndViews = async (
     };
   });
 
-  console.log("videosWithViews", videosWithViews);
+  // Step 5: Filter videos by minimum view count
+  return videosWithViews.filter((video) => video.viewCount >= minViews);
 };
 
 const YoutubeTrends = () => {
