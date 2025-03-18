@@ -179,7 +179,7 @@ const searchVideosByKeywordAndViews = async (
   return allVideos.filter((video) => video.viewCount >= minViews);
 }; */
 const YoutubeTrends = () => {
-  const Views = [100000, 250000, 500000, 750000, 900000];
+  const Views = [5000, 25000, 100000, 250000, 500000, 750000, 900000];
   const [selectedView, setSelectedView] = useState(250000);
   const { data } = useLoaderData();
 
