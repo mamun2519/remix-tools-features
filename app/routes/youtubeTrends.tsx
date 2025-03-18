@@ -1,4 +1,4 @@
-import { Form } from "@remix-run/react";
+import { Form, json, useLoaderData } from "@remix-run/react";
 import axios from "axios";
 import { useState } from "react";
 
@@ -35,8 +35,8 @@ export const loader = async ({ request }: { request: Request }) => {
 
     return includesText && excludesText;
   });
-  console.log("videos", filterVideos);
-  return null;
+  // console.log("videos", filterVideos);
+  return json({ success: true, data: filterVideos });
 };
 
 const searchVideosByKeywordAndViews = async (
@@ -89,6 +89,7 @@ const searchVideosByKeywordAndViews = async (
 const YoutubeTrends = () => {
   const Views = [100000, 250000, 500000, 750000, 900000];
   const [selectedView, setSelectedView] = useState(250000);
+  const { data } = useLoaderData();
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
@@ -176,9 +177,9 @@ const YoutubeTrends = () => {
         </Form>
 
         {/* Results */}
-        {/* <h2 className="mb-4 text-2xl font-bold text-gray-900">Results</h2>
+        <h2 className="mb-4 text-2xl font-bold text-gray-900">Results</h2>
         <ul className="space-y-4">
-          {videos.map((video) => (
+          {data.map((video) => (
             <li
               key={video.videoId}
               className="rounded-lg bg-white p-6 shadow-md"
@@ -211,7 +212,7 @@ const YoutubeTrends = () => {
               </a>
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     </div>
   );
