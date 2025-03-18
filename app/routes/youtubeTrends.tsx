@@ -1,8 +1,9 @@
 import { Form } from "@remix-run/react";
-import React from "react";
+import React, { useState } from "react";
 
 const YoutubeTrends = () => {
   const Views = [100000, 250000, 500000, 750000, 900000];
+  const [selectedView, setSelectedView] = useState(250000);
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
@@ -64,10 +65,10 @@ const YoutubeTrends = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Minimum Views:
               </label>
-              <div className="flex gap-5">
+              <div className="mt-2 flex gap-5">
                 {Views?.map((view) => (
                   <button
-                    className="h-16 w-40 rounded bg-red-500 text-white"
+                    className={`h-10 w-36 rounded ${view === selectedView ? "bg-red-500 text-white" : "bg-white text-black"}`}
                     key={view}
                   >
                     {view}
