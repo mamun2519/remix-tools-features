@@ -47,7 +47,11 @@ export const loader = async ({ request }: { request: Request }) => {
     // } else if (videoType === "both") {
     //   matchesVideoType = true; // Show both short and long videos
     // }
-
+    // console.log("Video:", video.title);
+    // console.log("Duration (seconds):", video.duration);
+    // console.log("Is Short Video:", isShortVideo);
+    // console.log("Is Long Video:", isLongVideo);
+    // console.log("Matches Video Type:", matchesVideoType);
     return includesText && excludesText;
   });
   // console.log("videos", filterVideos);
@@ -93,6 +97,11 @@ const searchVideosByKeywordAndViews = async (
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
+    // console.log(
+    //   "details.contentDetails.duration",
+    //   details.contentDetails.duration,
+    // );
+    // const duration = parseYouTubeDuration(details.contentDetails.duration);
 
     return {
       videoId: item.id.videoId,
@@ -102,6 +111,7 @@ const searchVideosByKeywordAndViews = async (
       publishedAt: item.snippet.publishedAt,
       viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
       thumbnail: item.snippet.thumbnails.high.url,
+      // duration,
     };
   });
 
@@ -109,6 +119,13 @@ const searchVideosByKeywordAndViews = async (
   return videosWithViews.filter((video) => video.viewCount >= mainViews);
 };
 
+const parseYouTubeDuration = (duration) => {
+  const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+  const hours = match[1] ? parseInt(match[1]) : 0;
+  const minutes = match[2] ? parseInt(match[2]) : 0;
+  const seconds = match[3] ? parseInt(match[3]) : 0;
+  return hours * 3600 + minutes * 60 + seconds;
+};
 // version 2
 
 /* const searchVideosByKeywordAndViews = async (
@@ -231,7 +248,7 @@ const YoutubeTrends = () => {
             </div>
 
             {/* Video Type Filter */}
-            {/*  <div>
+            <div>
               <label className="block text-sm font-medium text-gray-700">
                 Video Type:
               </label>
@@ -244,7 +261,7 @@ const YoutubeTrends = () => {
                 <option value="long">Long Video</option>
               </select>
             </div>
- */}
+
             {/* Minimum Views Input */}
             <div className="hidden">
               <input
