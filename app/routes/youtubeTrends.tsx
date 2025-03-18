@@ -1,5 +1,11 @@
 import { Form } from "@remix-run/react";
-import React, { useState } from "react";
+import { useState } from "react";
+
+export const loader = ({ request }: { request: Request }) => {
+  const url = new URL(request.url);
+  const searchParams = url.searchParams;
+  return null;
+};
 
 const YoutubeTrends = () => {
   const Views = [100000, 250000, 500000, 750000, 900000];
