@@ -63,7 +63,6 @@ const searchVideosByKeywordAndViews = async (
   )}&key=${key}`;
 
   const { data: videoDetailsResult } = await axios.get(detailsUrl);
-  console.log(videoDetailsResult);
 
   if (!videoDetailsResult?.items) return [];
 
@@ -72,6 +71,7 @@ const searchVideosByKeywordAndViews = async (
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
+    console.log("item", item);
     return {
       videoId: item.id.videoId,
       title: item.snippet.title,
