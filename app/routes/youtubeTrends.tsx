@@ -1,4 +1,5 @@
 import { Form } from "@remix-run/react";
+import axios from "axios";
 import { useState } from "react";
 
 export const loader = ({ request }: { request: Request }) => {
@@ -18,7 +19,7 @@ export const loader = ({ request }: { request: Request }) => {
   return null;
 };
 
-const searchVideosByKeywordAndViews = (
+const searchVideosByKeywordAndViews = async (
   keywords: string[],
   mainViews: number,
   key: string,
@@ -26,6 +27,8 @@ const searchVideosByKeywordAndViews = (
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
   )}&type=video&maxResults=50&key=${key}`;
+
+  const searchResponse = await axios.get(searchUrl);
 };
 
 const YoutubeTrends = () => {
