@@ -36,6 +36,8 @@ export const loader = async ({ request }: { request: Request }) => {
     return includesText && excludesText;
   });
   // console.log("videos", filterVideos);
+
+  console.log("Total output", filterVideos.length);
   return json({ success: true, data: filterVideos });
 };
 
@@ -48,11 +50,14 @@ const searchVideosByKeywordAndViews = async (
 
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
-  )}&type=video&maxResults=5000&key=${key}`;
+  )}&type=video&maxResults=50&key=${key}`;
 
   const { data: searchResult } = await axios.get(searchUrl);
 
   if (!searchResult?.items) return [];
+
+  console.log("Total Search", searchResult.items.length);
+  console.log("searchResult", searchResult);
   // Step 2: Extract video IDs
   const videoIds = searchResult.items.map((item) => item.id.videoId);
 
@@ -91,6 +96,7 @@ const YoutubeTrends = () => {
   const Views = [100000, 250000, 500000, 750000, 900000];
   const [selectedView, setSelectedView] = useState(250000);
   const { data } = useLoaderData();
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
