@@ -38,20 +38,16 @@ const searchVideosByKeywordAndViews = async (
 
   if (!data?.items) return [];
 
-  const videoWithViews = data?.items?.map((item) => {
-    const details = data.items.find((detail) => detail.id === item.id.videoId);
-    console.log("view", details.statistics.viewCount);
-    return {
-      videoId: item.id.videoId,
-      title: item.snippet.title,
-      description: item.snippet.description,
-      channelTitle: item.snippet.channelTitle,
-      publishedAt: item.snippet.publishedAt,
-      viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
-    };
-  });
+  const videoIds = data.items.map((item) => item.id.videoId);
 
-  console.log("videoWithViews", videoWithViews);
+  console.log("videoIds", videoIds);
+
+  const detailsUrl = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoIds.join(
+    ",",
+  )}&key=${key}`;
+
+  console.log("detailsUrl", detailsUrl);
+  // console.log("videoWithViews", videoWithViews);
 };
 
 const YoutubeTrends = () => {
@@ -60,7 +56,9 @@ const YoutubeTrends = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
-        <h1 className="mb-8 text-3xl font-bold text-gray-900">Video Search</h1>
+        <h1 className="mb-8 text-3xl font-bold text-gray-900">
+          Youtube Trend video
+        </h1>
 
         {/* Search Form */}
         <Form method="get" className="mb-8 rounded-lg bg-white p-6 shadow-md">
