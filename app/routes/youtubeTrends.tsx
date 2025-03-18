@@ -48,7 +48,7 @@ const searchVideosByKeywordAndViews = async (
 
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
-  )}&type=video&maxResults=50&key=${key}`;
+  )}&type=video&maxResults=500&key=${key}`;
 
   const { data: searchResult } = await axios.get(searchUrl);
 
