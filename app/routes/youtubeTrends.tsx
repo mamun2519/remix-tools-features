@@ -2,7 +2,7 @@ import { Form } from "@remix-run/react";
 import axios from "axios";
 import { useState } from "react";
 
-export const loader = ({ request }: { request: Request }) => {
+export const loader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const searchParams = url.searchParams;
 
@@ -16,6 +16,12 @@ export const loader = ({ request }: { request: Request }) => {
   //fetch the view base on keyword
   const apiKey = "AIzaSyBP2Qar2ApC_UDVS1Yv-AI-LwP3EPAiW8U";
   console.log("send", keywords, includeText, excludeText, minViews);
+
+  const videos = await searchVideosByKeywordAndViews(
+    keywords.join("|"),
+    minViews,
+    apiKey,
+  );
   return null;
 };
 
@@ -29,6 +35,7 @@ const searchVideosByKeywordAndViews = async (
   )}&type=video&maxResults=50&key=${key}`;
 
   const searchResponse = await axios.get(searchUrl);
+  console.log("searchResponse", searchResponse);
 };
 
 const YoutubeTrends = () => {
