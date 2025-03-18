@@ -48,7 +48,7 @@ const searchVideosByKeywordAndViews = async (
 
   const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     keywords,
-  )}&type=video&maxResults=500&key=${key}`;
+  )}&type=video&maxResults=5000&key=${key}`;
 
   const { data: searchResult } = await axios.get(searchUrl);
 
@@ -71,7 +71,7 @@ const searchVideosByKeywordAndViews = async (
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
-    console.log("item", item.snippet.thumbnails.high.url);
+
     return {
       videoId: item.id.videoId,
       title: item.snippet.title,
@@ -179,7 +179,7 @@ const YoutubeTrends = () => {
 
         {/* Results */}
         <h2 className="mb-4 text-2xl font-bold text-gray-900">Results</h2>
-        <div className="grid grid-cols-3 gap-3 space-y-6">
+        <div className="space-y-6">
           {data.map((video) => (
             <div
               key={video.videoId}
@@ -205,13 +205,13 @@ const YoutubeTrends = () => {
                 </p>
 
                 {/* Views and Publish Date */}
-                <p className="text-sm text-gray-500">
+                <p className="mb-4 text-sm text-gray-500">
                   {video.viewCount.toLocaleString()} views •{" "}
                   {new Date(video.publishedAt).toLocaleDateString()}
                 </p>
 
                 {/* Description */}
-                <p className="mt-2 line-clamp-2 text-sm text-gray-600">
+                <p className="mb-4 line-clamp-2 text-sm text-gray-600">
                   {video.description}
                 </p>
 
@@ -220,7 +220,7 @@ const YoutubeTrends = () => {
                   href={`https://www.youtube.com/watch?v=${video.videoId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   Watch Video
                 </a>
