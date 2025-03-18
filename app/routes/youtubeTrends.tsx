@@ -71,7 +71,7 @@ const searchVideosByKeywordAndViews = async (
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
-    console.log("item", item.snippet.thumbnails);
+    console.log("item", item.snippet.thumbnails.high.url);
     return {
       videoId: item.id.videoId,
       title: item.snippet.title,
@@ -79,6 +79,7 @@ const searchVideosByKeywordAndViews = async (
       channelTitle: item.snippet.channelTitle,
       publishedAt: item.snippet.publishedAt,
       viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
+      thumbnail: item.snippet.thumbnails.high.url,
     };
   });
 
