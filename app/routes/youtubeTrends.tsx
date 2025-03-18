@@ -48,12 +48,11 @@ const YoutubeTrends = () => {
             </div>
 
             {/* Minimum Views Input */}
-            <div>
+            <div className="hidden">
               <label className="block text-sm font-medium text-gray-700">
                 Minimum Views:
               </label>
               <input
-                hidden
                 type="number"
                 name="minViews"
                 defaultValue={0}
