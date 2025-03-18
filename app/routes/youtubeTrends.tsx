@@ -37,6 +37,18 @@ const searchVideosByKeywordAndViews = async (
   const { data } = await axios.get(searchUrl);
   console.log("searchResponse", data);
   if (!data?.items) return [];
+
+  const videoWithViews = data?.items?.map((item) => {
+    const details = data.items.find((detail) => detail.id === item.id.videoId);
+    return {
+      videoId: item.id.videoId,
+      title: item.snippet.title,
+      description: item.snippet.description,
+      channelTitle: item.snippet.channelTitle,
+      publishedAt: item.snippet.publishedAt,
+      viewCount: details ? parseInt(details.statistics.viewCount, 10) : 0,
+    };
+  });
 };
 
 const YoutubeTrends = () => {
