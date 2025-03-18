@@ -200,9 +200,9 @@ const YoutubeTrends = () => {
                 </h3>
 
                 {/* Channel Name */}
-                <p className="mb-2 text-sm text-gray-600">
+                {/* <p className="mb-2 text-sm text-gray-600">
                   {video.channelTitle}
-                </p>
+                </p> */}
 
                 {/* Views and Publish Date */}
                 <p className="mb-4 text-sm text-gray-500">
@@ -211,9 +211,9 @@ const YoutubeTrends = () => {
                 </p>
 
                 {/* Description */}
-                <p className="mb-4 line-clamp-2 text-sm text-gray-600">
+                {/* <p className="mb-4 line-clamp-2 text-sm text-gray-600">
                   {video.description}
-                </p>
+                </p> */}
 
                 {/* Watch Button */}
                 <a
