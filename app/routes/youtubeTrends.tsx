@@ -22,6 +22,20 @@ export const loader = async ({ request }: { request: Request }) => {
     minViews,
     apiKey,
   );
+
+  // Filter videos based on title include/exclude text
+  const filterVideos = videos.filter((video) => {
+    const title = video.title.toLowerCase();
+
+    // Check if title includes the includeText
+    const includesText = includeText ? title.includes(includeText) : true;
+
+    // Check if title excludes the excludeText
+    const excludesText = excludeText ? !title.includes(excludeText) : true;
+
+    return includesText && excludesText;
+  });
+  console.log("videos", filterVideos);
   return null;
 };
 
@@ -69,7 +83,7 @@ const searchVideosByKeywordAndViews = async (
   });
 
   // Step 5: Filter videos by minimum view count
-  return videosWithViews.filter((video) => video.viewCount >= minViews);
+  return videosWithViews.filter((video) => video.viewCount >= mainViews);
 };
 
 const YoutubeTrends = () => {
