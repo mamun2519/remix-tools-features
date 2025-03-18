@@ -12,11 +12,11 @@ export const loader = async ({ request }: { request: Request }) => {
   const excludeText = searchParams.get("excludeText")?.toLowerCase() || "";
   const minViews =
     parseInt(searchParams.get("minViews") as string, 10) || 250000;
+  const videoType = searchParams.get("videoType") || "both"; // Default to "both"
 
   //fetch the view base on keyword
   // const apiKey = "AIzaSyBP2Qar2ApC_UDVS1Yv-AI-LwP3EPAiW8U";
   const apiKey = "AIzaSyA-07DvNBFsMAa2yMDyhCRkWSPZeI-Xz7c";
-  console.log("send", keywords, includeText, excludeText, minViews);
   const maxResults = 150;
   const videos = await searchVideosByKeywordAndViews(
     keywords,
@@ -34,6 +34,19 @@ export const loader = async ({ request }: { request: Request }) => {
 
     // Check if title excludes the excludeText
     const excludesText = excludeText ? !title.includes(excludeText) : true;
+
+    // Check video type
+    const isShortVideo = video.duration < 60; // Short videos are less than 60 seconds
+    const isLongVideo = video.duration >= 60; // Long videos are 60 seconds or longer
+
+    // let matchesVideoType = true;
+    // if (videoType === "short") {
+    //   matchesVideoType = isShortVideo;
+    // } else if (videoType === "long") {
+    //   matchesVideoType = isLongVideo;
+    // } else if (videoType === "both") {
+    //   matchesVideoType = true; // Show both short and long videos
+    // }
 
     return includesText && excludesText;
   });
@@ -61,7 +74,7 @@ const searchVideosByKeywordAndViews = async (
   if (!searchResult?.items) return [];
 
   console.log("Total Search", searchResult.items.length);
-  console.log("searchResult", searchResult);
+
   // Step 2: Extract video IDs
   const videoIds = searchResult.items.map((item) => item.id.videoId);
 
@@ -97,6 +110,7 @@ const searchVideosByKeywordAndViews = async (
 };
 
 // version 2
+
 /* const searchVideosByKeywordAndViews = async (
   keywords,
   minViews,
@@ -216,6 +230,21 @@ const YoutubeTrends = () => {
               />
             </div>
 
+            {/* Video Type Filter */}
+            {/*  <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Video Type:
+              </label>
+              <select
+                name="videoType"
+                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="both">Both (Short & Long)</option>
+                <option value="short">Short Video</option>
+                <option value="long">Long Video</option>
+              </select>
+            </div>
+ */}
             {/* Minimum Views Input */}
             <div className="hidden">
               <input
