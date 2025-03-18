@@ -178,41 +178,55 @@ const YoutubeTrends = () => {
 
         {/* Results */}
         <h2 className="mb-4 text-2xl font-bold text-gray-900">Results</h2>
-        <ul className="space-y-4">
+        <div className="space-y-6">
           {data.map((video) => (
-            <li
+            <div
               key={video.videoId}
-              className="rounded-lg bg-white p-6 shadow-md"
+              className="overflow-hidden rounded-lg bg-white shadow-md"
             >
-              <h3 className="text-xl font-semibold text-gray-900">
-                {video.title}
-              </h3>
-              <p className="mt-2 text-gray-600">{video.description}</p>
-              <div className="mt-4 space-y-2">
-                <p className="text-sm text-gray-500">
-                  <span className="font-medium">Channel:</span>{" "}
+              {/* Thumbnail */}
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                className="h-48 w-full object-cover"
+              />
+
+              {/* Video Details */}
+              <div className="p-4">
+                {/* Title */}
+                <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                  {video.title}
+                </h3>
+
+                {/* Channel Name */}
+                <p className="mb-2 text-sm text-gray-600">
                   {video.channelTitle}
                 </p>
+
+                {/* Views and Publish Date */}
                 <p className="text-sm text-gray-500">
-                  <span className="font-medium">Views:</span>{" "}
-                  {video.viewCount.toLocaleString()}
-                </p>
-                <p className="text-sm text-gray-500">
-                  <span className="font-medium">Published:</span>{" "}
+                  {video.viewCount.toLocaleString()} views •{" "}
                   {new Date(video.publishedAt).toLocaleDateString()}
                 </p>
+
+                {/* Description */}
+                <p className="mt-2 line-clamp-2 text-sm text-gray-600">
+                  {video.description}
+                </p>
+
+                {/* Watch Button */}
+                <a
+                  href={`https://www.youtube.com/watch?v=${video.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Watch Video
+                </a>
               </div>
-              <a
-                href={`https://www.youtube.com/watch?v=${video.videoId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Watch Video
-              </a>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
