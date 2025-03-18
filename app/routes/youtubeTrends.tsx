@@ -71,7 +71,7 @@ const searchVideosByKeywordAndViews = async (
     const details = videoDetailsResult.items.find(
       (detail) => detail.id === item.id.videoId,
     );
-    console.log("item", item);
+    console.log("item", item.snippet.thumbnails);
     return {
       videoId: item.id.videoId,
       title: item.snippet.title,
