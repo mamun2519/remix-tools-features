@@ -178,7 +178,7 @@ const YoutubeTrends = () => {
 
         {/* Results */}
         <h2 className="mb-4 text-2xl font-bold text-gray-900">Results</h2>
-        <div className="space-y-6">
+        <div className="grid grid-cols-3 gap-3 space-y-6">
           {data.map((video) => (
             <div
               key={video.videoId}
