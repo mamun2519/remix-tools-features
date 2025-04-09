@@ -4,7 +4,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Await } from "react-router";
 import auth from "~/component/firebase.config";
 
@@ -15,8 +15,9 @@ provider.addScope("https://www.googleapis.com/auth/youtube.upload");
 provider.addScope("https://www.googleapis.com/auth/youtube");
 
 const SignInWithGoogle = () => {
-  const user = getAuth();
-  console.log(user.currentUser);
+  const [userYoutubeAccessToken, SetUserYoutubeAccessToken] = useState<
+    string | null
+  >();
   const signInWithGoogleProviderHandler = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -27,6 +28,7 @@ const SignInWithGoogle = () => {
 
       // get the user info
       const user = result.user;
+
       return { user, token };
     } catch (error) {
       console.log("error", error);
@@ -39,6 +41,7 @@ const SignInWithGoogle = () => {
       console.log("user-----------", user);
 
       console.log("Token------------------", token);
+      SetUserYoutubeAccessToken(token);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +54,7 @@ const SignInWithGoogle = () => {
         "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true",
         {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${userYoutubeAccessToken}`,
             Accept: "application/json",
           },
         },
@@ -62,7 +65,7 @@ const SignInWithGoogle = () => {
     };
 
     fetchYouTubeChannelData("slslker");
-  }, []);
+  }, [userYoutubeAccessToken]);
   return (
     <div className="flex justify-center p-5 px-4">
       <button
