@@ -147,9 +147,10 @@ const useGoogleSingUp = () => {
       // access the user token
       const token = credential?.accessToken;
 
-      //
+      //access the user info
       const user = result.user;
 
+      // retune user and token form the function
       return { user, token };
     } catch (error) {
       console.log("error", error);
