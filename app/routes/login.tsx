@@ -138,6 +138,7 @@ const useGoogleSingUp = () => {
 
   const [channelData, setChannelData] = useState<any>(null);
 
+  ///* google sign provider function
   const signInWithGoogleProviderHandler = async () => {
     try {
       // signup with google
@@ -157,6 +158,7 @@ const useGoogleSingUp = () => {
     }
   };
 
+  //* signup in google
   const signUpHandler = async () => {
     try {
       const { user, token } = await signInWithGoogleProviderHandler();
@@ -169,4 +171,26 @@ const useGoogleSingUp = () => {
       console.log(error);
     }
   };
+
+  // get the user youtube chennal info using token
+  useEffect(() => {
+    if (!userYoutubeAccessToken) return;
+
+    const fetchYouTubeChannelData = async () => {
+      const response = await fetch(
+        "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true",
+        {
+          headers: {
+            Authorization: `Bearer ${userYoutubeAccessToken}`,
+            Accept: "application/json",
+          },
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+      setChannelData(data?.items?.[0]); // Get first channel
+    };
+
+    fetchYouTubeChannelData();
+  }, [userYoutubeAccessToken]);
 };
