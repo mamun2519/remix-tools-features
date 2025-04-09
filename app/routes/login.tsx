@@ -138,7 +138,10 @@ const useGoogleSingUp = () => {
 
   const [channelData, setChannelData] = useState<any>(null);
 
-  const signInWithGoogleProviderHandler = async () => {
+  const signInWithGoogleProviderHandler = async (): Promise<{
+    user?: any;
+    token?: any;
+  }> => {
     try {
       // signup with google
       const result = await signInWithPopup(auth, provider);
@@ -154,6 +157,20 @@ const useGoogleSingUp = () => {
       return { user, token };
     } catch (error) {
       console.log("error", error);
+    }
+  };
+
+  const signUpHandler = async () => {
+    try {
+      const { user, token } = await signInWithGoogleProviderHandler();
+      console.log("user-----------", user);
+
+      if (token) {
+        setUserYoutubeAccessToken(token);
+      }
+      console.log("Token------------------", token);
+    } catch (error) {
+      console.log(error);
     }
   };
 };
