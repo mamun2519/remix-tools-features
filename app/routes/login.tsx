@@ -20,7 +20,14 @@ const SignInWithGoogle = () => {
     return { user, token };
   };
 
-  const signUpHandler = () => {};
+  const signUpHandler = async () => {
+    try {
+      const { user, token } = await SignInWithGoogle();
+      console.log("user-----------", user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <button>Continue with google</button>
