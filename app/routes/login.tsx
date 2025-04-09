@@ -60,7 +60,7 @@ const SignInWithGoogle = () => {
       return data;
     };
 
-    await fetchYouTubeChannelData();
+    fetchYouTubeChannelData("slslker");
   }, []);
   return (
     <div className="flex justify-center p-5 px-4">
