@@ -31,8 +31,13 @@ const SignInWithGoogle = () => {
     }
   };
   return (
-    <div>
-      <button onClick={signUpHandler}>Continue with google</button>
+    <div className="p-5">
+      <button
+        className="rounded bg-red-500 py-2 text-white"
+        onClick={signUpHandler}
+      >
+        Continue with google
+      </button>
     </div>
   );
 };
