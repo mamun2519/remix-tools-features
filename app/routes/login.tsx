@@ -18,6 +18,7 @@ const SignInWithGoogle = () => {
   const [userYoutubeAccessToken, SetUserYoutubeAccessToken] = useState<
     string | null
   >();
+  const data;
   const signInWithGoogleProviderHandler = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -49,7 +50,7 @@ const SignInWithGoogle = () => {
 
   useEffect(() => {
     // youtubeService.ts
-    const fetchYouTubeChannelData = async (accessToken: string) => {
+    const fetchYouTubeChannelData = async () => {
       const response = await fetch(
         "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true",
         {
@@ -64,7 +65,7 @@ const SignInWithGoogle = () => {
       return data;
     };
 
-    fetchYouTubeChannelData("slslker");
+    fetchYouTubeChannelData();
   }, [userYoutubeAccessToken]);
   return (
     <div className="flex justify-center p-5 px-4">
