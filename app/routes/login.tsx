@@ -202,6 +202,68 @@ const useGoogleSingUp = (): {
   return { userYoutubeAccessToken, channelData, signUpHandler };
 };
 
+const Login = () => {
+  const { channelData, signUpHandler } = useGoogleSingUp();
 
+  return (
+    <div className="flex flex-col items-center justify-center space-y-6 p-6">
+      <div className="flex gap-4">
+        <button
+          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+          onClick={signUpHandler}
+        >
+          Continue with Google
+        </button>
+        <button
+          className="rounded bg-gray-200 px-4 py-2 text-black hover:bg-gray-300"
+          onClick={() => signOut(auth)}
+        >
+          Logout
+        </button>
+      </div>
 
-const 
+      {channelData && (
+        <div className="mt-6 w-full max-w-md rounded-lg border p-6 shadow-lg">
+          <div className="flex items-center space-x-4">
+            <img
+              src={channelData.snippet.thumbnails.default.url}
+              alt="Channel Thumbnail"
+              className="h-16 w-16 rounded-full"
+            />
+            <div>
+              <h2 className="text-xl font-bold">{channelData.snippet.title}</h2>
+              <p className="text-gray-500">
+                @{channelData.snippet.customUrl?.replace("@", "")}
+              </p>
+              <p className="text-sm text-gray-400">
+                Published:{" "}
+                {new Date(channelData.snippet.publishedAt).toDateString()}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.subscriberCount}
+              </p>
+              <p className="text-sm text-gray-600">Subscribers</p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.viewCount}
+              </p>
+              <p className="text-sm text-gray-600">Views</p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.videoCount}
+              </p>
+              <p className="text-sm text-gray-600">Videos</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
