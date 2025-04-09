@@ -32,7 +32,7 @@ const SignInWithGoogle = () => {
   };
   return (
     <div>
-      <button>Continue with google</button>
+      <button onClick={signUpHandler}>Continue with google</button>
     </div>
   );
 };
