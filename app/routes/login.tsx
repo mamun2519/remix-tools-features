@@ -24,6 +24,8 @@ const SignInWithGoogle = () => {
     try {
       const { user, token } = await SignInWithGoogle();
       console.log("user-----------", user);
+
+      console.log("Token------------------", token);
     } catch (error) {
       console.log(error);
     }
