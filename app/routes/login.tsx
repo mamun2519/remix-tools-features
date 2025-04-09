@@ -137,4 +137,21 @@ const useGoogleSingUp = () => {
   >();
 
   const [channelData, setChannelData] = useState<any>(null);
+
+  const signInWithGoogleProviderHandler = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      // get the token
+      const token = credential?.accessToken;
+
+      // get the user info
+      const user = result.user;
+
+      return { user, token };
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 };
