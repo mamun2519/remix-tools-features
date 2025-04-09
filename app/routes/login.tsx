@@ -52,7 +52,8 @@ const SignInWithGoogle = () => {
   };
 
   useEffect(() => {
-    // youtubeService.ts
+    if (!userYoutubeAccessToken) return;
+
     const fetchYouTubeChannelData = async () => {
       const response = await fetch(
         "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true",
@@ -64,27 +65,72 @@ const SignInWithGoogle = () => {
         },
       );
       const data = await response.json();
-      console.log("data", data);
-      return data;
+      console.log(data);
+      setChannelData(data?.items?.[0]); // Get first channel
     };
 
     fetchYouTubeChannelData();
   }, [userYoutubeAccessToken]);
-  return (
-    <div className="flex justify-center p-5 px-4">
-      <button
-        className="rounded bg-red-500 px-4 py-2 text-white"
-        onClick={() => signUpHandler()}
-      >
-        Continue with google
-      </button>
 
-      <button
-        className="rounded bg-red-200 px-4 py-2 text-black"
-        onClick={() => signOut(auth)}
-      >
-        Logout
-      </button>
+  return (
+    <div className="flex flex-col items-center justify-center space-y-6 p-6">
+      <div className="flex gap-4">
+        <button
+          className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+          onClick={signUpHandler}
+        >
+          Continue with Google
+        </button>
+        <button
+          className="rounded bg-gray-200 px-4 py-2 text-black hover:bg-gray-300"
+          onClick={() => signOut(auth)}
+        >
+          Logout
+        </button>
+      </div>
+
+      {channelData && (
+        <div className="mt-6 w-full max-w-md rounded-lg border p-6 shadow-lg">
+          <div className="flex items-center space-x-4">
+            <img
+              src={channelData.snippet.thumbnails.default.url}
+              alt="Channel Thumbnail"
+              className="h-16 w-16 rounded-full"
+            />
+            <div>
+              <h2 className="text-xl font-bold">{channelData.snippet.title}</h2>
+              <p className="text-gray-500">
+                @{channelData.snippet.customUrl?.replace("@", "")}
+              </p>
+              <p className="text-sm text-gray-400">
+                Published:{" "}
+                {new Date(channelData.snippet.publishedAt).toDateString()}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.subscriberCount}
+              </p>
+              <p className="text-sm text-gray-600">Subscribers</p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.viewCount}
+              </p>
+              <p className="text-sm text-gray-600">Views</p>
+            </div>
+            <div>
+              <p className="text-lg font-semibold">
+                {channelData.statistics.videoCount}
+              </p>
+              <p className="text-sm text-gray-600">Videos</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
