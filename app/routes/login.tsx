@@ -140,13 +140,14 @@ const useGoogleSingUp = () => {
 
   const signInWithGoogleProviderHandler = async () => {
     try {
+      // signup with google
       const result = await signInWithPopup(auth, provider);
 
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      // get the token
+      // access the user token
       const token = credential?.accessToken;
 
-      // get the user info
+      //
       const user = result.user;
 
       return { user, token };
