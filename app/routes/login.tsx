@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import auth from "~/component/firebase.config";
@@ -131,7 +132,11 @@ const SignInWithGoogle = () => {
 
 export default SignInWithGoogle;
 
-const useGoogleSingUp = () => {
+const useGoogleSingUp = (): {
+  userYoutubeAccessToken: string | null | undefined;
+  channelData: any;
+  signUpHandler: () => Promise<void>;
+} => {
   const [userYoutubeAccessToken, setUserYoutubeAccessToken] = useState<
     string | null
   >();
