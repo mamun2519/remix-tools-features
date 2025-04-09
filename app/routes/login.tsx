@@ -161,7 +161,7 @@ const useGoogleSingUp = () => {
   //* signup in google
   const signUpHandler = async () => {
     try {
-      const { user, token } = await signInWithGoogleProviderHandler();
+      const { token } = await signInWithGoogleProviderHandler();
 
       if (token) {
         setUserYoutubeAccessToken(token);
@@ -172,7 +172,7 @@ const useGoogleSingUp = () => {
     }
   };
 
-  // get the user youtube chennal info using token
+  // get the user youtube channel info using token
   useEffect(() => {
     if (!userYoutubeAccessToken) return;
 
@@ -193,4 +193,6 @@ const useGoogleSingUp = () => {
 
     fetchYouTubeChannelData();
   }, [userYoutubeAccessToken]);
+
+  return { userYoutubeAccessToken, channelData, signUpHandler };
 };
