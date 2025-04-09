@@ -22,7 +22,7 @@ const SignInWithGoogle = () => {
 
   const signUpHandler = async () => {
     try {
-      const { user, token } = await SignInWithGoogle();
+      const { user, token } = await signInWithGoogleProviderHandler();
       console.log("user-----------", user);
 
       console.log("Token------------------", token);
