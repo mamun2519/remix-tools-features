@@ -15,10 +15,11 @@ provider.addScope("https://www.googleapis.com/auth/youtube.upload");
 provider.addScope("https://www.googleapis.com/auth/youtube");
 
 const SignInWithGoogle = () => {
-  const [userYoutubeAccessToken, SetUserYoutubeAccessToken] = useState<
+  const [userYoutubeAccessToken, setUserYoutubeAccessToken] = useState<
     string | null
   >();
-  const data;
+
+  const [channelData, setChannelData] = useState<any>(null);
   const signInWithGoogleProviderHandler = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -41,8 +42,10 @@ const SignInWithGoogle = () => {
       const { user, token } = await signInWithGoogleProviderHandler();
       console.log("user-----------", user);
 
+      if (token) {
+        setUserYoutubeAccessToken(token);
+      }
       console.log("Token------------------", token);
-      SetUserYoutubeAccessToken(token);
     } catch (error) {
       console.log(error);
     }
