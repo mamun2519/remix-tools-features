@@ -138,10 +138,7 @@ const useGoogleSingUp = () => {
 
   const [channelData, setChannelData] = useState<any>(null);
 
-  const signInWithGoogleProviderHandler = async (): Promise<{
-    user?: any;
-    token?: any;
-  }> => {
+  const signInWithGoogleProviderHandler = async () => {
     try {
       // signup with google
       const result = await signInWithPopup(auth, provider);
@@ -163,7 +160,6 @@ const useGoogleSingUp = () => {
   const signUpHandler = async () => {
     try {
       const { user, token } = await signInWithGoogleProviderHandler();
-      console.log("user-----------", user);
 
       if (token) {
         setUserYoutubeAccessToken(token);
