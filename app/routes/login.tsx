@@ -34,7 +34,7 @@ const SignInWithGoogle = () => {
     <div className="flex justify-center p-5">
       <button
         className="rounded bg-red-500 px-4 py-2 text-white"
-        onClick={signUpHandler}
+        onClick={() => signUpHandler()}
       >
         Continue with google
       </button>
