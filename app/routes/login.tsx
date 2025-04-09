@@ -1,11 +1,5 @@
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { Await } from "react-router";
 import auth from "~/component/firebase.config";
 
 // config google auth provider
