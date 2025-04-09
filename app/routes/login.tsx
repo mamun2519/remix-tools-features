@@ -31,9 +31,9 @@ const SignInWithGoogle = () => {
     }
   };
   return (
-    <div className="p-5">
+    <div className="flex justify-center p-5">
       <button
-        className="rounded bg-red-500 py-2 text-white"
+        className="rounded bg-red-500 px-4 py-2 text-white"
         onClick={signUpHandler}
       >
         Continue with google
