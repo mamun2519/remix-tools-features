@@ -130,3 +130,11 @@ const SignInWithGoogle = () => {
 };
 
 export default SignInWithGoogle;
+
+const useGoogleSingUp = () => {
+  const [userYoutubeAccessToken, setUserYoutubeAccessToken] = useState<
+    string | null
+  >();
+
+  const [channelData, setChannelData] = useState<any>(null);
+};
