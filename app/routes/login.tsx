@@ -8,7 +8,7 @@ provider.addScope("https://www.googleapis.com/auth/youtube.upload");
 provider.addScope("https://www.googleapis.com/auth/youtube");
 
 const SignInWithGoogle = () => {
-  const siginWithGoogleProviderHandler = async () => {
+  const signInWithGoogleProviderHandler = async () => {
     const result = await signInWithPopup(auth, provider);
 
     const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -19,6 +19,8 @@ const SignInWithGoogle = () => {
     const user = result.user;
     return { user, token };
   };
+
+  const signUpHandler = () => {};
   return (
     <div>
       <button>Continue with google</button>
